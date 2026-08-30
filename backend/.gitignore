@@ -9,3 +9,6 @@ backend/.claude/
 backend/.windsurf/
 backend/.cursor/
 backend/skills-lock.json
+
+# Generated synthetic datasets
+data/*.json

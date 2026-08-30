@@ -100,6 +100,8 @@ export const TransactionScalarFieldEnum = {
   amount: 'amount',
   currency: 'currency',
   status: 'status',
+  paymentMethod: 'paymentMethod',
+  failureReason: 'failureReason',
   timestamp: 'timestamp',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -122,4 +124,12 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

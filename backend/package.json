@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "generate:data": "ts-node src/scripts/synthetic/generateSyntheticData.ts",
+    "extract:features": "ts-node src/scripts/synthetic/extractFeatures.ts",
+    "evaluate:risk": "ts-node src/scripts/risk/runRiskEvaluation.ts"
   },
   "keywords": [],
   "author": "",

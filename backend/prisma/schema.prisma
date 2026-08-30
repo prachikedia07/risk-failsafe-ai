@@ -32,21 +32,33 @@ model Customer {
 }
 
 model Transaction {
-  id         String            @id @default(uuid())
-  merchantId String
-  customerId String
-  amount     Int
-  currency   String            @default("INR")
-  status     TransactionStatus
-  timestamp  DateTime          @default(now())
-  merchant   Merchant          @relation(fields: [merchantId], references: [id])
-  customer   Customer          @relation(fields: [customerId], references: [id])
-  createdAt  DateTime          @default(now())
-  updatedAt  DateTime          @updatedAt
+  id            String            @id @default(uuid())
+  merchantId    String
+  customerId    String
+  amount        Int
+  currency      String            @default("INR")
+  status        TransactionStatus
+  paymentMethod PaymentMethod
+  failureReason String?
+  timestamp     DateTime          @default(now())
+
+  merchant Merchant @relation(fields: [merchantId], references: [id])
+  customer Customer @relation(fields: [customerId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 enum TransactionStatus {
   SUCCESS
   FAILED
   PENDING
+}
+
+enum PaymentMethod {
+  UPI
+  CARD
+  NETBANKING
+  WALLET
+  OTHER
 }

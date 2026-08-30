@@ -4,6 +4,7 @@ import healthRoutes from "./modules/health/health.routes";
 import merchantRoutes from "./modules/merchant/merchant.routes";
 import { errorMiddleware } from "./middleware/error.middleware";
 import customerRoutes from "./modules/customer/customer.routes";
+import transactionRoutes from "./modules/transaction/transaction.routes";
 
 const app = express();
 
@@ -23,5 +24,6 @@ app.get("/", (_req, res) => {
 app.use("/health", healthRoutes);
 app.use("/api/merchants", merchantRoutes);
 app.use("/api/customers", customerRoutes);
+app.use("/api/transactions", transactionRoutes);
 app.use(errorMiddleware);
 export default app;
