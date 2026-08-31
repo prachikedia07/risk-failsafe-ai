@@ -7,6 +7,7 @@ export interface RiskTransaction {
 
 export interface RiskScenario {
     scenarioId: string;
+    merchantId: string;
     label: "NORMAL" | "SUSPICIOUS";
     pattern?: SuspiciousPattern;
     windowStart: string;

@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
@@ -13,11 +8,13 @@ datasource db {
 }
 
 model Merchant {
-  id           String        @id @default(uuid())
+  id           String         @id @default(uuid())
   name         String
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
   customers    Customer[]
+  riskAlerts   RiskAlert[]
+  riskAnalyses RiskAnalysis[]
   transactions Transaction[]
 }
 
@@ -25,10 +22,10 @@ model Customer {
   id           String        @id @default(uuid())
   name         String
   merchantId   String
-  merchant     Merchant      @relation(fields: [merchantId], references: [id])
-  transactions Transaction[]
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
+  merchant     Merchant      @relation(fields: [merchantId], references: [id])
+  transactions Transaction[]
 }
 
 model Transaction {
@@ -38,15 +35,43 @@ model Transaction {
   amount        Int
   currency      String            @default("INR")
   status        TransactionStatus
-  paymentMethod PaymentMethod
-  failureReason String?
   timestamp     DateTime          @default(now())
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+  failureReason String?
+  paymentMethod PaymentMethod
+  customer      Customer          @relation(fields: [customerId], references: [id])
+  merchant      Merchant          @relation(fields: [merchantId], references: [id])
+}
 
-  merchant Merchant @relation(fields: [merchantId], references: [id])
-  customer Customer @relation(fields: [customerId], references: [id])
+model RiskAnalysis {
+  id         String         @id @default(uuid())
+  merchantId String
+  riskScore  Int
+  riskLevel  RiskLevel
+  prediction RiskPrediction
+  features   Json
+  reasons    Json
+  createdAt  DateTime       @default(now())
+  riskAlerts RiskAlert[]
+  merchant   Merchant       @relation(fields: [merchantId], references: [id])
+}
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model RiskAlert {
+  id             String       @id @default(uuid())
+  merchantId     String
+  riskScore      Int
+  riskLevel      RiskLevel
+  title          String
+  message        String
+  status         AlertStatus  @default(OPEN)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  riskAnalysisId String
+  action         AgentAction?
+  confidence     Float?
+  merchant       Merchant     @relation(fields: [merchantId], references: [id])
+  riskAnalysis   RiskAnalysis @relation(fields: [riskAnalysisId], references: [id])
 }
 
 enum TransactionStatus {
@@ -61,4 +86,28 @@ enum PaymentMethod {
   NETBANKING
   WALLET
   OTHER
+}
+
+enum RiskPrediction {
+  NORMAL
+  SUSPICIOUS
+}
+
+enum RiskLevel {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum AlertStatus {
+  OPEN
+  REVIEWED
+  RESOLVED
+}
+
+enum AgentAction {
+  ALLOW
+  REVIEW
+  PAUSE
 }

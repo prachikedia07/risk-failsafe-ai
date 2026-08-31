@@ -27,3 +27,39 @@ export const PaymentMethod = {
 } as const
 
 export type PaymentMethod = (typeof PaymentMethod)[keyof typeof PaymentMethod]
+
+
+export const RiskPrediction = {
+  NORMAL: 'NORMAL',
+  SUSPICIOUS: 'SUSPICIOUS'
+} as const
+
+export type RiskPrediction = (typeof RiskPrediction)[keyof typeof RiskPrediction]
+
+
+export const RiskLevel = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH',
+  CRITICAL: 'CRITICAL'
+} as const
+
+export type RiskLevel = (typeof RiskLevel)[keyof typeof RiskLevel]
+
+
+export const AlertStatus = {
+  OPEN: 'OPEN',
+  REVIEWED: 'REVIEWED',
+  RESOLVED: 'RESOLVED'
+} as const
+
+export type AlertStatus = (typeof AlertStatus)[keyof typeof AlertStatus]
+
+
+export const AgentAction = {
+  ALLOW: 'ALLOW',
+  REVIEW: 'REVIEW',
+  PAUSE: 'PAUSE'
+} as const
+
+export type AgentAction = (typeof AgentAction)[keyof typeof AgentAction]

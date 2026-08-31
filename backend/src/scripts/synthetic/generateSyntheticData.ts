@@ -37,6 +37,7 @@ interface SyntheticScenario {
     windowEnd: string;
     transactions: SyntheticTransaction[];
     pattern?: SuspiciousPattern;
+    merchantId: string;
 }
 
 type SuspiciousPattern =
@@ -537,8 +538,9 @@ const generateScenario = ({
         );
     }
 
-    return {
+return {
     scenarioId: `${label.toLowerCase()}-${scenarioIndex}`,
+    merchantId: MERCHANT_ID,
     label,
     pattern,
     windowStart: windowStart.toISOString(),

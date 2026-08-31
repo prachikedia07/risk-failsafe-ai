@@ -5,6 +5,7 @@ import merchantRoutes from "./modules/merchant/merchant.routes";
 import { errorMiddleware } from "./middleware/error.middleware";
 import customerRoutes from "./modules/customer/customer.routes";
 import transactionRoutes from "./modules/transaction/transaction.routes";
+import agentRoutes from "./modules/agent/agent.routes";
 
 const app = express();
 
@@ -25,5 +26,6 @@ app.use("/health", healthRoutes);
 app.use("/api/merchants", merchantRoutes);
 app.use("/api/customers", customerRoutes);
 app.use("/api/transactions", transactionRoutes);
+app.use("/api/agent", agentRoutes);
 app.use(errorMiddleware);
 export default app;

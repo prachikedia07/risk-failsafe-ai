@@ -173,80 +173,95 @@ export const analyzeTransactionRisk = (
         failureRisk * 0.25 +
         newCustomerRisk * 0.20;
 
-    const riskScore = Math.round(
-        weightedRisk * 100
+
+const riskScore = Math.round(
+    weightedRisk * 100
+);
+
+const featureResults: FeatureRisk[] = [
+    {
+        feature: "velocity",
+        currentValue:
+            features.transactionsPerMinute,
+        baselineMean:
+            baseline.transactionsPerMinute
+                .mean,
+        baselineStandardDeviation:
+            baseline.transactionsPerMinute
+                .standardDeviation,
+        zScore: velocityZScore,
+        contribution:
+            velocityRisk * 0.30,
+    },
+
+    {
+        feature: "averageAmount",
+        currentValue:
+            features.averageAmount,
+        baselineMean:
+            baseline.averageAmount
+                .mean,
+        baselineStandardDeviation:
+            baseline.averageAmount
+                .standardDeviation,
+        zScore: amountZScore,
+        contribution:
+            amountRisk * 0.25,
+    },
+
+    {
+        feature: "failureRate",
+        currentValue:
+            features.failureRate,
+        baselineMean:
+            baseline.failureRate.mean,
+        baselineStandardDeviation:
+            baseline.failureRate
+                .standardDeviation,
+        zScore: failureZScore,
+        contribution:
+            failureRisk * 0.25,
+    },
+
+    {
+        feature: "newCustomerRatio",
+        currentValue:
+            features.newCustomerRatio,
+        baselineMean:
+            baseline.newCustomerRatio
+                .mean,
+        baselineStandardDeviation:
+            baseline.newCustomerRatio
+                .standardDeviation,
+        zScore: newCustomerZScore,
+        contribution:
+            newCustomerRisk * 0.20,
+    },
+];
+
+const hasExtremeAnomaly =
+    featureResults.some(
+        (feature) =>
+            feature.zScore >= 3
     );
 
-    const riskLevel =
-        calculateRiskLevel(
-            riskScore
-        );
+const adjustedRiskScore =
+    hasExtremeAnomaly
+        ? Math.max(
+              riskScore,
+              60
+          )
+        : riskScore;
 
-    const prediction: RiskPrediction =
-        riskScore >= 50
-            ? "SUSPICIOUS"
-            : "NORMAL";
+const riskLevel =
+    calculateRiskLevel(
+        adjustedRiskScore
+    );
 
-    const featureResults: FeatureRisk[] = [
-        {
-            feature: "velocity",
-            currentValue:
-                features.transactionsPerMinute,
-            baselineMean:
-                baseline.transactionsPerMinute
-                    .mean,
-            baselineStandardDeviation:
-                baseline.transactionsPerMinute
-                    .standardDeviation,
-            zScore: velocityZScore,
-            contribution:
-                velocityRisk * 0.30,
-        },
-
-        {
-            feature: "averageAmount",
-            currentValue:
-                features.averageAmount,
-            baselineMean:
-                baseline.averageAmount
-                    .mean,
-            baselineStandardDeviation:
-                baseline.averageAmount
-                    .standardDeviation,
-            zScore: amountZScore,
-            contribution:
-                amountRisk * 0.25,
-        },
-
-        {
-            feature: "failureRate",
-            currentValue:
-                features.failureRate,
-            baselineMean:
-                baseline.failureRate.mean,
-            baselineStandardDeviation:
-                baseline.failureRate
-                    .standardDeviation,
-            zScore: failureZScore,
-            contribution:
-                failureRisk * 0.25,
-        },
-
-        {
-            feature: "newCustomerRatio",
-            currentValue:
-                features.newCustomerRatio,
-            baselineMean:
-                baseline.newCustomerRatio
-                    .mean,
-            baselineStandardDeviation:
-                baseline.newCustomerRatio
-                    .standardDeviation,
-            zScore: newCustomerZScore,
-            contribution:
-                newCustomerRisk * 0.20,
-        },
-    ];
+const prediction: RiskPrediction =
+    adjustedRiskScore >= 50
+        ? "SUSPICIOUS"
+        : "NORMAL";
 
     const reasons =
         featureResults
@@ -270,7 +285,7 @@ export const analyzeTransactionRisk = (
             );
 
     return {
-        riskScore,
+        riskScore: adjustedRiskScore,
         riskLevel,
         prediction,
         features: featureResults,

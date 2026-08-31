@@ -8,19 +8,22 @@
     "start": "node dist/server.js",
     "generate:data": "ts-node src/scripts/synthetic/generateSyntheticData.ts",
     "extract:features": "ts-node src/scripts/synthetic/extractFeatures.ts",
-    "evaluate:risk": "ts-node src/scripts/risk/runRiskEvaluation.ts"
+    "evaluate:risk": "ts-node src/scripts/risk/runRiskEvaluation.ts",
+    "analyze:risk": "ts-node src/scripts/risk/runRiskAnalysis.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@google/genai": "^2.19.0",
     "@prisma/adapter-pg": "^7.10.0",
     "@prisma/client": "^7.10.0",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "pg": "^8.23.0",
+    "razorpay": "^2.9.8",
     "zod": "^4.4.3"
   },
   "devDependencies": {

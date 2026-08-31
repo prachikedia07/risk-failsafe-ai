@@ -32,3 +32,13 @@ export type Customer = Prisma.CustomerModel
  * 
  */
 export type Transaction = Prisma.TransactionModel
+/**
+ * Model RiskAnalysis
+ * 
+ */
+export type RiskAnalysis = Prisma.RiskAnalysisModel
+/**
+ * Model RiskAlert
+ * 
+ */
+export type RiskAlert = Prisma.RiskAlertModel

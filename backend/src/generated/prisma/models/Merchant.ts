@@ -176,6 +176,8 @@ export type MerchantWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Merchant"> | Date | string
   customers?: Prisma.CustomerListRelationFilter
   transactions?: Prisma.TransactionListRelationFilter
+  riskAlerts?: Prisma.RiskAlertListRelationFilter
+  riskAnalyses?: Prisma.RiskAnalysisListRelationFilter
 }
 
 export type MerchantOrderByWithRelationInput = {
@@ -185,6 +187,8 @@ export type MerchantOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   customers?: Prisma.CustomerOrderByRelationAggregateInput
   transactions?: Prisma.TransactionOrderByRelationAggregateInput
+  riskAlerts?: Prisma.RiskAlertOrderByRelationAggregateInput
+  riskAnalyses?: Prisma.RiskAnalysisOrderByRelationAggregateInput
 }
 
 export type MerchantWhereUniqueInput = Prisma.AtLeast<{
@@ -197,6 +201,8 @@ export type MerchantWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Merchant"> | Date | string
   customers?: Prisma.CustomerListRelationFilter
   transactions?: Prisma.TransactionListRelationFilter
+  riskAlerts?: Prisma.RiskAlertListRelationFilter
+  riskAnalyses?: Prisma.RiskAnalysisListRelationFilter
 }, "id">
 
 export type MerchantOrderByWithAggregationInput = {
@@ -226,6 +232,8 @@ export type MerchantCreateInput = {
   updatedAt?: Date | string
   customers?: Prisma.CustomerCreateNestedManyWithoutMerchantInput
   transactions?: Prisma.TransactionCreateNestedManyWithoutMerchantInput
+  riskAlerts?: Prisma.RiskAlertCreateNestedManyWithoutMerchantInput
+  riskAnalyses?: Prisma.RiskAnalysisCreateNestedManyWithoutMerchantInput
 }
 
 export type MerchantUncheckedCreateInput = {
@@ -235,6 +243,8 @@ export type MerchantUncheckedCreateInput = {
   updatedAt?: Date | string
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutMerchantInput
   transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutMerchantInput
+  riskAlerts?: Prisma.RiskAlertUncheckedCreateNestedManyWithoutMerchantInput
+  riskAnalyses?: Prisma.RiskAnalysisUncheckedCreateNestedManyWithoutMerchantInput
 }
 
 export type MerchantUpdateInput = {
@@ -244,6 +254,8 @@ export type MerchantUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   customers?: Prisma.CustomerUpdateManyWithoutMerchantNestedInput
   transactions?: Prisma.TransactionUpdateManyWithoutMerchantNestedInput
+  riskAlerts?: Prisma.RiskAlertUpdateManyWithoutMerchantNestedInput
+  riskAnalyses?: Prisma.RiskAnalysisUpdateManyWithoutMerchantNestedInput
 }
 
 export type MerchantUncheckedUpdateInput = {
@@ -253,6 +265,8 @@ export type MerchantUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutMerchantNestedInput
   transactions?: Prisma.TransactionUncheckedUpdateManyWithoutMerchantNestedInput
+  riskAlerts?: Prisma.RiskAlertUncheckedUpdateManyWithoutMerchantNestedInput
+  riskAnalyses?: Prisma.RiskAnalysisUncheckedUpdateManyWithoutMerchantNestedInput
 }
 
 export type MerchantCreateManyInput = {
@@ -338,12 +352,42 @@ export type MerchantUpdateOneRequiredWithoutTransactionsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.MerchantUpdateToOneWithWhereWithoutTransactionsInput, Prisma.MerchantUpdateWithoutTransactionsInput>, Prisma.MerchantUncheckedUpdateWithoutTransactionsInput>
 }
 
+export type MerchantCreateNestedOneWithoutRiskAnalysesInput = {
+  create?: Prisma.XOR<Prisma.MerchantCreateWithoutRiskAnalysesInput, Prisma.MerchantUncheckedCreateWithoutRiskAnalysesInput>
+  connectOrCreate?: Prisma.MerchantCreateOrConnectWithoutRiskAnalysesInput
+  connect?: Prisma.MerchantWhereUniqueInput
+}
+
+export type MerchantUpdateOneRequiredWithoutRiskAnalysesNestedInput = {
+  create?: Prisma.XOR<Prisma.MerchantCreateWithoutRiskAnalysesInput, Prisma.MerchantUncheckedCreateWithoutRiskAnalysesInput>
+  connectOrCreate?: Prisma.MerchantCreateOrConnectWithoutRiskAnalysesInput
+  upsert?: Prisma.MerchantUpsertWithoutRiskAnalysesInput
+  connect?: Prisma.MerchantWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MerchantUpdateToOneWithWhereWithoutRiskAnalysesInput, Prisma.MerchantUpdateWithoutRiskAnalysesInput>, Prisma.MerchantUncheckedUpdateWithoutRiskAnalysesInput>
+}
+
+export type MerchantCreateNestedOneWithoutRiskAlertsInput = {
+  create?: Prisma.XOR<Prisma.MerchantCreateWithoutRiskAlertsInput, Prisma.MerchantUncheckedCreateWithoutRiskAlertsInput>
+  connectOrCreate?: Prisma.MerchantCreateOrConnectWithoutRiskAlertsInput
+  connect?: Prisma.MerchantWhereUniqueInput
+}
+
+export type MerchantUpdateOneRequiredWithoutRiskAlertsNestedInput = {
+  create?: Prisma.XOR<Prisma.MerchantCreateWithoutRiskAlertsInput, Prisma.MerchantUncheckedCreateWithoutRiskAlertsInput>
+  connectOrCreate?: Prisma.MerchantCreateOrConnectWithoutRiskAlertsInput
+  upsert?: Prisma.MerchantUpsertWithoutRiskAlertsInput
+  connect?: Prisma.MerchantWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MerchantUpdateToOneWithWhereWithoutRiskAlertsInput, Prisma.MerchantUpdateWithoutRiskAlertsInput>, Prisma.MerchantUncheckedUpdateWithoutRiskAlertsInput>
+}
+
 export type MerchantCreateWithoutCustomersInput = {
   id?: string
   name: string
   createdAt?: Date | string
   updatedAt?: Date | string
   transactions?: Prisma.TransactionCreateNestedManyWithoutMerchantInput
+  riskAlerts?: Prisma.RiskAlertCreateNestedManyWithoutMerchantInput
+  riskAnalyses?: Prisma.RiskAnalysisCreateNestedManyWithoutMerchantInput
 }
 
 export type MerchantUncheckedCreateWithoutCustomersInput = {
@@ -352,6 +396,8 @@ export type MerchantUncheckedCreateWithoutCustomersInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutMerchantInput
+  riskAlerts?: Prisma.RiskAlertUncheckedCreateNestedManyWithoutMerchantInput
+  riskAnalyses?: Prisma.RiskAnalysisUncheckedCreateNestedManyWithoutMerchantInput
 }
 
 export type MerchantCreateOrConnectWithoutCustomersInput = {
@@ -376,6 +422,8 @@ export type MerchantUpdateWithoutCustomersInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   transactions?: Prisma.TransactionUpdateManyWithoutMerchantNestedInput
+  riskAlerts?: Prisma.RiskAlertUpdateManyWithoutMerchantNestedInput
+  riskAnalyses?: Prisma.RiskAnalysisUpdateManyWithoutMerchantNestedInput
 }
 
 export type MerchantUncheckedUpdateWithoutCustomersInput = {
@@ -384,6 +432,8 @@ export type MerchantUncheckedUpdateWithoutCustomersInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   transactions?: Prisma.TransactionUncheckedUpdateManyWithoutMerchantNestedInput
+  riskAlerts?: Prisma.RiskAlertUncheckedUpdateManyWithoutMerchantNestedInput
+  riskAnalyses?: Prisma.RiskAnalysisUncheckedUpdateManyWithoutMerchantNestedInput
 }
 
 export type MerchantCreateWithoutTransactionsInput = {
@@ -392,6 +442,8 @@ export type MerchantCreateWithoutTransactionsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   customers?: Prisma.CustomerCreateNestedManyWithoutMerchantInput
+  riskAlerts?: Prisma.RiskAlertCreateNestedManyWithoutMerchantInput
+  riskAnalyses?: Prisma.RiskAnalysisCreateNestedManyWithoutMerchantInput
 }
 
 export type MerchantUncheckedCreateWithoutTransactionsInput = {
@@ -400,6 +452,8 @@ export type MerchantUncheckedCreateWithoutTransactionsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutMerchantInput
+  riskAlerts?: Prisma.RiskAlertUncheckedCreateNestedManyWithoutMerchantInput
+  riskAnalyses?: Prisma.RiskAnalysisUncheckedCreateNestedManyWithoutMerchantInput
 }
 
 export type MerchantCreateOrConnectWithoutTransactionsInput = {
@@ -424,6 +478,8 @@ export type MerchantUpdateWithoutTransactionsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   customers?: Prisma.CustomerUpdateManyWithoutMerchantNestedInput
+  riskAlerts?: Prisma.RiskAlertUpdateManyWithoutMerchantNestedInput
+  riskAnalyses?: Prisma.RiskAnalysisUpdateManyWithoutMerchantNestedInput
 }
 
 export type MerchantUncheckedUpdateWithoutTransactionsInput = {
@@ -432,6 +488,120 @@ export type MerchantUncheckedUpdateWithoutTransactionsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutMerchantNestedInput
+  riskAlerts?: Prisma.RiskAlertUncheckedUpdateManyWithoutMerchantNestedInput
+  riskAnalyses?: Prisma.RiskAnalysisUncheckedUpdateManyWithoutMerchantNestedInput
+}
+
+export type MerchantCreateWithoutRiskAnalysesInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  customers?: Prisma.CustomerCreateNestedManyWithoutMerchantInput
+  transactions?: Prisma.TransactionCreateNestedManyWithoutMerchantInput
+  riskAlerts?: Prisma.RiskAlertCreateNestedManyWithoutMerchantInput
+}
+
+export type MerchantUncheckedCreateWithoutRiskAnalysesInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutMerchantInput
+  transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutMerchantInput
+  riskAlerts?: Prisma.RiskAlertUncheckedCreateNestedManyWithoutMerchantInput
+}
+
+export type MerchantCreateOrConnectWithoutRiskAnalysesInput = {
+  where: Prisma.MerchantWhereUniqueInput
+  create: Prisma.XOR<Prisma.MerchantCreateWithoutRiskAnalysesInput, Prisma.MerchantUncheckedCreateWithoutRiskAnalysesInput>
+}
+
+export type MerchantUpsertWithoutRiskAnalysesInput = {
+  update: Prisma.XOR<Prisma.MerchantUpdateWithoutRiskAnalysesInput, Prisma.MerchantUncheckedUpdateWithoutRiskAnalysesInput>
+  create: Prisma.XOR<Prisma.MerchantCreateWithoutRiskAnalysesInput, Prisma.MerchantUncheckedCreateWithoutRiskAnalysesInput>
+  where?: Prisma.MerchantWhereInput
+}
+
+export type MerchantUpdateToOneWithWhereWithoutRiskAnalysesInput = {
+  where?: Prisma.MerchantWhereInput
+  data: Prisma.XOR<Prisma.MerchantUpdateWithoutRiskAnalysesInput, Prisma.MerchantUncheckedUpdateWithoutRiskAnalysesInput>
+}
+
+export type MerchantUpdateWithoutRiskAnalysesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  customers?: Prisma.CustomerUpdateManyWithoutMerchantNestedInput
+  transactions?: Prisma.TransactionUpdateManyWithoutMerchantNestedInput
+  riskAlerts?: Prisma.RiskAlertUpdateManyWithoutMerchantNestedInput
+}
+
+export type MerchantUncheckedUpdateWithoutRiskAnalysesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  customers?: Prisma.CustomerUncheckedUpdateManyWithoutMerchantNestedInput
+  transactions?: Prisma.TransactionUncheckedUpdateManyWithoutMerchantNestedInput
+  riskAlerts?: Prisma.RiskAlertUncheckedUpdateManyWithoutMerchantNestedInput
+}
+
+export type MerchantCreateWithoutRiskAlertsInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  customers?: Prisma.CustomerCreateNestedManyWithoutMerchantInput
+  transactions?: Prisma.TransactionCreateNestedManyWithoutMerchantInput
+  riskAnalyses?: Prisma.RiskAnalysisCreateNestedManyWithoutMerchantInput
+}
+
+export type MerchantUncheckedCreateWithoutRiskAlertsInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutMerchantInput
+  transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutMerchantInput
+  riskAnalyses?: Prisma.RiskAnalysisUncheckedCreateNestedManyWithoutMerchantInput
+}
+
+export type MerchantCreateOrConnectWithoutRiskAlertsInput = {
+  where: Prisma.MerchantWhereUniqueInput
+  create: Prisma.XOR<Prisma.MerchantCreateWithoutRiskAlertsInput, Prisma.MerchantUncheckedCreateWithoutRiskAlertsInput>
+}
+
+export type MerchantUpsertWithoutRiskAlertsInput = {
+  update: Prisma.XOR<Prisma.MerchantUpdateWithoutRiskAlertsInput, Prisma.MerchantUncheckedUpdateWithoutRiskAlertsInput>
+  create: Prisma.XOR<Prisma.MerchantCreateWithoutRiskAlertsInput, Prisma.MerchantUncheckedCreateWithoutRiskAlertsInput>
+  where?: Prisma.MerchantWhereInput
+}
+
+export type MerchantUpdateToOneWithWhereWithoutRiskAlertsInput = {
+  where?: Prisma.MerchantWhereInput
+  data: Prisma.XOR<Prisma.MerchantUpdateWithoutRiskAlertsInput, Prisma.MerchantUncheckedUpdateWithoutRiskAlertsInput>
+}
+
+export type MerchantUpdateWithoutRiskAlertsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  customers?: Prisma.CustomerUpdateManyWithoutMerchantNestedInput
+  transactions?: Prisma.TransactionUpdateManyWithoutMerchantNestedInput
+  riskAnalyses?: Prisma.RiskAnalysisUpdateManyWithoutMerchantNestedInput
+}
+
+export type MerchantUncheckedUpdateWithoutRiskAlertsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  customers?: Prisma.CustomerUncheckedUpdateManyWithoutMerchantNestedInput
+  transactions?: Prisma.TransactionUncheckedUpdateManyWithoutMerchantNestedInput
+  riskAnalyses?: Prisma.RiskAnalysisUncheckedUpdateManyWithoutMerchantNestedInput
 }
 
 
@@ -442,11 +612,15 @@ export type MerchantUncheckedUpdateWithoutTransactionsInput = {
 export type MerchantCountOutputType = {
   customers: number
   transactions: number
+  riskAlerts: number
+  riskAnalyses: number
 }
 
 export type MerchantCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   customers?: boolean | MerchantCountOutputTypeCountCustomersArgs
   transactions?: boolean | MerchantCountOutputTypeCountTransactionsArgs
+  riskAlerts?: boolean | MerchantCountOutputTypeCountRiskAlertsArgs
+  riskAnalyses?: boolean | MerchantCountOutputTypeCountRiskAnalysesArgs
 }
 
 /**
@@ -473,6 +647,20 @@ export type MerchantCountOutputTypeCountTransactionsArgs<ExtArgs extends runtime
   where?: Prisma.TransactionWhereInput
 }
 
+/**
+ * MerchantCountOutputType without action
+ */
+export type MerchantCountOutputTypeCountRiskAlertsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RiskAlertWhereInput
+}
+
+/**
+ * MerchantCountOutputType without action
+ */
+export type MerchantCountOutputTypeCountRiskAnalysesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RiskAnalysisWhereInput
+}
+
 
 export type MerchantSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -481,6 +669,8 @@ export type MerchantSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   updatedAt?: boolean
   customers?: boolean | Prisma.Merchant$customersArgs<ExtArgs>
   transactions?: boolean | Prisma.Merchant$transactionsArgs<ExtArgs>
+  riskAlerts?: boolean | Prisma.Merchant$riskAlertsArgs<ExtArgs>
+  riskAnalyses?: boolean | Prisma.Merchant$riskAnalysesArgs<ExtArgs>
   _count?: boolean | Prisma.MerchantCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["merchant"]>
 
@@ -509,6 +699,8 @@ export type MerchantOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs =
 export type MerchantInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   customers?: boolean | Prisma.Merchant$customersArgs<ExtArgs>
   transactions?: boolean | Prisma.Merchant$transactionsArgs<ExtArgs>
+  riskAlerts?: boolean | Prisma.Merchant$riskAlertsArgs<ExtArgs>
+  riskAnalyses?: boolean | Prisma.Merchant$riskAnalysesArgs<ExtArgs>
   _count?: boolean | Prisma.MerchantCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type MerchantIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -519,6 +711,8 @@ export type $MerchantPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   objects: {
     customers: Prisma.$CustomerPayload<ExtArgs>[]
     transactions: Prisma.$TransactionPayload<ExtArgs>[]
+    riskAlerts: Prisma.$RiskAlertPayload<ExtArgs>[]
+    riskAnalyses: Prisma.$RiskAnalysisPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -921,6 +1115,8 @@ export interface Prisma__MerchantClient<T, Null = never, ExtArgs extends runtime
   readonly [Symbol.toStringTag]: "PrismaPromise"
   customers<T extends Prisma.Merchant$customersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Merchant$customersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   transactions<T extends Prisma.Merchant$transactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Merchant$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  riskAlerts<T extends Prisma.Merchant$riskAlertsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Merchant$riskAlertsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RiskAlertPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  riskAnalyses<T extends Prisma.Merchant$riskAnalysesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Merchant$riskAnalysesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RiskAnalysisPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1392,6 +1588,54 @@ export type Merchant$transactionsArgs<ExtArgs extends runtime.Types.Extensions.I
   take?: number
   skip?: number
   distinct?: Prisma.TransactionScalarFieldEnum | Prisma.TransactionScalarFieldEnum[]
+}
+
+/**
+ * Merchant.riskAlerts
+ */
+export type Merchant$riskAlertsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RiskAlert
+   */
+  select?: Prisma.RiskAlertSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RiskAlert
+   */
+  omit?: Prisma.RiskAlertOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RiskAlertInclude<ExtArgs> | null
+  where?: Prisma.RiskAlertWhereInput
+  orderBy?: Prisma.RiskAlertOrderByWithRelationInput | Prisma.RiskAlertOrderByWithRelationInput[]
+  cursor?: Prisma.RiskAlertWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RiskAlertScalarFieldEnum | Prisma.RiskAlertScalarFieldEnum[]
+}
+
+/**
+ * Merchant.riskAnalyses
+ */
+export type Merchant$riskAnalysesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RiskAnalysis
+   */
+  select?: Prisma.RiskAnalysisSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RiskAnalysis
+   */
+  omit?: Prisma.RiskAnalysisOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RiskAnalysisInclude<ExtArgs> | null
+  where?: Prisma.RiskAnalysisWhereInput
+  orderBy?: Prisma.RiskAnalysisOrderByWithRelationInput | Prisma.RiskAnalysisOrderByWithRelationInput[]
+  cursor?: Prisma.RiskAnalysisWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RiskAnalysisScalarFieldEnum | Prisma.RiskAnalysisScalarFieldEnum[]
 }
 
 /**

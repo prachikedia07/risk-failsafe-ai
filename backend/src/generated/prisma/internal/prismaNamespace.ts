@@ -399,7 +399,9 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   Merchant: 'Merchant',
   Customer: 'Customer',
-  Transaction: 'Transaction'
+  Transaction: 'Transaction',
+  RiskAnalysis: 'RiskAnalysis',
+  RiskAlert: 'RiskAlert'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -415,7 +417,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "merchant" | "customer" | "transaction"
+    modelProps: "merchant" | "customer" | "transaction" | "riskAnalysis" | "riskAlert"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -641,6 +643,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    RiskAnalysis: {
+      payload: Prisma.$RiskAnalysisPayload<ExtArgs>
+      fields: Prisma.RiskAnalysisFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RiskAnalysisFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAnalysisPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RiskAnalysisFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAnalysisPayload>
+        }
+        findFirst: {
+          args: Prisma.RiskAnalysisFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAnalysisPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RiskAnalysisFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAnalysisPayload>
+        }
+        findMany: {
+          args: Prisma.RiskAnalysisFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAnalysisPayload>[]
+        }
+        create: {
+          args: Prisma.RiskAnalysisCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAnalysisPayload>
+        }
+        createMany: {
+          args: Prisma.RiskAnalysisCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RiskAnalysisCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAnalysisPayload>[]
+        }
+        delete: {
+          args: Prisma.RiskAnalysisDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAnalysisPayload>
+        }
+        update: {
+          args: Prisma.RiskAnalysisUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAnalysisPayload>
+        }
+        deleteMany: {
+          args: Prisma.RiskAnalysisDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RiskAnalysisUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RiskAnalysisUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAnalysisPayload>[]
+        }
+        upsert: {
+          args: Prisma.RiskAnalysisUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAnalysisPayload>
+        }
+        aggregate: {
+          args: Prisma.RiskAnalysisAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRiskAnalysis>
+        }
+        groupBy: {
+          args: Prisma.RiskAnalysisGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RiskAnalysisGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RiskAnalysisCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RiskAnalysisCountAggregateOutputType> | number
+        }
+      }
+    }
+    RiskAlert: {
+      payload: Prisma.$RiskAlertPayload<ExtArgs>
+      fields: Prisma.RiskAlertFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RiskAlertFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAlertPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RiskAlertFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAlertPayload>
+        }
+        findFirst: {
+          args: Prisma.RiskAlertFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAlertPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RiskAlertFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAlertPayload>
+        }
+        findMany: {
+          args: Prisma.RiskAlertFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAlertPayload>[]
+        }
+        create: {
+          args: Prisma.RiskAlertCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAlertPayload>
+        }
+        createMany: {
+          args: Prisma.RiskAlertCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RiskAlertCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAlertPayload>[]
+        }
+        delete: {
+          args: Prisma.RiskAlertDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAlertPayload>
+        }
+        update: {
+          args: Prisma.RiskAlertUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAlertPayload>
+        }
+        deleteMany: {
+          args: Prisma.RiskAlertDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RiskAlertUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RiskAlertUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAlertPayload>[]
+        }
+        upsert: {
+          args: Prisma.RiskAlertUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskAlertPayload>
+        }
+        aggregate: {
+          args: Prisma.RiskAlertAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRiskAlert>
+        }
+        groupBy: {
+          args: Prisma.RiskAlertGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RiskAlertGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RiskAlertCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RiskAlertCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -718,12 +868,51 @@ export const TransactionScalarFieldEnum = {
 export type TransactionScalarFieldEnum = (typeof TransactionScalarFieldEnum)[keyof typeof TransactionScalarFieldEnum]
 
 
+export const RiskAnalysisScalarFieldEnum = {
+  id: 'id',
+  merchantId: 'merchantId',
+  riskScore: 'riskScore',
+  riskLevel: 'riskLevel',
+  prediction: 'prediction',
+  features: 'features',
+  reasons: 'reasons',
+  createdAt: 'createdAt'
+} as const
+
+export type RiskAnalysisScalarFieldEnum = (typeof RiskAnalysisScalarFieldEnum)[keyof typeof RiskAnalysisScalarFieldEnum]
+
+
+export const RiskAlertScalarFieldEnum = {
+  id: 'id',
+  merchantId: 'merchantId',
+  riskAnalysisId: 'riskAnalysisId',
+  riskScore: 'riskScore',
+  riskLevel: 'riskLevel',
+  title: 'title',
+  message: 'message',
+  action: 'action',
+  confidence: 'confidence',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RiskAlertScalarFieldEnum = (typeof RiskAlertScalarFieldEnum)[keyof typeof RiskAlertScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {
@@ -740,6 +929,15 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
 
@@ -819,6 +1017,62 @@ export type ListEnumPaymentMethodFieldRefInput<$PrismaModel> = FieldRefInputType
 
 
 /**
+ * Reference to a field of type 'RiskLevel'
+ */
+export type EnumRiskLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RiskLevel'>
+    
+
+
+/**
+ * Reference to a field of type 'RiskLevel[]'
+ */
+export type ListEnumRiskLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RiskLevel[]'>
+    
+
+
+/**
+ * Reference to a field of type 'RiskPrediction'
+ */
+export type EnumRiskPredictionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RiskPrediction'>
+    
+
+
+/**
+ * Reference to a field of type 'RiskPrediction[]'
+ */
+export type ListEnumRiskPredictionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RiskPrediction[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Json'
+ */
+export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+/**
+ * Reference to a field of type 'QueryMode'
+ */
+export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+/**
+ * Reference to a field of type 'AgentAction'
+ */
+export type EnumAgentActionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AgentAction'>
+    
+
+
+/**
+ * Reference to a field of type 'AgentAction[]'
+ */
+export type ListEnumAgentActionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AgentAction[]'>
+    
+
+
+/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -829,6 +1083,20 @@ export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, '
  * Reference to a field of type 'Float[]'
  */
 export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+/**
+ * Reference to a field of type 'AlertStatus'
+ */
+export type EnumAlertStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AlertStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'AlertStatus[]'
+ */
+export type ListEnumAlertStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AlertStatus[]'>
     
 
 /**
@@ -985,6 +1253,8 @@ export type GlobalOmitConfig = {
   merchant?: Prisma.MerchantOmit
   customer?: Prisma.CustomerOmit
   transaction?: Prisma.TransactionOmit
+  riskAnalysis?: Prisma.RiskAnalysisOmit
+  riskAlert?: Prisma.RiskAlertOmit
 }
 
 /* Types for Logging */

@@ -11,4 +11,6 @@
 export type * from './models/Merchant'
 export type * from './models/Customer'
 export type * from './models/Transaction'
+export type * from './models/RiskAnalysis'
+export type * from './models/RiskAlert'
 export type * from './commonInputTypes'
