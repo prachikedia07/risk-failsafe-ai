@@ -268,12 +268,14 @@ Return a structured JSON decision with:
                 }
             );
 
-        const functionCalls =
+                const functionCalls =
             response.functionCalls ?? [];
 
-        if (
-            functionCalls.length === 0
-        ) {
+        /*
+         * Gemini has finished investigating and
+         * returned the final decision.
+         */
+        if (functionCalls.length === 0) {
             if (!response.text) {
                 throw new Error(
                     "Gemini returned an empty response"
@@ -285,12 +287,38 @@ Return a structured JSON decision with:
                     response.text
                 ) as AgentDecision;
 
+            const validatedDecision =
+                validateAgentDecision(
+                    decision
+                );
 
-            return validateAgentDecision(
-                decision
-            );
+            await createRiskAlert({
+                merchantId,
+                riskAnalysisId,
+                riskScore:
+                    analysis.riskScore,
+                riskLevel:
+                    analysis.riskLevel as
+                        | "LOW"
+                        | "MEDIUM"
+                        | "HIGH"
+                        | "CRITICAL",
+                title:
+                    "Suspicious transaction activity detected",
+                message:
+                    validatedDecision.summary,
+                action:
+                    validatedDecision.action,
+                confidence:
+                    validatedDecision.confidence,
+            });
+
+            return validatedDecision;
         }
 
+        /*
+         * Gemini wants to use one or more tools.
+         */
         toolCallCount +=
             functionCalls.length;
 
@@ -304,9 +332,8 @@ Return a structured JSON decision with:
         }
 
         /*
-         * Preserve the model response exactly.
-         * Gemini's SDK handles the necessary
-         * thought/function-call context.
+         * Preserve Gemini's previous response
+         * before sending the tool results back.
          */
         contents.push(
             response.candidates![0]
@@ -324,22 +351,24 @@ Return a structured JSON decision with:
                 );
 
             contents.push({
-    role: "user",
-    parts: [
-        {
-            functionResponse: {
-                name: functionCall.name,
-                response: {
-                    result,
-                },
-                id: functionCall.id,
-            },
-        },
-    ],
-});
+                role: "user",
+                parts: [
+                    {
+                        functionResponse: {
+                            name:
+                                functionCall.name,
+                            response: {
+                                result,
+                            },
+                            id:
+                                functionCall.id,
+                        },
+                    },
+                ],
+            });
         }
     }
-};
+}
 
 const getMerchantId = async (
     riskAnalysisId: string
@@ -366,13 +395,10 @@ const getMerchantId = async (
     return analysis.merchantId;
 };
 
-const executeTool = async (
+async function executeTool(
     toolName: string,
-    args: Record<
-        string,
-        unknown
-    >
-) => {
+    args: Record<string, unknown>
+) {
     switch (toolName) {
         case "getRecentTransactions":
             return getRecentTransactions(
@@ -402,7 +428,7 @@ const executeTool = async (
                 `Unknown agent tool: ${toolName}`
             );
     }
-};
+}
 
 const validateAgentDecision = (
     decision: AgentDecision

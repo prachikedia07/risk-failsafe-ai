@@ -102,11 +102,13 @@ export const TransactionScalarFieldEnum = {
   amount: 'amount',
   currency: 'currency',
   status: 'status',
-  paymentMethod: 'paymentMethod',
-  failureReason: 'failureReason',
   timestamp: 'timestamp',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  failureReason: 'failureReason',
+  paymentMethod: 'paymentMethod',
+  razorpayPaymentId: 'razorpayPaymentId',
+  razorpayEventId: 'razorpayEventId'
 } as const
 
 export type TransactionScalarFieldEnum = (typeof TransactionScalarFieldEnum)[keyof typeof TransactionScalarFieldEnum]
@@ -129,16 +131,16 @@ export type RiskAnalysisScalarFieldEnum = (typeof RiskAnalysisScalarFieldEnum)[k
 export const RiskAlertScalarFieldEnum = {
   id: 'id',
   merchantId: 'merchantId',
-  riskAnalysisId: 'riskAnalysisId',
   riskScore: 'riskScore',
   riskLevel: 'riskLevel',
   title: 'title',
   message: 'message',
-  action: 'action',
-  confidence: 'confidence',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  riskAnalysisId: 'riskAnalysisId',
+  action: 'action',
+  confidence: 'confidence'
 } as const
 
 export type RiskAlertScalarFieldEnum = (typeof RiskAlertScalarFieldEnum)[keyof typeof RiskAlertScalarFieldEnum]

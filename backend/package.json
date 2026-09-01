@@ -9,7 +9,8 @@
     "generate:data": "ts-node src/scripts/synthetic/generateSyntheticData.ts",
     "extract:features": "ts-node src/scripts/synthetic/extractFeatures.ts",
     "evaluate:risk": "ts-node src/scripts/risk/runRiskEvaluation.ts",
-    "analyze:risk": "ts-node src/scripts/risk/runRiskAnalysis.ts"
+    "analyze:risk": "ts-node src/scripts/risk/runRiskAnalysis.ts",
+    "test:live-risk": "ts-node src/scripts/risk/testLiveSuspicious.ts"
   },
   "keywords": [],
   "author": "",

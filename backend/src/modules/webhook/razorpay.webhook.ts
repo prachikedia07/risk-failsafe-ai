@@ -9,6 +9,7 @@ import {
     Request,
     Response,
 } from "express";
+import { processRazorpayWebhook } from "./razorpay.webhook.service";
 
 const webhookSecret =
     process.env.RAZORPAY_WEBHOOK_SECRET;
@@ -97,41 +98,50 @@ export const razorpayWebhookController = async (
             "x-razorpay-event-id"
         );
 
-    console.log(
-        "✅ Razorpay webhook verified"
-    );
+        if (!eventId) {
+    return res.status(400).json({
+        success: false,
+        message:
+            "Missing Razorpay event ID",
+    });
+}
 
-    console.log(
-        "Event:",
-        event.event
-    );
-
-    console.log(
-        "Event ID:",
+const result =
+    await processRazorpayWebhook(
+        event,
         eventId
     );
 
-    if (
-        event.event ===
-        "payment.captured"
-    ) {
-        console.log(
-            "✅ payment.captured received"
-        );
-    }
+console.log(
+    "✅ Razorpay webhook verified"
+);
 
-    if (
-        event.event ===
-        "payment.failed"
-    ) {
-        console.log(
-            "✅ payment.failed received"
-        );
-    }
+console.log(
+    "Event:",
+    event.event
+);
 
-    return res.status(200).json({
-        success: true,
-        message:
-            "Razorpay webhook received",
-    });
+console.log(
+    "Event ID:",
+    eventId
+);
+
+if (result.processed) {
+    console.log(
+        "✅ Transaction created:",
+        result.transaction.id
+    );
+} else {
+    console.log(
+        "ℹ️ Webhook not processed:",
+        result.reason
+    );
+}
+
+return res.status(200).json({
+    success: true,
+    message:
+        "Razorpay webhook processed",
+    data: result,
+});
 };

@@ -858,11 +858,13 @@ export const TransactionScalarFieldEnum = {
   amount: 'amount',
   currency: 'currency',
   status: 'status',
-  paymentMethod: 'paymentMethod',
-  failureReason: 'failureReason',
   timestamp: 'timestamp',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  failureReason: 'failureReason',
+  paymentMethod: 'paymentMethod',
+  razorpayPaymentId: 'razorpayPaymentId',
+  razorpayEventId: 'razorpayEventId'
 } as const
 
 export type TransactionScalarFieldEnum = (typeof TransactionScalarFieldEnum)[keyof typeof TransactionScalarFieldEnum]
@@ -885,16 +887,16 @@ export type RiskAnalysisScalarFieldEnum = (typeof RiskAnalysisScalarFieldEnum)[k
 export const RiskAlertScalarFieldEnum = {
   id: 'id',
   merchantId: 'merchantId',
-  riskAnalysisId: 'riskAnalysisId',
   riskScore: 'riskScore',
   riskLevel: 'riskLevel',
   title: 'title',
   message: 'message',
-  action: 'action',
-  confidence: 'confidence',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  riskAnalysisId: 'riskAnalysisId',
+  action: 'action',
+  confidence: 'confidence'
 } as const
 
 export type RiskAlertScalarFieldEnum = (typeof RiskAlertScalarFieldEnum)[keyof typeof RiskAlertScalarFieldEnum]
@@ -1059,6 +1061,20 @@ export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$Prisma
 
 
 /**
+ * Reference to a field of type 'AlertStatus'
+ */
+export type EnumAlertStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AlertStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'AlertStatus[]'
+ */
+export type ListEnumAlertStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AlertStatus[]'>
+    
+
+
+/**
  * Reference to a field of type 'AgentAction'
  */
 export type EnumAgentActionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AgentAction'>
@@ -1083,20 +1099,6 @@ export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, '
  * Reference to a field of type 'Float[]'
  */
 export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
-    
-
-
-/**
- * Reference to a field of type 'AlertStatus'
- */
-export type EnumAlertStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AlertStatus'>
-    
-
-
-/**
- * Reference to a field of type 'AlertStatus[]'
- */
-export type ListEnumAlertStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AlertStatus[]'>
     
 
 /**

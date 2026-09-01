@@ -40,6 +40,8 @@ model Transaction {
   updatedAt     DateTime          @updatedAt
   failureReason String?
   paymentMethod PaymentMethod
+  razorpayPaymentId String? @unique
+razorpayEventId   String? @unique
   customer      Customer          @relation(fields: [customerId], references: [id])
   merchant      Merchant          @relation(fields: [merchantId], references: [id])
 }

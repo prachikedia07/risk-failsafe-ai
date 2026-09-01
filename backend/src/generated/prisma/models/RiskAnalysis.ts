@@ -232,8 +232,8 @@ export type RiskAnalysisWhereInput = {
   features?: Prisma.JsonFilter<"RiskAnalysis">
   reasons?: Prisma.JsonFilter<"RiskAnalysis">
   createdAt?: Prisma.DateTimeFilter<"RiskAnalysis"> | Date | string
-  merchant?: Prisma.XOR<Prisma.MerchantScalarRelationFilter, Prisma.MerchantWhereInput>
   riskAlerts?: Prisma.RiskAlertListRelationFilter
+  merchant?: Prisma.XOR<Prisma.MerchantScalarRelationFilter, Prisma.MerchantWhereInput>
 }
 
 export type RiskAnalysisOrderByWithRelationInput = {
@@ -245,8 +245,8 @@ export type RiskAnalysisOrderByWithRelationInput = {
   features?: Prisma.SortOrder
   reasons?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  merchant?: Prisma.MerchantOrderByWithRelationInput
   riskAlerts?: Prisma.RiskAlertOrderByRelationAggregateInput
+  merchant?: Prisma.MerchantOrderByWithRelationInput
 }
 
 export type RiskAnalysisWhereUniqueInput = Prisma.AtLeast<{
@@ -261,8 +261,8 @@ export type RiskAnalysisWhereUniqueInput = Prisma.AtLeast<{
   features?: Prisma.JsonFilter<"RiskAnalysis">
   reasons?: Prisma.JsonFilter<"RiskAnalysis">
   createdAt?: Prisma.DateTimeFilter<"RiskAnalysis"> | Date | string
-  merchant?: Prisma.XOR<Prisma.MerchantScalarRelationFilter, Prisma.MerchantWhereInput>
   riskAlerts?: Prisma.RiskAlertListRelationFilter
+  merchant?: Prisma.XOR<Prisma.MerchantScalarRelationFilter, Prisma.MerchantWhereInput>
 }, "id">
 
 export type RiskAnalysisOrderByWithAggregationInput = {
@@ -303,8 +303,8 @@ export type RiskAnalysisCreateInput = {
   features: Prisma.JsonNullValueInput | runtime.InputJsonValue
   reasons: Prisma.JsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
-  merchant: Prisma.MerchantCreateNestedOneWithoutRiskAnalysesInput
   riskAlerts?: Prisma.RiskAlertCreateNestedManyWithoutRiskAnalysisInput
+  merchant: Prisma.MerchantCreateNestedOneWithoutRiskAnalysesInput
 }
 
 export type RiskAnalysisUncheckedCreateInput = {
@@ -327,8 +327,8 @@ export type RiskAnalysisUpdateInput = {
   features?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   reasons?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  merchant?: Prisma.MerchantUpdateOneRequiredWithoutRiskAnalysesNestedInput
   riskAlerts?: Prisma.RiskAlertUpdateManyWithoutRiskAnalysisNestedInput
+  merchant?: Prisma.MerchantUpdateOneRequiredWithoutRiskAnalysesNestedInput
 }
 
 export type RiskAnalysisUncheckedUpdateInput = {
@@ -695,8 +695,8 @@ export type RiskAnalysisSelect<ExtArgs extends runtime.Types.Extensions.Internal
   features?: boolean
   reasons?: boolean
   createdAt?: boolean
-  merchant?: boolean | Prisma.MerchantDefaultArgs<ExtArgs>
   riskAlerts?: boolean | Prisma.RiskAnalysis$riskAlertsArgs<ExtArgs>
+  merchant?: boolean | Prisma.MerchantDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.RiskAnalysisCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["riskAnalysis"]>
 
@@ -737,8 +737,8 @@ export type RiskAnalysisSelectScalar = {
 
 export type RiskAnalysisOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "merchantId" | "riskScore" | "riskLevel" | "prediction" | "features" | "reasons" | "createdAt", ExtArgs["result"]["riskAnalysis"]>
 export type RiskAnalysisInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  merchant?: boolean | Prisma.MerchantDefaultArgs<ExtArgs>
   riskAlerts?: boolean | Prisma.RiskAnalysis$riskAlertsArgs<ExtArgs>
+  merchant?: boolean | Prisma.MerchantDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.RiskAnalysisCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type RiskAnalysisIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -751,8 +751,8 @@ export type RiskAnalysisIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types
 export type $RiskAnalysisPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "RiskAnalysis"
   objects: {
-    merchant: Prisma.$MerchantPayload<ExtArgs>
     riskAlerts: Prisma.$RiskAlertPayload<ExtArgs>[]
+    merchant: Prisma.$MerchantPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1157,8 +1157,8 @@ readonly fields: RiskAnalysisFieldRefs;
  */
 export interface Prisma__RiskAnalysisClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  merchant<T extends Prisma.MerchantDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MerchantDefaultArgs<ExtArgs>>): Prisma.Prisma__MerchantClient<runtime.Types.Result.GetResult<Prisma.$MerchantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   riskAlerts<T extends Prisma.RiskAnalysis$riskAlertsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RiskAnalysis$riskAlertsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RiskAlertPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  merchant<T extends Prisma.MerchantDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MerchantDefaultArgs<ExtArgs>>): Prisma.Prisma__MerchantClient<runtime.Types.Result.GetResult<Prisma.$MerchantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

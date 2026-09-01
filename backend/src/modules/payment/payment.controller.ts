@@ -14,22 +14,28 @@ const createOrderSchema = z.object({
         .number()
         .int()
         .positive()
-        .max(100000),
+        .max(1000000),
+
+    merchantId: z.uuid(
+        "Invalid merchant ID"
+    ),
+
+    customerId: z.uuid(
+        "Invalid customer ID"
+    ),
 });
 
 export const createTestOrderController = async (
     req: Request,
     res: Response
 ) => {
-    const { amount } =
+    const data =
         createOrderSchema.parse(
             req.body
         );
 
     const order =
-        await createTestOrder(
-            amount
-        );
+        await createTestOrder(data);
 
     return res.status(201).json({
         success: true,

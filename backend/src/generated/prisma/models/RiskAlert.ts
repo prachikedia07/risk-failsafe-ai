@@ -39,46 +39,46 @@ export type RiskAlertSumAggregateOutputType = {
 export type RiskAlertMinAggregateOutputType = {
   id: string | null
   merchantId: string | null
-  riskAnalysisId: string | null
   riskScore: number | null
   riskLevel: $Enums.RiskLevel | null
   title: string | null
   message: string | null
-  action: $Enums.AgentAction | null
-  confidence: number | null
   status: $Enums.AlertStatus | null
   createdAt: Date | null
   updatedAt: Date | null
+  riskAnalysisId: string | null
+  action: $Enums.AgentAction | null
+  confidence: number | null
 }
 
 export type RiskAlertMaxAggregateOutputType = {
   id: string | null
   merchantId: string | null
-  riskAnalysisId: string | null
   riskScore: number | null
   riskLevel: $Enums.RiskLevel | null
   title: string | null
   message: string | null
-  action: $Enums.AgentAction | null
-  confidence: number | null
   status: $Enums.AlertStatus | null
   createdAt: Date | null
   updatedAt: Date | null
+  riskAnalysisId: string | null
+  action: $Enums.AgentAction | null
+  confidence: number | null
 }
 
 export type RiskAlertCountAggregateOutputType = {
   id: number
   merchantId: number
-  riskAnalysisId: number
   riskScore: number
   riskLevel: number
   title: number
   message: number
-  action: number
-  confidence: number
   status: number
   createdAt: number
   updatedAt: number
+  riskAnalysisId: number
+  action: number
+  confidence: number
   _all: number
 }
 
@@ -96,46 +96,46 @@ export type RiskAlertSumAggregateInputType = {
 export type RiskAlertMinAggregateInputType = {
   id?: true
   merchantId?: true
-  riskAnalysisId?: true
   riskScore?: true
   riskLevel?: true
   title?: true
   message?: true
-  action?: true
-  confidence?: true
   status?: true
   createdAt?: true
   updatedAt?: true
+  riskAnalysisId?: true
+  action?: true
+  confidence?: true
 }
 
 export type RiskAlertMaxAggregateInputType = {
   id?: true
   merchantId?: true
-  riskAnalysisId?: true
   riskScore?: true
   riskLevel?: true
   title?: true
   message?: true
-  action?: true
-  confidence?: true
   status?: true
   createdAt?: true
   updatedAt?: true
+  riskAnalysisId?: true
+  action?: true
+  confidence?: true
 }
 
 export type RiskAlertCountAggregateInputType = {
   id?: true
   merchantId?: true
-  riskAnalysisId?: true
   riskScore?: true
   riskLevel?: true
   title?: true
   message?: true
-  action?: true
-  confidence?: true
   status?: true
   createdAt?: true
   updatedAt?: true
+  riskAnalysisId?: true
+  action?: true
+  confidence?: true
   _all?: true
 }
 
@@ -228,16 +228,16 @@ export type RiskAlertGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 export type RiskAlertGroupByOutputType = {
   id: string
   merchantId: string
-  riskAnalysisId: string
   riskScore: number
   riskLevel: $Enums.RiskLevel
   title: string
   message: string
-  action: $Enums.AgentAction | null
-  confidence: number | null
   status: $Enums.AlertStatus
   createdAt: Date
   updatedAt: Date
+  riskAnalysisId: string
+  action: $Enums.AgentAction | null
+  confidence: number | null
   _count: RiskAlertCountAggregateOutputType | null
   _avg: RiskAlertAvgAggregateOutputType | null
   _sum: RiskAlertSumAggregateOutputType | null
@@ -266,16 +266,16 @@ export type RiskAlertWhereInput = {
   NOT?: Prisma.RiskAlertWhereInput | Prisma.RiskAlertWhereInput[]
   id?: Prisma.StringFilter<"RiskAlert"> | string
   merchantId?: Prisma.StringFilter<"RiskAlert"> | string
-  riskAnalysisId?: Prisma.StringFilter<"RiskAlert"> | string
   riskScore?: Prisma.IntFilter<"RiskAlert"> | number
   riskLevel?: Prisma.EnumRiskLevelFilter<"RiskAlert"> | $Enums.RiskLevel
   title?: Prisma.StringFilter<"RiskAlert"> | string
   message?: Prisma.StringFilter<"RiskAlert"> | string
-  action?: Prisma.EnumAgentActionNullableFilter<"RiskAlert"> | $Enums.AgentAction | null
-  confidence?: Prisma.FloatNullableFilter<"RiskAlert"> | number | null
   status?: Prisma.EnumAlertStatusFilter<"RiskAlert"> | $Enums.AlertStatus
   createdAt?: Prisma.DateTimeFilter<"RiskAlert"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"RiskAlert"> | Date | string
+  riskAnalysisId?: Prisma.StringFilter<"RiskAlert"> | string
+  action?: Prisma.EnumAgentActionNullableFilter<"RiskAlert"> | $Enums.AgentAction | null
+  confidence?: Prisma.FloatNullableFilter<"RiskAlert"> | number | null
   merchant?: Prisma.XOR<Prisma.MerchantScalarRelationFilter, Prisma.MerchantWhereInput>
   riskAnalysis?: Prisma.XOR<Prisma.RiskAnalysisScalarRelationFilter, Prisma.RiskAnalysisWhereInput>
 }
@@ -283,16 +283,16 @@ export type RiskAlertWhereInput = {
 export type RiskAlertOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   merchantId?: Prisma.SortOrder
-  riskAnalysisId?: Prisma.SortOrder
   riskScore?: Prisma.SortOrder
   riskLevel?: Prisma.SortOrder
   title?: Prisma.SortOrder
   message?: Prisma.SortOrder
-  action?: Prisma.SortOrderInput | Prisma.SortOrder
-  confidence?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  riskAnalysisId?: Prisma.SortOrder
+  action?: Prisma.SortOrderInput | Prisma.SortOrder
+  confidence?: Prisma.SortOrderInput | Prisma.SortOrder
   merchant?: Prisma.MerchantOrderByWithRelationInput
   riskAnalysis?: Prisma.RiskAnalysisOrderByWithRelationInput
 }
@@ -303,16 +303,16 @@ export type RiskAlertWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.RiskAlertWhereInput[]
   NOT?: Prisma.RiskAlertWhereInput | Prisma.RiskAlertWhereInput[]
   merchantId?: Prisma.StringFilter<"RiskAlert"> | string
-  riskAnalysisId?: Prisma.StringFilter<"RiskAlert"> | string
   riskScore?: Prisma.IntFilter<"RiskAlert"> | number
   riskLevel?: Prisma.EnumRiskLevelFilter<"RiskAlert"> | $Enums.RiskLevel
   title?: Prisma.StringFilter<"RiskAlert"> | string
   message?: Prisma.StringFilter<"RiskAlert"> | string
-  action?: Prisma.EnumAgentActionNullableFilter<"RiskAlert"> | $Enums.AgentAction | null
-  confidence?: Prisma.FloatNullableFilter<"RiskAlert"> | number | null
   status?: Prisma.EnumAlertStatusFilter<"RiskAlert"> | $Enums.AlertStatus
   createdAt?: Prisma.DateTimeFilter<"RiskAlert"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"RiskAlert"> | Date | string
+  riskAnalysisId?: Prisma.StringFilter<"RiskAlert"> | string
+  action?: Prisma.EnumAgentActionNullableFilter<"RiskAlert"> | $Enums.AgentAction | null
+  confidence?: Prisma.FloatNullableFilter<"RiskAlert"> | number | null
   merchant?: Prisma.XOR<Prisma.MerchantScalarRelationFilter, Prisma.MerchantWhereInput>
   riskAnalysis?: Prisma.XOR<Prisma.RiskAnalysisScalarRelationFilter, Prisma.RiskAnalysisWhereInput>
 }, "id">
@@ -320,16 +320,16 @@ export type RiskAlertWhereUniqueInput = Prisma.AtLeast<{
 export type RiskAlertOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   merchantId?: Prisma.SortOrder
-  riskAnalysisId?: Prisma.SortOrder
   riskScore?: Prisma.SortOrder
   riskLevel?: Prisma.SortOrder
   title?: Prisma.SortOrder
   message?: Prisma.SortOrder
-  action?: Prisma.SortOrderInput | Prisma.SortOrder
-  confidence?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  riskAnalysisId?: Prisma.SortOrder
+  action?: Prisma.SortOrderInput | Prisma.SortOrder
+  confidence?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.RiskAlertCountOrderByAggregateInput
   _avg?: Prisma.RiskAlertAvgOrderByAggregateInput
   _max?: Prisma.RiskAlertMaxOrderByAggregateInput
@@ -343,16 +343,16 @@ export type RiskAlertScalarWhereWithAggregatesInput = {
   NOT?: Prisma.RiskAlertScalarWhereWithAggregatesInput | Prisma.RiskAlertScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"RiskAlert"> | string
   merchantId?: Prisma.StringWithAggregatesFilter<"RiskAlert"> | string
-  riskAnalysisId?: Prisma.StringWithAggregatesFilter<"RiskAlert"> | string
   riskScore?: Prisma.IntWithAggregatesFilter<"RiskAlert"> | number
   riskLevel?: Prisma.EnumRiskLevelWithAggregatesFilter<"RiskAlert"> | $Enums.RiskLevel
   title?: Prisma.StringWithAggregatesFilter<"RiskAlert"> | string
   message?: Prisma.StringWithAggregatesFilter<"RiskAlert"> | string
-  action?: Prisma.EnumAgentActionNullableWithAggregatesFilter<"RiskAlert"> | $Enums.AgentAction | null
-  confidence?: Prisma.FloatNullableWithAggregatesFilter<"RiskAlert"> | number | null
   status?: Prisma.EnumAlertStatusWithAggregatesFilter<"RiskAlert"> | $Enums.AlertStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"RiskAlert"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"RiskAlert"> | Date | string
+  riskAnalysisId?: Prisma.StringWithAggregatesFilter<"RiskAlert"> | string
+  action?: Prisma.EnumAgentActionNullableWithAggregatesFilter<"RiskAlert"> | $Enums.AgentAction | null
+  confidence?: Prisma.FloatNullableWithAggregatesFilter<"RiskAlert"> | number | null
 }
 
 export type RiskAlertCreateInput = {
@@ -361,11 +361,11 @@ export type RiskAlertCreateInput = {
   riskLevel: $Enums.RiskLevel
   title: string
   message: string
-  action?: $Enums.AgentAction | null
-  confidence?: number | null
   status?: $Enums.AlertStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  action?: $Enums.AgentAction | null
+  confidence?: number | null
   merchant: Prisma.MerchantCreateNestedOneWithoutRiskAlertsInput
   riskAnalysis: Prisma.RiskAnalysisCreateNestedOneWithoutRiskAlertsInput
 }
@@ -373,16 +373,16 @@ export type RiskAlertCreateInput = {
 export type RiskAlertUncheckedCreateInput = {
   id?: string
   merchantId: string
-  riskAnalysisId: string
   riskScore: number
   riskLevel: $Enums.RiskLevel
   title: string
   message: string
-  action?: $Enums.AgentAction | null
-  confidence?: number | null
   status?: $Enums.AlertStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  riskAnalysisId: string
+  action?: $Enums.AgentAction | null
+  confidence?: number | null
 }
 
 export type RiskAlertUpdateInput = {
@@ -391,11 +391,11 @@ export type RiskAlertUpdateInput = {
   riskLevel?: Prisma.EnumRiskLevelFieldUpdateOperationsInput | $Enums.RiskLevel
   title?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
-  action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
-  confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumAlertStatusFieldUpdateOperationsInput | $Enums.AlertStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
+  confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   merchant?: Prisma.MerchantUpdateOneRequiredWithoutRiskAlertsNestedInput
   riskAnalysis?: Prisma.RiskAnalysisUpdateOneRequiredWithoutRiskAlertsNestedInput
 }
@@ -403,31 +403,31 @@ export type RiskAlertUpdateInput = {
 export type RiskAlertUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   merchantId?: Prisma.StringFieldUpdateOperationsInput | string
-  riskAnalysisId?: Prisma.StringFieldUpdateOperationsInput | string
   riskScore?: Prisma.IntFieldUpdateOperationsInput | number
   riskLevel?: Prisma.EnumRiskLevelFieldUpdateOperationsInput | $Enums.RiskLevel
   title?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
-  action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
-  confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumAlertStatusFieldUpdateOperationsInput | $Enums.AlertStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  riskAnalysisId?: Prisma.StringFieldUpdateOperationsInput | string
+  action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
+  confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type RiskAlertCreateManyInput = {
   id?: string
   merchantId: string
-  riskAnalysisId: string
   riskScore: number
   riskLevel: $Enums.RiskLevel
   title: string
   message: string
-  action?: $Enums.AgentAction | null
-  confidence?: number | null
   status?: $Enums.AlertStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  riskAnalysisId: string
+  action?: $Enums.AgentAction | null
+  confidence?: number | null
 }
 
 export type RiskAlertUpdateManyMutationInput = {
@@ -436,26 +436,26 @@ export type RiskAlertUpdateManyMutationInput = {
   riskLevel?: Prisma.EnumRiskLevelFieldUpdateOperationsInput | $Enums.RiskLevel
   title?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
-  action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
-  confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumAlertStatusFieldUpdateOperationsInput | $Enums.AlertStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
+  confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type RiskAlertUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   merchantId?: Prisma.StringFieldUpdateOperationsInput | string
-  riskAnalysisId?: Prisma.StringFieldUpdateOperationsInput | string
   riskScore?: Prisma.IntFieldUpdateOperationsInput | number
   riskLevel?: Prisma.EnumRiskLevelFieldUpdateOperationsInput | $Enums.RiskLevel
   title?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
-  action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
-  confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumAlertStatusFieldUpdateOperationsInput | $Enums.AlertStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  riskAnalysisId?: Prisma.StringFieldUpdateOperationsInput | string
+  action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
+  confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type RiskAlertListRelationFilter = {
@@ -471,16 +471,16 @@ export type RiskAlertOrderByRelationAggregateInput = {
 export type RiskAlertCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   merchantId?: Prisma.SortOrder
-  riskAnalysisId?: Prisma.SortOrder
   riskScore?: Prisma.SortOrder
   riskLevel?: Prisma.SortOrder
   title?: Prisma.SortOrder
   message?: Prisma.SortOrder
-  action?: Prisma.SortOrder
-  confidence?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  riskAnalysisId?: Prisma.SortOrder
+  action?: Prisma.SortOrder
+  confidence?: Prisma.SortOrder
 }
 
 export type RiskAlertAvgOrderByAggregateInput = {
@@ -491,31 +491,31 @@ export type RiskAlertAvgOrderByAggregateInput = {
 export type RiskAlertMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   merchantId?: Prisma.SortOrder
-  riskAnalysisId?: Prisma.SortOrder
   riskScore?: Prisma.SortOrder
   riskLevel?: Prisma.SortOrder
   title?: Prisma.SortOrder
   message?: Prisma.SortOrder
-  action?: Prisma.SortOrder
-  confidence?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  riskAnalysisId?: Prisma.SortOrder
+  action?: Prisma.SortOrder
+  confidence?: Prisma.SortOrder
 }
 
 export type RiskAlertMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   merchantId?: Prisma.SortOrder
-  riskAnalysisId?: Prisma.SortOrder
   riskScore?: Prisma.SortOrder
   riskLevel?: Prisma.SortOrder
   title?: Prisma.SortOrder
   message?: Prisma.SortOrder
-  action?: Prisma.SortOrder
-  confidence?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  riskAnalysisId?: Prisma.SortOrder
+  action?: Prisma.SortOrder
+  confidence?: Prisma.SortOrder
 }
 
 export type RiskAlertSumOrderByAggregateInput = {
@@ -607,6 +607,10 @@ export type RiskAlertUncheckedUpdateManyWithoutRiskAnalysisNestedInput = {
   deleteMany?: Prisma.RiskAlertScalarWhereInput | Prisma.RiskAlertScalarWhereInput[]
 }
 
+export type EnumAlertStatusFieldUpdateOperationsInput = {
+  set?: $Enums.AlertStatus
+}
+
 export type NullableEnumAgentActionFieldUpdateOperationsInput = {
   set?: $Enums.AgentAction | null
 }
@@ -619,36 +623,32 @@ export type NullableFloatFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type EnumAlertStatusFieldUpdateOperationsInput = {
-  set?: $Enums.AlertStatus
-}
-
 export type RiskAlertCreateWithoutMerchantInput = {
   id?: string
   riskScore: number
   riskLevel: $Enums.RiskLevel
   title: string
   message: string
-  action?: $Enums.AgentAction | null
-  confidence?: number | null
   status?: $Enums.AlertStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  action?: $Enums.AgentAction | null
+  confidence?: number | null
   riskAnalysis: Prisma.RiskAnalysisCreateNestedOneWithoutRiskAlertsInput
 }
 
 export type RiskAlertUncheckedCreateWithoutMerchantInput = {
   id?: string
-  riskAnalysisId: string
   riskScore: number
   riskLevel: $Enums.RiskLevel
   title: string
   message: string
-  action?: $Enums.AgentAction | null
-  confidence?: number | null
   status?: $Enums.AlertStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  riskAnalysisId: string
+  action?: $Enums.AgentAction | null
+  confidence?: number | null
 }
 
 export type RiskAlertCreateOrConnectWithoutMerchantInput = {
@@ -683,16 +683,16 @@ export type RiskAlertScalarWhereInput = {
   NOT?: Prisma.RiskAlertScalarWhereInput | Prisma.RiskAlertScalarWhereInput[]
   id?: Prisma.StringFilter<"RiskAlert"> | string
   merchantId?: Prisma.StringFilter<"RiskAlert"> | string
-  riskAnalysisId?: Prisma.StringFilter<"RiskAlert"> | string
   riskScore?: Prisma.IntFilter<"RiskAlert"> | number
   riskLevel?: Prisma.EnumRiskLevelFilter<"RiskAlert"> | $Enums.RiskLevel
   title?: Prisma.StringFilter<"RiskAlert"> | string
   message?: Prisma.StringFilter<"RiskAlert"> | string
-  action?: Prisma.EnumAgentActionNullableFilter<"RiskAlert"> | $Enums.AgentAction | null
-  confidence?: Prisma.FloatNullableFilter<"RiskAlert"> | number | null
   status?: Prisma.EnumAlertStatusFilter<"RiskAlert"> | $Enums.AlertStatus
   createdAt?: Prisma.DateTimeFilter<"RiskAlert"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"RiskAlert"> | Date | string
+  riskAnalysisId?: Prisma.StringFilter<"RiskAlert"> | string
+  action?: Prisma.EnumAgentActionNullableFilter<"RiskAlert"> | $Enums.AgentAction | null
+  confidence?: Prisma.FloatNullableFilter<"RiskAlert"> | number | null
 }
 
 export type RiskAlertCreateWithoutRiskAnalysisInput = {
@@ -701,11 +701,11 @@ export type RiskAlertCreateWithoutRiskAnalysisInput = {
   riskLevel: $Enums.RiskLevel
   title: string
   message: string
-  action?: $Enums.AgentAction | null
-  confidence?: number | null
   status?: $Enums.AlertStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  action?: $Enums.AgentAction | null
+  confidence?: number | null
   merchant: Prisma.MerchantCreateNestedOneWithoutRiskAlertsInput
 }
 
@@ -716,11 +716,11 @@ export type RiskAlertUncheckedCreateWithoutRiskAnalysisInput = {
   riskLevel: $Enums.RiskLevel
   title: string
   message: string
-  action?: $Enums.AgentAction | null
-  confidence?: number | null
   status?: $Enums.AlertStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  action?: $Enums.AgentAction | null
+  confidence?: number | null
 }
 
 export type RiskAlertCreateOrConnectWithoutRiskAnalysisInput = {
@@ -751,16 +751,16 @@ export type RiskAlertUpdateManyWithWhereWithoutRiskAnalysisInput = {
 
 export type RiskAlertCreateManyMerchantInput = {
   id?: string
-  riskAnalysisId: string
   riskScore: number
   riskLevel: $Enums.RiskLevel
   title: string
   message: string
-  action?: $Enums.AgentAction | null
-  confidence?: number | null
   status?: $Enums.AlertStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  riskAnalysisId: string
+  action?: $Enums.AgentAction | null
+  confidence?: number | null
 }
 
 export type RiskAlertUpdateWithoutMerchantInput = {
@@ -769,40 +769,40 @@ export type RiskAlertUpdateWithoutMerchantInput = {
   riskLevel?: Prisma.EnumRiskLevelFieldUpdateOperationsInput | $Enums.RiskLevel
   title?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
-  action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
-  confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumAlertStatusFieldUpdateOperationsInput | $Enums.AlertStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
+  confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   riskAnalysis?: Prisma.RiskAnalysisUpdateOneRequiredWithoutRiskAlertsNestedInput
 }
 
 export type RiskAlertUncheckedUpdateWithoutMerchantInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  riskAnalysisId?: Prisma.StringFieldUpdateOperationsInput | string
   riskScore?: Prisma.IntFieldUpdateOperationsInput | number
   riskLevel?: Prisma.EnumRiskLevelFieldUpdateOperationsInput | $Enums.RiskLevel
   title?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
-  action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
-  confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumAlertStatusFieldUpdateOperationsInput | $Enums.AlertStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  riskAnalysisId?: Prisma.StringFieldUpdateOperationsInput | string
+  action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
+  confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type RiskAlertUncheckedUpdateManyWithoutMerchantInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  riskAnalysisId?: Prisma.StringFieldUpdateOperationsInput | string
   riskScore?: Prisma.IntFieldUpdateOperationsInput | number
   riskLevel?: Prisma.EnumRiskLevelFieldUpdateOperationsInput | $Enums.RiskLevel
   title?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
-  action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
-  confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumAlertStatusFieldUpdateOperationsInput | $Enums.AlertStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  riskAnalysisId?: Prisma.StringFieldUpdateOperationsInput | string
+  action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
+  confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type RiskAlertCreateManyRiskAnalysisInput = {
@@ -812,11 +812,11 @@ export type RiskAlertCreateManyRiskAnalysisInput = {
   riskLevel: $Enums.RiskLevel
   title: string
   message: string
-  action?: $Enums.AgentAction | null
-  confidence?: number | null
   status?: $Enums.AlertStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  action?: $Enums.AgentAction | null
+  confidence?: number | null
 }
 
 export type RiskAlertUpdateWithoutRiskAnalysisInput = {
@@ -825,11 +825,11 @@ export type RiskAlertUpdateWithoutRiskAnalysisInput = {
   riskLevel?: Prisma.EnumRiskLevelFieldUpdateOperationsInput | $Enums.RiskLevel
   title?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
-  action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
-  confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumAlertStatusFieldUpdateOperationsInput | $Enums.AlertStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
+  confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   merchant?: Prisma.MerchantUpdateOneRequiredWithoutRiskAlertsNestedInput
 }
 
@@ -840,11 +840,11 @@ export type RiskAlertUncheckedUpdateWithoutRiskAnalysisInput = {
   riskLevel?: Prisma.EnumRiskLevelFieldUpdateOperationsInput | $Enums.RiskLevel
   title?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
-  action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
-  confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumAlertStatusFieldUpdateOperationsInput | $Enums.AlertStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
+  confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type RiskAlertUncheckedUpdateManyWithoutRiskAnalysisInput = {
@@ -854,11 +854,11 @@ export type RiskAlertUncheckedUpdateManyWithoutRiskAnalysisInput = {
   riskLevel?: Prisma.EnumRiskLevelFieldUpdateOperationsInput | $Enums.RiskLevel
   title?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
-  action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
-  confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumAlertStatusFieldUpdateOperationsInput | $Enums.AlertStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
+  confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 
@@ -866,16 +866,16 @@ export type RiskAlertUncheckedUpdateManyWithoutRiskAnalysisInput = {
 export type RiskAlertSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   merchantId?: boolean
-  riskAnalysisId?: boolean
   riskScore?: boolean
   riskLevel?: boolean
   title?: boolean
   message?: boolean
-  action?: boolean
-  confidence?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  riskAnalysisId?: boolean
+  action?: boolean
+  confidence?: boolean
   merchant?: boolean | Prisma.MerchantDefaultArgs<ExtArgs>
   riskAnalysis?: boolean | Prisma.RiskAnalysisDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["riskAlert"]>
@@ -883,16 +883,16 @@ export type RiskAlertSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
 export type RiskAlertSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   merchantId?: boolean
-  riskAnalysisId?: boolean
   riskScore?: boolean
   riskLevel?: boolean
   title?: boolean
   message?: boolean
-  action?: boolean
-  confidence?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  riskAnalysisId?: boolean
+  action?: boolean
+  confidence?: boolean
   merchant?: boolean | Prisma.MerchantDefaultArgs<ExtArgs>
   riskAnalysis?: boolean | Prisma.RiskAnalysisDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["riskAlert"]>
@@ -900,16 +900,16 @@ export type RiskAlertSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type RiskAlertSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   merchantId?: boolean
-  riskAnalysisId?: boolean
   riskScore?: boolean
   riskLevel?: boolean
   title?: boolean
   message?: boolean
-  action?: boolean
-  confidence?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  riskAnalysisId?: boolean
+  action?: boolean
+  confidence?: boolean
   merchant?: boolean | Prisma.MerchantDefaultArgs<ExtArgs>
   riskAnalysis?: boolean | Prisma.RiskAnalysisDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["riskAlert"]>
@@ -917,19 +917,19 @@ export type RiskAlertSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type RiskAlertSelectScalar = {
   id?: boolean
   merchantId?: boolean
-  riskAnalysisId?: boolean
   riskScore?: boolean
   riskLevel?: boolean
   title?: boolean
   message?: boolean
-  action?: boolean
-  confidence?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  riskAnalysisId?: boolean
+  action?: boolean
+  confidence?: boolean
 }
 
-export type RiskAlertOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "merchantId" | "riskAnalysisId" | "riskScore" | "riskLevel" | "title" | "message" | "action" | "confidence" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["riskAlert"]>
+export type RiskAlertOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "merchantId" | "riskScore" | "riskLevel" | "title" | "message" | "status" | "createdAt" | "updatedAt" | "riskAnalysisId" | "action" | "confidence", ExtArgs["result"]["riskAlert"]>
 export type RiskAlertInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   merchant?: boolean | Prisma.MerchantDefaultArgs<ExtArgs>
   riskAnalysis?: boolean | Prisma.RiskAnalysisDefaultArgs<ExtArgs>
@@ -952,16 +952,16 @@ export type $RiskAlertPayload<ExtArgs extends runtime.Types.Extensions.InternalA
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     merchantId: string
-    riskAnalysisId: string
     riskScore: number
     riskLevel: $Enums.RiskLevel
     title: string
     message: string
-    action: $Enums.AgentAction | null
-    confidence: number | null
     status: $Enums.AlertStatus
     createdAt: Date
     updatedAt: Date
+    riskAnalysisId: string
+    action: $Enums.AgentAction | null
+    confidence: number | null
   }, ExtArgs["result"]["riskAlert"]>
   composites: {}
 }
@@ -1389,16 +1389,16 @@ export interface Prisma__RiskAlertClient<T, Null = never, ExtArgs extends runtim
 export interface RiskAlertFieldRefs {
   readonly id: Prisma.FieldRef<"RiskAlert", 'String'>
   readonly merchantId: Prisma.FieldRef<"RiskAlert", 'String'>
-  readonly riskAnalysisId: Prisma.FieldRef<"RiskAlert", 'String'>
   readonly riskScore: Prisma.FieldRef<"RiskAlert", 'Int'>
   readonly riskLevel: Prisma.FieldRef<"RiskAlert", 'RiskLevel'>
   readonly title: Prisma.FieldRef<"RiskAlert", 'String'>
   readonly message: Prisma.FieldRef<"RiskAlert", 'String'>
-  readonly action: Prisma.FieldRef<"RiskAlert", 'AgentAction'>
-  readonly confidence: Prisma.FieldRef<"RiskAlert", 'Float'>
   readonly status: Prisma.FieldRef<"RiskAlert", 'AlertStatus'>
   readonly createdAt: Prisma.FieldRef<"RiskAlert", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"RiskAlert", 'DateTime'>
+  readonly riskAnalysisId: Prisma.FieldRef<"RiskAlert", 'String'>
+  readonly action: Prisma.FieldRef<"RiskAlert", 'AgentAction'>
+  readonly confidence: Prisma.FieldRef<"RiskAlert", 'Float'>
 }
     
 
