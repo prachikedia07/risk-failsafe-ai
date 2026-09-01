@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RiskFailsafe Test Payment</title>
+</head>
+<body>
+
+<button id="pay-button">
+    Pay ₹100 Test
+</button>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+    document
+        .getElementById("pay-button")
+        .onclick = async function () {
+
+        const response =
+            await fetch(
+                "http://localhost:5002/api/payments/test-order",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+                    body: JSON.stringify({
+                        amount: 10000
+                    })
+                }
+            );
+
+        const result =
+            await response.json();
+
+        const order =
+            result.data;
+
+        const options = {
+            key: "rzp_test_TWTWlGzOJUNK5U",
+
+            amount:
+                order.amount,
+
+            currency:
+                order.currency,
+
+            name:
+                "RiskFailsafe AI",
+
+            description:
+                "RiskFailsafe Test Payment",
+
+            order_id:
+                order.id,
+
+            handler:
+                function (response) {
+                    console.log(
+                        "Payment completed:",
+                        response
+                    );
+                }
+        };
+
+        const razorpay =
+            new Razorpay(options);
+
+        razorpay.open();
+    };
+</script>
+
+</body>
+</html>

@@ -8,6 +8,6 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "src/modules/webhook/razorpay.webhook.routes"],
   "exclude": ["node_modules", "dist"]
 }

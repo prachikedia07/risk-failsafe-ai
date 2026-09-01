@@ -1,24 +1,55 @@
 import express from "express";
 import cors from "cors";
+
 import healthRoutes from "./modules/health/health.routes";
 import merchantRoutes from "./modules/merchant/merchant.routes";
-import { errorMiddleware } from "./middleware/error.middleware";
 import customerRoutes from "./modules/customer/customer.routes";
 import transactionRoutes from "./modules/transaction/transaction.routes";
 import agentRoutes from "./modules/agent/agent.routes";
+import paymentRoutes from "./modules/payment/payment.routes";
+
+import webhookRoutes from "./modules/webhook/razorpay.webhook.routes";
+
+import { errorMiddleware } from "./middleware/error.middleware";
 
 const app = express();
 
 app.use(
     cors({
-        origin: process.env.FRONTEND_URL || "http://localhost:3000",
+        origin: [
+            "http://localhost:3000",
+            "http://localhost:5500",
+            "http://127.0.0.1:5500",
+        ],
     })
 );
-app.use(express.json({ limit: "100kb" }));
+
+/*
+ * IMPORTANT:
+ * Razorpay webhook must receive the raw body
+ * BEFORE express.json() parses it.
+ */
+app.use(
+    "/api/webhooks/razorpay",
+    express.raw({
+        type: "application/json",
+    }),
+    webhookRoutes
+);
+
+/*
+ * Normal application requests use JSON parsing.
+ */
+app.use(
+    express.json({
+        limit: "100kb",
+    })
+);
 
 app.get("/", (_req, res) => {
     res.json({
-        message: "RiskFailsafe AI backend is running!",
+        message:
+            "RiskFailsafe AI backend is running!",
     });
 });
 
@@ -27,5 +58,14 @@ app.use("/api/merchants", merchantRoutes);
 app.use("/api/customers", customerRoutes);
 app.use("/api/transactions", transactionRoutes);
 app.use("/api/agent", agentRoutes);
+app.use(
+    "/api/payments",
+    paymentRoutes
+);
+
+/*
+ * MUST remain last.
+ */
 app.use(errorMiddleware);
+
 export default app;
