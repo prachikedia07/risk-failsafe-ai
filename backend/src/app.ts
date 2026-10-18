@@ -62,10 +62,6 @@ app.use(
     "/api/payments",
     paymentRoutes
 );
-
-/*
- * MUST remain last.
- */
 app.use(errorMiddleware);
 
 export default app;

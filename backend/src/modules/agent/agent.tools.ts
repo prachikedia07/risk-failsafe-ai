@@ -97,6 +97,7 @@ export const getRiskSignals = async (
     return analysis;
 };
 
+
 export const createRiskAlert = async ({
     merchantId,
     riskAnalysisId,
@@ -106,29 +107,30 @@ export const createRiskAlert = async ({
     message,
     action,
     confidence,
+    reasons,
 }: {
     merchantId: string;
     riskAnalysisId: string;
     riskScore: number;
-
     riskLevel:
         | "LOW"
         | "MEDIUM"
         | "HIGH"
         | "CRITICAL";
-
     title: string;
     message: string;
-
     action:
         | "ALLOW"
         | "REVIEW"
         | "PAUSE";
-
     confidence: number;
+    reasons: string[];
 }) => {
-    return prisma.riskAlert.create({
-        data: {
+    return prisma.riskAlert.upsert({
+        where: {
+            riskAnalysisId,
+        },
+        create: {
             merchantId,
             riskAnalysisId,
             riskScore,
@@ -137,6 +139,13 @@ export const createRiskAlert = async ({
             message,
             action,
             confidence,
+            agentReasons: reasons,
+        },
+        update: {
+            message,
+            action,
+            confidence,
+            agentReasons: reasons,
         },
     });
 };

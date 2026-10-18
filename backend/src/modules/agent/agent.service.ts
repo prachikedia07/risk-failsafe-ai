@@ -87,70 +87,6 @@ const toolDeclarations: FunctionDeclaration[] = [
             ],
         },
     },
-
-    {
-        name: "createRiskAlert",
-        description:
-            "Create an audit alert for a suspicious risk analysis. Never use this tool to modify or execute a payment.",
-        parameters: {
-            type: Type.OBJECT,
-            properties: {
-                merchantId: {
-                    type: Type.STRING,
-                },
-
-                riskAnalysisId: {
-                    type: Type.STRING,
-                },
-
-                riskScore: {
-                    type: Type.NUMBER,
-                },
-
-                riskLevel: {
-                    type: Type.STRING,
-                    enum: [
-                        "LOW",
-                        "MEDIUM",
-                        "HIGH",
-                        "CRITICAL",
-                    ],
-                },
-
-                title: {
-                    type: Type.STRING,
-                },
-
-                message: {
-                    type: Type.STRING,
-                },
-
-                action: {
-                    type: Type.STRING,
-                    enum: [
-                        "ALLOW",
-                        "REVIEW",
-                        "PAUSE",
-                    ],
-                },
-
-                confidence: {
-                    type: Type.NUMBER,
-                },
-            },
-
-            required: [
-                "merchantId",
-                "riskAnalysisId",
-                "riskScore",
-                "riskLevel",
-                "title",
-                "message",
-                "action",
-                "confidence",
-            ],
-        },
-    },
 ];
 
 export const investigateRisk = async (
@@ -311,6 +247,7 @@ Return a structured JSON decision with:
                     validatedDecision.action,
                 confidence:
                     validatedDecision.confidence,
+                reasons: validatedDecision.reasons,
             });
 
             return validatedDecision;
@@ -414,13 +351,6 @@ async function executeTool(
         case "getRiskSignals":
             return getRiskSignals(
                 args.riskAnalysisId as string
-            );
-
-        case "createRiskAlert":
-            return createRiskAlert(
-                args as Parameters<
-                    typeof createRiskAlert
-                >[0]
             );
 
         default:

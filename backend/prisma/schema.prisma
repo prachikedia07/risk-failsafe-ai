@@ -69,9 +69,10 @@ model RiskAlert {
   status         AlertStatus  @default(OPEN)
   createdAt      DateTime     @default(now())
   updatedAt      DateTime     @updatedAt
-  riskAnalysisId String
+  riskAnalysisId String @unique
   action         AgentAction?
   confidence     Float?
+  agentReasons Json?
   merchant       Merchant     @relation(fields: [merchantId], references: [id])
   riskAnalysis   RiskAnalysis @relation(fields: [riskAnalysisId], references: [id])
 }
