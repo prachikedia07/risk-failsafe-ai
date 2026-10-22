@@ -1,7 +1,10 @@
+
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
 import { api, dateTime, type Alert } from "@/lib/api";
+
+type AlertStatus = "OPEN" | "REVIEWED" | "RESOLVED";
 
 export default function AlertsPage() {
   const [alerts, setAlerts] = useState<Alert[] | null>(null);
@@ -24,7 +27,6 @@ export default function AlertsPage() {
 
   useEffect(() => {
     void loadAlerts();
-
     const timer = window.setInterval(() => void loadAlerts(), 5000);
     return () => window.clearInterval(timer);
   }, [loadAlerts]);
@@ -34,16 +36,30 @@ export default function AlertsPage() {
     setNotice("");
 
     try {
-      await api.post(
-        `/api/agent/investigate/${riskAnalysisId}`,
-        {}
-      );
-
-      setNotice("Investigation completed. Refreshing the saved alert.");
+      await api.post(`/api/agent/investigate/${riskAnalysisId}`, {});
+      setNotice("Investigation request completed. Refreshing alert details.");
       await loadAlerts();
     } catch (err) {
       setNotice(
         err instanceof Error ? err.message : "Investigation failed"
+      );
+      await loadAlerts();
+    } finally {
+      setBusy("");
+    }
+  }
+
+  async function changeStatus(id: string, status: AlertStatus) {
+    setBusy(id);
+    setNotice("");
+
+    try {
+      await api.post(`/api/alerts/${id}/status`, { status });
+      setNotice(`Alert status updated to ${status}.`);
+      await loadAlerts();
+    } catch (err) {
+      setNotice(
+        err instanceof Error ? err.message : "Could not update alert status"
       );
     } finally {
       setBusy("");
@@ -54,6 +70,17 @@ export default function AlertsPage() {
     (alert) => filter === "ALL" || alert.status === filter
   );
 
+  function investigationLabel(status?: string) {
+    switch (status) {
+      case "COMPLETED":
+        return "AI investigation completed";
+      case "UNAVAILABLE":
+        return "AI unavailable · Manual review";
+      default:
+        return "Investigation pending";
+    }
+  }
+
   return (
     <div className="mx-auto max-w-7xl">
       <p className="text-xs uppercase tracking-[.22em] text-cyan-300">
@@ -63,7 +90,7 @@ export default function AlertsPage() {
       <h1 className="mt-2 text-3xl font-semibold">Risk alerts</h1>
 
       <p className="mt-3 text-sm text-slate-400">
-        Saved risk signals, AI investigation results, and evidence.
+        Statistical risk signals, AI investigation results, and review status.
       </p>
 
       {notice && (
@@ -77,7 +104,7 @@ export default function AlertsPage() {
           {alerts === null ? "Loading alerts…" : `${filtered.length} alerts`}
         </p>
 
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           {["ALL", "OPEN", "REVIEWED", "RESOLVED"].map((status) => (
             <button
               key={status}
@@ -113,7 +140,7 @@ export default function AlertsPage() {
               {alerts.length ? "No alerts in this filter" : "No saved alerts"}
             </p>
             <p className="mt-2 text-sm text-slate-500">
-              Alerts will appear here when risk investigations create them.
+              Suspicious activity will appear here when an alert is saved.
             </p>
           </div>
         ) : (
@@ -130,13 +157,25 @@ export default function AlertsPage() {
                         {alert.riskLevel} · {alert.riskScore}/100
                       </span>
 
-                      <span className="rounded-full border border-white/10 px-2.5 py-1 text-xs text-slate-400">
+                      <span className="rounded-full border border-white/10 px-2.5 py-1 text-xs text-slate-300">
                         {alert.status}
+                      </span>
+
+                      <span
+                        className={`rounded-full border px-2.5 py-1 text-xs ${
+                          alert.investigationStatus === "COMPLETED"
+                            ? "border-emerald-400/20 text-emerald-200"
+                            : alert.investigationStatus === "UNAVAILABLE"
+                              ? "border-amber-400/20 text-amber-200"
+                              : "border-white/10 text-slate-400"
+                        }`}
+                      >
+                        {investigationLabel(alert.investigationStatus)}
                       </span>
 
                       {alert.action && (
                         <span className="rounded-full border border-cyan-300/20 px-2.5 py-1 text-xs text-cyan-200">
-                          AI action: {alert.action}
+                          Recommended action: {alert.action}
                         </span>
                       )}
                     </div>
@@ -156,13 +195,17 @@ export default function AlertsPage() {
                   </div>
 
                   <button
-                    disabled={busy === alert.riskAnalysisId}
+                    disabled={busy === alert.id || busy === alert.riskAnalysisId}
                     onClick={() => void investigate(alert.riskAnalysisId)}
                     className="h-fit shrink-0 rounded-xl bg-cyan-300 px-4 py-2.5 text-sm font-medium text-slate-950 disabled:opacity-50"
                   >
                     {busy === alert.riskAnalysisId
                       ? "Investigating…"
-                      : "Run AI investigation"}
+                      : alert.investigationStatus === "UNAVAILABLE"
+                        ? "Retry AI investigation"
+                        : alert.investigationStatus === "COMPLETED"
+                          ? "Run AI investigation again"
+                          : "Run AI investigation"}
                   </button>
                 </div>
 
@@ -170,15 +213,11 @@ export default function AlertsPage() {
                   alert.agentReasons.length > 0 && (
                     <div className="mt-5 border-t border-white/[.07] pt-4">
                       <p className="text-xs uppercase tracking-wider text-slate-500">
-                        AI reasons
+                        Investigation reasons
                       </p>
-
                       <ul className="mt-3 space-y-2">
                         {alert.agentReasons.map((reason, index) => (
-                          <li
-                            key={index}
-                            className="text-sm text-slate-300"
-                          >
+                          <li key={index} className="text-sm text-slate-300">
                             <span className="mr-2 text-cyan-300">↳</span>
                             {String(reason)}
                           </li>
@@ -187,11 +226,51 @@ export default function AlertsPage() {
                     </div>
                   )}
 
-                {alert.confidence != null && (
-                  <p className="mt-4 text-xs text-slate-500">
-                    AI confidence: {(alert.confidence * 100).toFixed(0)}%
+                {alert.investigationStatus === "COMPLETED" &&
+                  alert.confidence != null && (
+                    <p className="mt-4 text-xs text-slate-500">
+                      AI confidence: {(alert.confidence * 100).toFixed(0)}%
+                    </p>
+                  )}
+
+                {alert.investigationStatus === "UNAVAILABLE" && (
+                  <p className="mt-4 text-xs text-amber-200">
+                    No AI decision was returned. The displayed recommendation
+                    is a fallback for manual review, not a Gemini decision.
                   </p>
                 )}
+
+                <div className="mt-5 flex flex-wrap gap-2 border-t border-white/[.07] pt-4">
+                  {alert.status !== "REVIEWED" && (
+                    <button
+                      disabled={busy === alert.id || busy === alert.riskAnalysisId}
+                      onClick={() => void changeStatus(alert.id, "REVIEWED")}
+                      className="rounded-lg border border-white/10 px-3 py-2 text-sm text-slate-200 disabled:opacity-50"
+                    >
+                      Mark reviewed
+                    </button>
+                  )}
+
+                  {alert.status !== "RESOLVED" && (
+                    <button
+                      disabled={busy === alert.id || busy === alert.riskAnalysisId}
+                      onClick={() => void changeStatus(alert.id, "RESOLVED")}
+                      className="rounded-lg border border-emerald-400/20 px-3 py-2 text-sm text-emerald-200 disabled:opacity-50"
+                    >
+                      Resolve alert
+                    </button>
+                  )}
+
+                  {alert.status !== "OPEN" && (
+                    <button
+                      disabled={busy === alert.id || busy === alert.riskAnalysisId}
+                      onClick={() => void changeStatus(alert.id, "OPEN")}
+                      className="rounded-lg border border-amber-400/20 px-3 py-2 text-sm text-amber-200 disabled:opacity-50"
+                    >
+                      Reopen alert
+                    </button>
+                  )}
+                </div>
 
                 {alert.riskAnalysis && (
                   <details className="mt-5 border-t border-white/[.07] pt-4">

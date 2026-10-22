@@ -75,6 +75,7 @@ model RiskAlert {
   agentReasons Json?
   merchant       Merchant     @relation(fields: [merchantId], references: [id])
   riskAnalysis   RiskAnalysis @relation(fields: [riskAnalysisId], references: [id])
+  investigationStatus String @default("PENDING")
 }
 
 enum TransactionStatus {

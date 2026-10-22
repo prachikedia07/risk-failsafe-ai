@@ -108,6 +108,7 @@ export const createRiskAlert = async ({
     action,
     confidence,
     reasons,
+    investigationStatus,
 }: {
     merchantId: string;
     riskAnalysisId: string;
@@ -119,12 +120,13 @@ export const createRiskAlert = async ({
         | "CRITICAL";
     title: string;
     message: string;
-    action:
-        | "ALLOW"
-        | "REVIEW"
-        | "PAUSE";
+    action: "ALLOW" | "REVIEW" | "PAUSE";
     confidence: number;
     reasons: string[];
+    investigationStatus:
+        | "PENDING"
+        | "COMPLETED"
+        | "UNAVAILABLE";
 }) => {
     return prisma.riskAlert.upsert({
         where: {
@@ -140,12 +142,14 @@ export const createRiskAlert = async ({
             action,
             confidence,
             agentReasons: reasons,
+            investigationStatus,
         },
         update: {
             message,
             action,
             confidence,
             agentReasons: reasons,
+            investigationStatus,
         },
     });
 };

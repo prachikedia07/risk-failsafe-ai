@@ -141,7 +141,8 @@ export const RiskAlertScalarFieldEnum = {
   riskAnalysisId: 'riskAnalysisId',
   action: 'action',
   confidence: 'confidence',
-  agentReasons: 'agentReasons'
+  agentReasons: 'agentReasons',
+  investigationStatus: 'investigationStatus'
 } as const
 
 export type RiskAlertScalarFieldEnum = (typeof RiskAlertScalarFieldEnum)[keyof typeof RiskAlertScalarFieldEnum]

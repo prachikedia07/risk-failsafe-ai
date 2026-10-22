@@ -249,6 +249,7 @@ Return a structured JSON decision with:
                 confidence:
                     validatedDecision.confidence,
                 reasons: validatedDecision.reasons,
+                investigationStatus: "COMPLETED",
             });
 
             return validatedDecision;
@@ -340,6 +341,7 @@ Return a structured JSON decision with:
             action: fallbackDecision.action,
             confidence: fallbackDecision.confidence,
             reasons: fallbackDecision.reasons,
+            investigationStatus: "UNAVAILABLE",
         });
 
         console.log(

@@ -43,6 +43,7 @@ export type Alert = {
     reasons: unknown;
     createdAt: string;
   };
+  investigationStatus?: "PENDING" | "COMPLETED" | "UNAVAILABLE";
 };
 
 async function request<T>(
