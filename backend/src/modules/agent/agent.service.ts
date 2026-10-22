@@ -146,6 +146,7 @@ Return a structured JSON decision with:
 
     let toolCallCount = 0;
 
+    try{
     for (;;) {
         const response =
             await gemini.models.generateContent(
@@ -304,6 +305,49 @@ Return a structured JSON decision with:
                 ],
             });
         }
+    }
+        } catch (error) {
+        console.error(
+            "⚠️ AI investigation failed. Saving fallback risk alert:",
+            error instanceof Error ? error.message : error
+        );
+
+        const fallbackDecision: AgentDecision = {
+            summary:
+                "Suspicious transaction activity was detected by the statistical risk engine. The AI investigation is temporarily unavailable, so manual review is recommended.",
+
+            reasons: [
+                "The statistical risk engine flagged this activity as suspicious.",
+                "AI investigation could not be completed because the AI service is temporarily unavailable.",
+                "This alert is based on the risk engine's evidence and requires manual review.",
+            ],
+
+            action: "REVIEW",
+            confidence: 0.6,
+        };
+
+        await createRiskAlert({
+            merchantId,
+            riskAnalysisId,
+            riskScore: analysis.riskScore,
+            riskLevel: analysis.riskLevel as
+                | "LOW"
+                | "MEDIUM"
+                | "HIGH"
+                | "CRITICAL",
+            title: "Suspicious transaction activity detected",
+            message: fallbackDecision.summary,
+            action: fallbackDecision.action,
+            confidence: fallbackDecision.confidence,
+            reasons: fallbackDecision.reasons,
+        });
+
+        console.log(
+            "✅ Fallback risk alert saved:",
+            riskAnalysisId
+        );
+
+        return fallbackDecision;
     }
 }
 
