@@ -7,7 +7,7 @@ import customerRoutes from "./modules/customer/customer.routes";
 import transactionRoutes from "./modules/transaction/transaction.routes";
 import agentRoutes from "./modules/agent/agent.routes";
 import paymentRoutes from "./modules/payment/payment.routes";
-
+import alertRoutes from "./modules/alerts/alerts.routes";
 import webhookRoutes from "./modules/webhook/razorpay.webhook.routes";
 
 import { errorMiddleware } from "./middleware/error.middleware";
@@ -62,6 +62,7 @@ app.use(
     "/api/payments",
     paymentRoutes
 );
+app.use("/api/alerts", alertRoutes);
 app.use(errorMiddleware);
 
 export default app;
