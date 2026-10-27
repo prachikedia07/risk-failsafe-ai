@@ -142,6 +142,7 @@ export const RiskAlertScalarFieldEnum = {
   action: 'action',
   confidence: 'confidence',
   agentReasons: 'agentReasons',
+  investigationProvider: 'investigationProvider',
   investigationStatus: 'investigationStatus'
 } as const
 

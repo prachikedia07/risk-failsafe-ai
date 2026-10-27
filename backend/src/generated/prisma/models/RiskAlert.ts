@@ -49,6 +49,7 @@ export type RiskAlertMinAggregateOutputType = {
   riskAnalysisId: string | null
   action: $Enums.AgentAction | null
   confidence: number | null
+  investigationProvider: string | null
   investigationStatus: string | null
 }
 
@@ -65,6 +66,7 @@ export type RiskAlertMaxAggregateOutputType = {
   riskAnalysisId: string | null
   action: $Enums.AgentAction | null
   confidence: number | null
+  investigationProvider: string | null
   investigationStatus: string | null
 }
 
@@ -82,6 +84,7 @@ export type RiskAlertCountAggregateOutputType = {
   action: number
   confidence: number
   agentReasons: number
+  investigationProvider: number
   investigationStatus: number
   _all: number
 }
@@ -110,6 +113,7 @@ export type RiskAlertMinAggregateInputType = {
   riskAnalysisId?: true
   action?: true
   confidence?: true
+  investigationProvider?: true
   investigationStatus?: true
 }
 
@@ -126,6 +130,7 @@ export type RiskAlertMaxAggregateInputType = {
   riskAnalysisId?: true
   action?: true
   confidence?: true
+  investigationProvider?: true
   investigationStatus?: true
 }
 
@@ -143,6 +148,7 @@ export type RiskAlertCountAggregateInputType = {
   action?: true
   confidence?: true
   agentReasons?: true
+  investigationProvider?: true
   investigationStatus?: true
   _all?: true
 }
@@ -247,6 +253,7 @@ export type RiskAlertGroupByOutputType = {
   action: $Enums.AgentAction | null
   confidence: number | null
   agentReasons: runtime.JsonValue | null
+  investigationProvider: string | null
   investigationStatus: string
   _count: RiskAlertCountAggregateOutputType | null
   _avg: RiskAlertAvgAggregateOutputType | null
@@ -287,6 +294,7 @@ export type RiskAlertWhereInput = {
   action?: Prisma.EnumAgentActionNullableFilter<"RiskAlert"> | $Enums.AgentAction | null
   confidence?: Prisma.FloatNullableFilter<"RiskAlert"> | number | null
   agentReasons?: Prisma.JsonNullableFilter<"RiskAlert">
+  investigationProvider?: Prisma.StringNullableFilter<"RiskAlert"> | string | null
   investigationStatus?: Prisma.StringFilter<"RiskAlert"> | string
   merchant?: Prisma.XOR<Prisma.MerchantScalarRelationFilter, Prisma.MerchantWhereInput>
   riskAnalysis?: Prisma.XOR<Prisma.RiskAnalysisScalarRelationFilter, Prisma.RiskAnalysisWhereInput>
@@ -306,6 +314,7 @@ export type RiskAlertOrderByWithRelationInput = {
   action?: Prisma.SortOrderInput | Prisma.SortOrder
   confidence?: Prisma.SortOrderInput | Prisma.SortOrder
   agentReasons?: Prisma.SortOrderInput | Prisma.SortOrder
+  investigationProvider?: Prisma.SortOrderInput | Prisma.SortOrder
   investigationStatus?: Prisma.SortOrder
   merchant?: Prisma.MerchantOrderByWithRelationInput
   riskAnalysis?: Prisma.RiskAnalysisOrderByWithRelationInput
@@ -328,6 +337,7 @@ export type RiskAlertWhereUniqueInput = Prisma.AtLeast<{
   action?: Prisma.EnumAgentActionNullableFilter<"RiskAlert"> | $Enums.AgentAction | null
   confidence?: Prisma.FloatNullableFilter<"RiskAlert"> | number | null
   agentReasons?: Prisma.JsonNullableFilter<"RiskAlert">
+  investigationProvider?: Prisma.StringNullableFilter<"RiskAlert"> | string | null
   investigationStatus?: Prisma.StringFilter<"RiskAlert"> | string
   merchant?: Prisma.XOR<Prisma.MerchantScalarRelationFilter, Prisma.MerchantWhereInput>
   riskAnalysis?: Prisma.XOR<Prisma.RiskAnalysisScalarRelationFilter, Prisma.RiskAnalysisWhereInput>
@@ -347,6 +357,7 @@ export type RiskAlertOrderByWithAggregationInput = {
   action?: Prisma.SortOrderInput | Prisma.SortOrder
   confidence?: Prisma.SortOrderInput | Prisma.SortOrder
   agentReasons?: Prisma.SortOrderInput | Prisma.SortOrder
+  investigationProvider?: Prisma.SortOrderInput | Prisma.SortOrder
   investigationStatus?: Prisma.SortOrder
   _count?: Prisma.RiskAlertCountOrderByAggregateInput
   _avg?: Prisma.RiskAlertAvgOrderByAggregateInput
@@ -372,6 +383,7 @@ export type RiskAlertScalarWhereWithAggregatesInput = {
   action?: Prisma.EnumAgentActionNullableWithAggregatesFilter<"RiskAlert"> | $Enums.AgentAction | null
   confidence?: Prisma.FloatNullableWithAggregatesFilter<"RiskAlert"> | number | null
   agentReasons?: Prisma.JsonNullableWithAggregatesFilter<"RiskAlert">
+  investigationProvider?: Prisma.StringNullableWithAggregatesFilter<"RiskAlert"> | string | null
   investigationStatus?: Prisma.StringWithAggregatesFilter<"RiskAlert"> | string
 }
 
@@ -387,6 +399,7 @@ export type RiskAlertCreateInput = {
   action?: $Enums.AgentAction | null
   confidence?: number | null
   agentReasons?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  investigationProvider?: string | null
   investigationStatus?: string
   merchant: Prisma.MerchantCreateNestedOneWithoutRiskAlertsInput
   riskAnalysis: Prisma.RiskAnalysisCreateNestedOneWithoutRiskAlertsInput
@@ -406,6 +419,7 @@ export type RiskAlertUncheckedCreateInput = {
   action?: $Enums.AgentAction | null
   confidence?: number | null
   agentReasons?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  investigationProvider?: string | null
   investigationStatus?: string
 }
 
@@ -421,6 +435,7 @@ export type RiskAlertUpdateInput = {
   action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
   confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   agentReasons?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  investigationProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   investigationStatus?: Prisma.StringFieldUpdateOperationsInput | string
   merchant?: Prisma.MerchantUpdateOneRequiredWithoutRiskAlertsNestedInput
   riskAnalysis?: Prisma.RiskAnalysisUpdateOneRequiredWithoutRiskAlertsNestedInput
@@ -440,6 +455,7 @@ export type RiskAlertUncheckedUpdateInput = {
   action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
   confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   agentReasons?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  investigationProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   investigationStatus?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -457,6 +473,7 @@ export type RiskAlertCreateManyInput = {
   action?: $Enums.AgentAction | null
   confidence?: number | null
   agentReasons?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  investigationProvider?: string | null
   investigationStatus?: string
 }
 
@@ -472,6 +489,7 @@ export type RiskAlertUpdateManyMutationInput = {
   action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
   confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   agentReasons?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  investigationProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   investigationStatus?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -489,6 +507,7 @@ export type RiskAlertUncheckedUpdateManyInput = {
   action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
   confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   agentReasons?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  investigationProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   investigationStatus?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -516,6 +535,7 @@ export type RiskAlertCountOrderByAggregateInput = {
   action?: Prisma.SortOrder
   confidence?: Prisma.SortOrder
   agentReasons?: Prisma.SortOrder
+  investigationProvider?: Prisma.SortOrder
   investigationStatus?: Prisma.SortOrder
 }
 
@@ -537,6 +557,7 @@ export type RiskAlertMaxOrderByAggregateInput = {
   riskAnalysisId?: Prisma.SortOrder
   action?: Prisma.SortOrder
   confidence?: Prisma.SortOrder
+  investigationProvider?: Prisma.SortOrder
   investigationStatus?: Prisma.SortOrder
 }
 
@@ -553,6 +574,7 @@ export type RiskAlertMinOrderByAggregateInput = {
   riskAnalysisId?: Prisma.SortOrder
   action?: Prisma.SortOrder
   confidence?: Prisma.SortOrder
+  investigationProvider?: Prisma.SortOrder
   investigationStatus?: Prisma.SortOrder
 }
 
@@ -673,6 +695,7 @@ export type RiskAlertCreateWithoutMerchantInput = {
   action?: $Enums.AgentAction | null
   confidence?: number | null
   agentReasons?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  investigationProvider?: string | null
   investigationStatus?: string
   riskAnalysis: Prisma.RiskAnalysisCreateNestedOneWithoutRiskAlertsInput
 }
@@ -690,6 +713,7 @@ export type RiskAlertUncheckedCreateWithoutMerchantInput = {
   action?: $Enums.AgentAction | null
   confidence?: number | null
   agentReasons?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  investigationProvider?: string | null
   investigationStatus?: string
 }
 
@@ -736,6 +760,7 @@ export type RiskAlertScalarWhereInput = {
   action?: Prisma.EnumAgentActionNullableFilter<"RiskAlert"> | $Enums.AgentAction | null
   confidence?: Prisma.FloatNullableFilter<"RiskAlert"> | number | null
   agentReasons?: Prisma.JsonNullableFilter<"RiskAlert">
+  investigationProvider?: Prisma.StringNullableFilter<"RiskAlert"> | string | null
   investigationStatus?: Prisma.StringFilter<"RiskAlert"> | string
 }
 
@@ -751,6 +776,7 @@ export type RiskAlertCreateWithoutRiskAnalysisInput = {
   action?: $Enums.AgentAction | null
   confidence?: number | null
   agentReasons?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  investigationProvider?: string | null
   investigationStatus?: string
   merchant: Prisma.MerchantCreateNestedOneWithoutRiskAlertsInput
 }
@@ -768,6 +794,7 @@ export type RiskAlertUncheckedCreateWithoutRiskAnalysisInput = {
   action?: $Enums.AgentAction | null
   confidence?: number | null
   agentReasons?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  investigationProvider?: string | null
   investigationStatus?: string
 }
 
@@ -810,6 +837,7 @@ export type RiskAlertCreateManyMerchantInput = {
   action?: $Enums.AgentAction | null
   confidence?: number | null
   agentReasons?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  investigationProvider?: string | null
   investigationStatus?: string
 }
 
@@ -825,6 +853,7 @@ export type RiskAlertUpdateWithoutMerchantInput = {
   action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
   confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   agentReasons?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  investigationProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   investigationStatus?: Prisma.StringFieldUpdateOperationsInput | string
   riskAnalysis?: Prisma.RiskAnalysisUpdateOneRequiredWithoutRiskAlertsNestedInput
 }
@@ -842,6 +871,7 @@ export type RiskAlertUncheckedUpdateWithoutMerchantInput = {
   action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
   confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   agentReasons?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  investigationProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   investigationStatus?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -858,6 +888,7 @@ export type RiskAlertUncheckedUpdateManyWithoutMerchantInput = {
   action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
   confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   agentReasons?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  investigationProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   investigationStatus?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -874,6 +905,7 @@ export type RiskAlertCreateManyRiskAnalysisInput = {
   action?: $Enums.AgentAction | null
   confidence?: number | null
   agentReasons?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  investigationProvider?: string | null
   investigationStatus?: string
 }
 
@@ -889,6 +921,7 @@ export type RiskAlertUpdateWithoutRiskAnalysisInput = {
   action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
   confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   agentReasons?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  investigationProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   investigationStatus?: Prisma.StringFieldUpdateOperationsInput | string
   merchant?: Prisma.MerchantUpdateOneRequiredWithoutRiskAlertsNestedInput
 }
@@ -906,6 +939,7 @@ export type RiskAlertUncheckedUpdateWithoutRiskAnalysisInput = {
   action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
   confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   agentReasons?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  investigationProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   investigationStatus?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -922,6 +956,7 @@ export type RiskAlertUncheckedUpdateManyWithoutRiskAnalysisInput = {
   action?: Prisma.NullableEnumAgentActionFieldUpdateOperationsInput | $Enums.AgentAction | null
   confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   agentReasons?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  investigationProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   investigationStatus?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -941,6 +976,7 @@ export type RiskAlertSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   action?: boolean
   confidence?: boolean
   agentReasons?: boolean
+  investigationProvider?: boolean
   investigationStatus?: boolean
   merchant?: boolean | Prisma.MerchantDefaultArgs<ExtArgs>
   riskAnalysis?: boolean | Prisma.RiskAnalysisDefaultArgs<ExtArgs>
@@ -960,6 +996,7 @@ export type RiskAlertSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   action?: boolean
   confidence?: boolean
   agentReasons?: boolean
+  investigationProvider?: boolean
   investigationStatus?: boolean
   merchant?: boolean | Prisma.MerchantDefaultArgs<ExtArgs>
   riskAnalysis?: boolean | Prisma.RiskAnalysisDefaultArgs<ExtArgs>
@@ -979,6 +1016,7 @@ export type RiskAlertSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   action?: boolean
   confidence?: boolean
   agentReasons?: boolean
+  investigationProvider?: boolean
   investigationStatus?: boolean
   merchant?: boolean | Prisma.MerchantDefaultArgs<ExtArgs>
   riskAnalysis?: boolean | Prisma.RiskAnalysisDefaultArgs<ExtArgs>
@@ -998,10 +1036,11 @@ export type RiskAlertSelectScalar = {
   action?: boolean
   confidence?: boolean
   agentReasons?: boolean
+  investigationProvider?: boolean
   investigationStatus?: boolean
 }
 
-export type RiskAlertOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "merchantId" | "riskScore" | "riskLevel" | "title" | "message" | "status" | "createdAt" | "updatedAt" | "riskAnalysisId" | "action" | "confidence" | "agentReasons" | "investigationStatus", ExtArgs["result"]["riskAlert"]>
+export type RiskAlertOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "merchantId" | "riskScore" | "riskLevel" | "title" | "message" | "status" | "createdAt" | "updatedAt" | "riskAnalysisId" | "action" | "confidence" | "agentReasons" | "investigationProvider" | "investigationStatus", ExtArgs["result"]["riskAlert"]>
 export type RiskAlertInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   merchant?: boolean | Prisma.MerchantDefaultArgs<ExtArgs>
   riskAnalysis?: boolean | Prisma.RiskAnalysisDefaultArgs<ExtArgs>
@@ -1035,6 +1074,7 @@ export type $RiskAlertPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     action: $Enums.AgentAction | null
     confidence: number | null
     agentReasons: runtime.JsonValue | null
+    investigationProvider: string | null
     investigationStatus: string
   }, ExtArgs["result"]["riskAlert"]>
   composites: {}
@@ -1474,6 +1514,7 @@ export interface RiskAlertFieldRefs {
   readonly action: Prisma.FieldRef<"RiskAlert", 'AgentAction'>
   readonly confidence: Prisma.FieldRef<"RiskAlert", 'Float'>
   readonly agentReasons: Prisma.FieldRef<"RiskAlert", 'Json'>
+  readonly investigationProvider: Prisma.FieldRef<"RiskAlert", 'String'>
   readonly investigationStatus: Prisma.FieldRef<"RiskAlert", 'String'>
 }
     

@@ -108,6 +108,7 @@ export const createRiskAlert = async ({
     action,
     confidence,
     reasons,
+    investigationProvider,
     investigationStatus,
 }: {
     merchantId: string;
@@ -123,6 +124,7 @@ export const createRiskAlert = async ({
     action: "ALLOW" | "REVIEW" | "PAUSE";
     confidence: number;
     reasons: string[];
+    investigationProvider?: string | null;
     investigationStatus:
         | "PENDING"
         | "COMPLETED"
@@ -143,6 +145,7 @@ export const createRiskAlert = async ({
             confidence,
             agentReasons: reasons,
             investigationStatus,
+            investigationProvider: investigationProvider ?? null,
         },
         update: {
             message,
@@ -150,6 +153,7 @@ export const createRiskAlert = async ({
             confidence,
             agentReasons: reasons,
             investigationStatus,
+            investigationProvider: investigationProvider ?? null,
         },
     });
 };

@@ -73,6 +73,7 @@ model RiskAlert {
   action         AgentAction?
   confidence     Float?
   agentReasons Json?
+  investigationProvider String?
   merchant       Merchant     @relation(fields: [merchantId], references: [id])
   riskAnalysis   RiskAnalysis @relation(fields: [riskAnalysisId], references: [id])
   investigationStatus String @default("PENDING")
