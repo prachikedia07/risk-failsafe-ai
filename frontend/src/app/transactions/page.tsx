@@ -1,13 +1,22 @@
+
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { api, dateTime, money, type Transaction } from "@/lib/api";
+import {
+  api,
+  dateTime,
+  money,
+  type Transaction,
+} from "@/lib/api";
+
+const filters = ["ALL", "SUCCESS", "FAILED", "PENDING"];
 
 export default function TransactionsPage() {
   const [transactions, setTransactions] =
     useState<Transaction[] | null>(null);
   const [error, setError] = useState("");
   const [filter, setFilter] = useState("ALL");
+  const [search, setSearch] = useState("");
 
   const loadTransactions = useCallback(async () => {
     try {
@@ -16,105 +25,122 @@ export default function TransactionsPage() {
       setTransactions(data);
     } catch (err) {
       setError(
-        err instanceof Error
-          ? err.message
-          : "Could not load transactions"
+        err instanceof Error ? err.message : "Could not load transactions"
       );
     }
   }, []);
 
   useEffect(() => {
     void loadTransactions();
-
     const timer = window.setInterval(
       () => void loadTransactions(),
       5000
     );
-
     return () => window.clearInterval(timer);
   }, [loadTransactions]);
 
-  const filtered = (transactions ?? []).filter(
-    (transaction) =>
-      filter === "ALL" || transaction.status === filter
-  );
+  const filtered = (transactions ?? []).filter((transaction) => {
+    const matchesStatus =
+      filter === "ALL" || transaction.status === filter;
+
+    const term = search.toLowerCase();
+
+    const matchesSearch =
+      !term ||
+      transaction.id.toLowerCase().includes(term) ||
+      (transaction.razorpayPaymentId ?? "").toLowerCase().includes(term) ||
+      transaction.paymentMethod.toLowerCase().includes(term);
+
+    return matchesStatus && matchesSearch;
+  });
 
   return (
-    <div className="mx-auto max-w-7xl">
-      <p className="text-xs uppercase tracking-[.22em] text-cyan-300">
-        Payment ledger
-      </p>
+    <div>
+      <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+        <div>
+          <p className="page-kicker">Payment ledger</p>
+          <h1 className="page-title">Transactions</h1>
+          <p className="page-description">
+            Persisted payment records · Auto-refreshes every five seconds
+          </p>
+        </div>
 
-      <h1 className="mt-2 text-3xl font-semibold">Transactions</h1>
+        <button
+          onClick={() => void loadTransactions()}
+          className="secondary-button px-3 py-2 text-xs"
+        >
+          ↻ Refresh
+        </button>
+      </div>
 
-      <p className="mt-3 text-sm text-slate-400">
-        Persisted payment records, refreshed every five seconds.
-      </p>
+      <div className="mt-6 grid grid-cols-2 gap-px border border-[#292922] bg-[#292922] sm:grid-cols-4">
+        {[
+          ["Total", transactions?.length ?? "—"],
+          ["Successful", transactions?.filter(t => t.status === "SUCCESS").length ?? "—"],
+          ["Failed", transactions?.filter(t => t.status === "FAILED").length ?? "—"],
+          ["Pending", transactions?.filter(t => t.status === "PENDING").length ?? "—"],
+        ].map(([label, value]) => (
+          <div key={label} className="bg-[#050505] p-3">
+            <p className="text-[10px] text-[#858277]">{label}</p>
+            <p className="mt-1 text-xl font-semibold tabular-nums">{value}</p>
+          </div>
+        ))}
+      </div>
 
-      <div className="mt-7 flex flex-wrap justify-between gap-3">
-        <p className="text-sm text-slate-400">
-          {transactions === null
-            ? "Loading…"
-            : `${filtered.length} records`}
-        </p>
-
-        <div className="flex gap-2">
-          {["ALL", "SUCCESS", "FAILED", "PENDING"].map((status) => (
+      <div className="mt-6 flex flex-col justify-between gap-3 sm:flex-row">
+        <div className="flex flex-wrap gap-1">
+          {filters.map((status) => (
             <button
               key={status}
               onClick={() => setFilter(status)}
-              className={`rounded-lg px-3 py-2 text-xs ${
+              className={`border px-3 py-2 text-[10px] tracking-wide ${
                 filter === status
-                  ? "bg-cyan-300 text-slate-950"
-                  : "border border-white/10 text-slate-400 hover:bg-white/5"
+                  ? "border-[#a99a62] bg-transparent text-[#d4bd88]"
+                  : "border-[#292922] text-[#96948a] hover:bg-[#171814]"
               }`}
             >
               {status}
             </button>
           ))}
         </div>
+
+        <input
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+          placeholder="Search transaction or payment ID..."
+          className="field sm:max-w-[280px]"
+        />
       </div>
 
       <div className="mt-4">
         {error ? (
-          <div className="rounded-xl border border-rose-400/20 p-5">
-            <p className="text-rose-200">{error}</p>
+          <div className="border border-[#633b35] bg-transparent p-5 text-sm text-[#c98b7f]">
+            {error}
             <button
               onClick={() => void loadTransactions()}
-              className="mt-3 rounded-lg border border-white/10 px-3 py-2 text-sm"
+              className="ml-3 underline"
             >
               Retry
             </button>
           </div>
         ) : transactions === null ? (
-          <p className="text-sm text-slate-400">Loading records…</p>
+          <p className="py-8 text-xs text-[#858277]">Loading transactions...</p>
         ) : filtered.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-white/15 p-10 text-center">
-            <p className="font-medium">
-              {transactions.length
-                ? "No matching transactions"
-                : "No transactions yet"}
+          <div className="border border-dashed border-[#39382f] p-10 text-center">
+            <p className="text-sm text-[#d4d0c5]">
+              {transactions.length ? "No matching transactions" : "No transactions yet"}
             </p>
-            <p className="mt-2 text-sm text-slate-500">
-              Records appear here after they're saved by the backend.
+            <p className="mt-2 text-xs text-[#77756b]">
+              Payment records will appear here when saved by the backend.
             </p>
           </div>
         ) : (
-          <div className="overflow-x-auto rounded-2xl border border-white/10 bg-[#10141d]">
-            <table className="w-full min-w-[760px] text-left text-sm">
-              <thead className="text-xs text-slate-500">
+          <div className="overflow-x-auto border border-[#292922] bg-[#050505]">
+            <table className="w-full min-w-[760px] text-left text-xs">
+              <thead className="bg-[#171814] text-[9px] uppercase tracking-[0.12em] text-[#858277]">
                 <tr>
-                  {[
-                    "Transaction",
-                    "Date",
-                    "Method",
-                    "Amount",
-                    "Status",
-                    "Failure reason",
-                  ].map((heading) => (
-                    <th key={heading} className="px-5 py-4 font-medium">
-                      {heading}
-                    </th>
+                  {["Transaction", "Date", "Method", "Amount", "Status", "Failure reason"].map((heading) => (
+                    <th key={heading} className="px-4 py-3 font-medium">{heading}</th>
                   ))}
                 </tr>
               </thead>
@@ -123,44 +149,37 @@ export default function TransactionsPage() {
                 {filtered.map((transaction) => (
                   <tr
                     key={transaction.id}
-                    className="border-t border-white/[.06] hover:bg-white/[.02]"
+                    className="border-t border-[#292922] hover:bg-[#191a15]"
                   >
-                    <td className="px-5 py-4">
-                      <p className="font-medium">
+                    <td className="px-4 py-3">
+                      <p className="text-[#dedbd2]">
                         {transaction.id.slice(0, 8)}…
                       </p>
-                      <p className="mt-1 text-xs text-slate-600">
+                      <p className="mt-1 text-[10px] text-[#77756b]">
                         {transaction.razorpayPaymentId || "No payment ID"}
                       </p>
                     </td>
-
-                    <td className="px-5 py-4 text-slate-400">
+                    <td className="px-4 py-3 text-[#96948a]">
                       {dateTime(transaction.timestamp)}
                     </td>
-
-                    <td className="px-5 py-4">
+                    <td className="px-4 py-3 text-[#c4c0b5]">
                       {transaction.paymentMethod}
                     </td>
-
-                    <td className="px-5 py-4 tabular-nums">
+                    <td className="px-4 py-3 tabular-nums text-[#e8e5dc]">
                       {money(transaction.amount, transaction.currency)}
                     </td>
-
-                    <td className="px-5 py-4">
-                      <span
-                        className={`rounded-full px-2.5 py-1 text-xs ${
-                          transaction.status === "SUCCESS"
-                            ? "bg-emerald-400/10 text-emerald-300"
-                            : transaction.status === "FAILED"
-                              ? "bg-rose-400/10 text-rose-300"
-                              : "bg-amber-400/10 text-amber-200"
-                        }`}
-                      >
+                    <td className="px-4 py-3">
+                      <span className={
+                        transaction.status === "SUCCESS"
+                          ? "status-success"
+                          : transaction.status === "FAILED"
+                            ? "status-danger"
+                            : "status-warning"
+                      }>
                         {transaction.status}
                       </span>
                     </td>
-
-                    <td className="max-w-xs px-5 py-4 text-slate-500">
+                    <td className="max-w-xs px-4 py-3 text-[#858277]">
                       {transaction.failureReason || "—"}
                     </td>
                   </tr>

@@ -11,6 +11,7 @@ import alertRoutes from "./modules/alerts/alerts.routes";
 import webhookRoutes from "./modules/webhook/razorpay.webhook.routes";
 
 import { errorMiddleware } from "./middleware/error.middleware";
+import evaluationRoutes from "./modules/evaluation/evaluation.routes";
 
 const app = express();
 
@@ -63,6 +64,7 @@ app.use(
     paymentRoutes
 );
 app.use("/api/alerts", alertRoutes);
+app.use("/api/evaluation", evaluationRoutes);
 app.use(errorMiddleware);
 
 export default app;

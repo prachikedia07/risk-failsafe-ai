@@ -5,89 +5,63 @@ import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
 const links = [
-  { href: "/", label: "Overview", icon: "◫" },
-  { href: "/transactions", label: "Transactions", icon: "↔" },
-  { href: "/alerts", label: "Risk alerts", icon: "⚑" },
-  { href: "/test-payments", label: "Test payments", icon: "+" },
+  { href: "/", label: "Overview" },
+  { href: "/transactions", label: "Transactions" },
+  { href: "/alerts", label: "Risk alerts" },
+  { href: "/evaluation", label: "Evaluation" },
+  { href: "/test-payments", label: "Test payments" },
 ];
 
-export default function AppShell({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function AppShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
 
   return (
-    <div className="min-h-screen bg-[#090b10] text-slate-100 md:flex">
-      <aside className="border-b border-white/10 bg-[#0d1017] p-5 md:fixed md:inset-y-0 md:w-64 md:border-b-0 md:border-r">
-        <Link href="/" className="flex items-center gap-3">
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-cyan-300 font-black text-slate-950">
-            R
+    <div className="min-h-screen bg-[#050505] text-[#e8e6df] md:flex">
+      <aside className="border-b border-[#252525] bg-[#050505] p-4 md:fixed md:inset-y-0 md:w-[210px] md:border-b-0 md:border-r md:p-5">
+        <Link href="/" className="block">
+          <span className="block text-sm font-semibold tracking-tight">
+            RiskFailsafe AI
           </span>
-
-          <span>
-            <span className="block font-semibold">
-              RiskFailsafe
-            </span>
-            <span className="text-xs text-slate-500">
-              PAYMENT INTELLIGENCE
-            </span>
+          <span className="mt-1 block text-[9px] tracking-[0.16em] text-[#666666]">
+            PAYMENT RISK MONITORING
           </span>
         </Link>
 
-        <p className="mt-8 text-xs uppercase tracking-widest text-slate-600">
-          Workspace
-        </p>
-
-        <nav className="mt-3 flex gap-2 overflow-x-auto md:flex-col">
+        <nav className="mt-8 flex gap-1 overflow-x-auto md:flex-col">
           {links.map((link) => {
             const active = pathname === link.href;
-
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`flex shrink-0 items-center gap-3 rounded-xl px-3 py-3 text-sm ${
+                className={`shrink-0 border-l-2 px-3 py-2 text-xs transition ${
                   active
-                    ? "bg-cyan-300/10 text-cyan-200 ring-1 ring-cyan-300/20"
-                    : "text-slate-400 hover:bg-white/5 hover:text-white"
+                    ? "border-[#a99a62] text-[#e8e6df]"
+                    : "border-transparent text-[#929292] hover:text-[#e8e6df]"
                 }`}
               >
-                <span className="w-5 text-center">
-                  {link.icon}
-                </span>
                 {link.label}
               </Link>
             );
           })}
         </nav>
 
-        <div className="mt-8 rounded-xl border border-white/10 p-4 text-xs text-slate-500">
-          Local workspace
-          <p className="mt-2">
-            Razorpay Test Mode · Payment risk monitoring
-          </p>
+        <div className="mt-8 border-t border-[#252525] pt-4 text-[10px] text-[#666666]">
+          Razorpay test mode
         </div>
       </aside>
 
-      <main className="min-w-0 flex-1 md:ml-64">
-        <header className="flex items-center justify-between border-b border-white/10 px-5 py-4 md:px-9">
-          <div>
-            <p className="text-xs text-slate-500">
-              RISK OPERATIONS / DEMO ENVIRONMENT
-            </p>
-            <p className="mt-1 text-sm text-slate-300">
-              Payment activity & risk signals
-            </p>
-          </div>
-
-          <span className="rounded-full border border-amber-300/20 bg-amber-300/10 px-3 py-1.5 text-xs text-amber-200">
+      <main className="min-w-0 flex-1 md:ml-[210px]">
+        <header className="flex min-h-[52px] items-center justify-between border-b border-[#252525] px-5 md:px-8">
+          <p className="text-[10px] uppercase tracking-[0.16em] text-[#666666]">
+            Risk operations
+          </p>
+          <span className="border border-[#252525] px-2 py-1 text-[9px] tracking-[0.12em] text-[#a99a62]">
             TEST MODE
           </span>
         </header>
 
-        <div className="p-5 md:p-9">{children}</div>
+        <div className="mx-auto w-full max-w-[1500px] p-5 md:p-8">{children}</div>
       </main>
     </div>
   );

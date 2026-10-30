@@ -1,0 +1,3423 @@
+{
+  "reportVersion": "1.0.0",
+  "metadata": {
+    "generatedAt": "2026-10-30T07:42:21.147Z",
+    "datasetFile": "synthetic-transactions.json",
+    "datasetHash": "a660fd4ef7478c14ccfb6866ac4150ba4988dd2c5da36f0d8c2af667e9701224",
+    "evaluationType": "OFFLINE_HELD_OUT",
+    "splitRatio": 0.8,
+    "normalSplitSeed": 12345,
+    "suspiciousSplitSeed": 67890,
+    "baselineSource": "NORMAL development scenarios only",
+    "predictionThreshold": 50
+  },
+  "dataset": {
+    "total": {
+      "normal": 700,
+      "suspicious": 300,
+      "total": 1000
+    },
+    "development": {
+      "normal": 560,
+      "suspicious": 240,
+      "total": 800
+    },
+    "test": {
+      "normal": 140,
+      "suspicious": 60,
+      "total": 200
+    },
+    "developmentNormal": 560,
+    "developmentSuspicious": 240,
+    "testNormal": 140,
+    "testSuspicious": 60
+  },
+  "metrics": {
+    "total": 200,
+    "truePositive": 60,
+    "falsePositive": 3,
+    "trueNegative": 137,
+    "falseNegative": 0,
+    "accuracy": 0.985,
+    "precision": 0.9523809523809523,
+    "recall": 1,
+    "f1Score": 0.975609756097561,
+    "falsePositiveRate": 0.02142857142857143,
+    "specificity": 0.9785714285714285
+  },
+  "patternPerformance": [
+    {
+      "pattern": "VELOCITY_SPIKE",
+      "totalCases": 16,
+      "detected": 16,
+      "missed": 0,
+      "detectionRate": 1,
+      "averageRiskScore": 65.625
+    },
+    {
+      "pattern": "AMOUNT_SPIKE",
+      "totalCases": 10,
+      "detected": 10,
+      "missed": 0,
+      "detectionRate": 1,
+      "averageRiskScore": 71.7
+    },
+    {
+      "pattern": "FAILURE_SPIKE",
+      "totalCases": 11,
+      "detected": 11,
+      "missed": 0,
+      "detectionRate": 1,
+      "averageRiskScore": 69.9090909090909
+    },
+    {
+      "pattern": "NEW_CUSTOMER_SPIKE",
+      "totalCases": 9,
+      "detected": 9,
+      "missed": 0,
+      "detectionRate": 1,
+      "averageRiskScore": 70.88888888888889
+    },
+    {
+      "pattern": "COMBINED_SPIKE",
+      "totalCases": 9,
+      "detected": 9,
+      "missed": 0,
+      "detectionRate": 1,
+      "averageRiskScore": 98.44444444444444
+    },
+    {
+      "pattern": "SUBTLE_COMBINED",
+      "totalCases": 5,
+      "detected": 5,
+      "missed": 0,
+      "detectionRate": 1,
+      "averageRiskScore": 73
+    }
+  ],
+  "scoreDistribution": {
+    "normal": {
+      "average": 16.82857142857143,
+      "minimum": 0,
+      "maximum": 60
+    },
+    "suspicious": {
+      "average": 73.75,
+      "minimum": 60,
+      "maximum": 100
+    }
+  },
+  "falseNegatives": [],
+  "falsePositives": [
+    {
+      "scenarioId": "normal-12",
+      "actual": "NORMAL",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "features": {
+        "transactionCount": 23,
+        "totalAmount": 6124700,
+        "averageAmount": 266291.3043478261,
+        "failedTransactions": 5,
+        "failureRate": 0.21739130434782608,
+        "transactionsPerMinute": 4.6,
+        "newCustomerTransactions": 2,
+        "newCustomerRatio": 0.08695652173913043
+      }
+    },
+    {
+      "scenarioId": "normal-200",
+      "actual": "NORMAL",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "features": {
+        "transactionCount": 23,
+        "totalAmount": 4496800,
+        "averageAmount": 195513.04347826086,
+        "failedTransactions": 5,
+        "failureRate": 0.21739130434782608,
+        "transactionsPerMinute": 4.6,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.17391304347826086
+      }
+    },
+    {
+      "scenarioId": "normal-11",
+      "actual": "NORMAL",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "features": {
+        "transactionCount": 22,
+        "totalAmount": 5368600,
+        "averageAmount": 244027.27272727274,
+        "failedTransactions": 5,
+        "failureRate": 0.22727272727272727,
+        "transactionsPerMinute": 4.4,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.2727272727272727
+      }
+    }
+  ],
+  "predictions": [
+    {
+      "scenarioId": "normal-274",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 6,
+      "features": {
+        "transactionCount": 26,
+        "totalAmount": 5934500,
+        "averageAmount": 228250,
+        "failedTransactions": 2,
+        "failureRate": 0.07692307692307693,
+        "transactionsPerMinute": 5.2,
+        "newCustomerTransactions": 3,
+        "newCustomerRatio": 0.11538461538461539
+      }
+    },
+    {
+      "scenarioId": "normal-269",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 22,
+      "features": {
+        "transactionCount": 43,
+        "totalAmount": 10771800,
+        "averageAmount": 250506.97674418605,
+        "failedTransactions": 3,
+        "failureRate": 0.06976744186046512,
+        "transactionsPerMinute": 8.6,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.09302325581395349
+      }
+    },
+    {
+      "scenarioId": "normal-253",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 22,
+      "features": {
+        "transactionCount": 41,
+        "totalAmount": 8409700,
+        "averageAmount": 205114.63414634147,
+        "failedTransactions": 4,
+        "failureRate": 0.0975609756097561,
+        "transactionsPerMinute": 8.2,
+        "newCustomerTransactions": 9,
+        "newCustomerRatio": 0.21951219512195122
+      }
+    },
+    {
+      "scenarioId": "normal-369",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 8,
+      "features": {
+        "transactionCount": 41,
+        "totalAmount": 7295600,
+        "averageAmount": 177941.46341463414,
+        "failedTransactions": 2,
+        "failureRate": 0.04878048780487805,
+        "transactionsPerMinute": 8.2,
+        "newCustomerTransactions": 2,
+        "newCustomerRatio": 0.04878048780487805
+      }
+    },
+    {
+      "scenarioId": "normal-635",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 19,
+      "features": {
+        "transactionCount": 24,
+        "totalAmount": 5592200,
+        "averageAmount": 233008.33333333334,
+        "failedTransactions": 2,
+        "failureRate": 0.08333333333333333,
+        "transactionsPerMinute": 4.8,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.25
+      }
+    },
+    {
+      "scenarioId": "normal-553",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 5,
+      "features": {
+        "transactionCount": 33,
+        "totalAmount": 7698000,
+        "averageAmount": 233272.72727272726,
+        "failedTransactions": 2,
+        "failureRate": 0.06060606060606061,
+        "transactionsPerMinute": 6.6,
+        "newCustomerTransactions": 2,
+        "newCustomerRatio": 0.06060606060606061
+      }
+    },
+    {
+      "scenarioId": "normal-195",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 8,
+      "features": {
+        "transactionCount": 40,
+        "totalAmount": 8076100,
+        "averageAmount": 201902.5,
+        "failedTransactions": 2,
+        "failureRate": 0.05,
+        "transactionsPerMinute": 8,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.15
+      }
+    },
+    {
+      "scenarioId": "normal-238",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 13,
+      "features": {
+        "transactionCount": 40,
+        "totalAmount": 7720300,
+        "averageAmount": 193007.5,
+        "failedTransactions": 4,
+        "failureRate": 0.1,
+        "transactionsPerMinute": 8,
+        "newCustomerTransactions": 3,
+        "newCustomerRatio": 0.075
+      }
+    },
+    {
+      "scenarioId": "normal-342",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 39,
+      "features": {
+        "transactionCount": 44,
+        "totalAmount": 9609800,
+        "averageAmount": 218404.54545454544,
+        "failedTransactions": 8,
+        "failureRate": 0.18181818181818182,
+        "transactionsPerMinute": 8.8,
+        "newCustomerTransactions": 9,
+        "newCustomerRatio": 0.20454545454545456
+      }
+    },
+    {
+      "scenarioId": "normal-413",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 17,
+      "features": {
+        "transactionCount": 42,
+        "totalAmount": 8008600,
+        "averageAmount": 190680.95238095237,
+        "failedTransactions": 0,
+        "failureRate": 0,
+        "transactionsPerMinute": 8.4,
+        "newCustomerTransactions": 9,
+        "newCustomerRatio": 0.21428571428571427
+      }
+    },
+    {
+      "scenarioId": "normal-654",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 1,
+      "features": {
+        "transactionCount": 32,
+        "totalAmount": 6479400,
+        "averageAmount": 202481.25,
+        "failedTransactions": 0,
+        "failureRate": 0,
+        "transactionsPerMinute": 6.4,
+        "newCustomerTransactions": 5,
+        "newCustomerRatio": 0.15625
+      }
+    },
+    {
+      "scenarioId": "normal-619",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 35,
+      "features": {
+        "transactionCount": 48,
+        "totalAmount": 8378900,
+        "averageAmount": 174560.41666666666,
+        "failedTransactions": 5,
+        "failureRate": 0.10416666666666667,
+        "transactionsPerMinute": 9.6,
+        "newCustomerTransactions": 12,
+        "newCustomerRatio": 0.25
+      }
+    },
+    {
+      "scenarioId": "normal-588",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 27,
+      "features": {
+        "transactionCount": 44,
+        "totalAmount": 11681800,
+        "averageAmount": 265495.45454545453,
+        "failedTransactions": 3,
+        "failureRate": 0.06818181818181818,
+        "transactionsPerMinute": 8.8,
+        "newCustomerTransactions": 3,
+        "newCustomerRatio": 0.06818181818181818
+      }
+    },
+    {
+      "scenarioId": "normal-666",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 14,
+      "features": {
+        "transactionCount": 27,
+        "totalAmount": 6410000,
+        "averageAmount": 237407.40740740742,
+        "failedTransactions": 1,
+        "failureRate": 0.037037037037037035,
+        "transactionsPerMinute": 5.4,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.2222222222222222
+      }
+    },
+    {
+      "scenarioId": "normal-175",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 6,
+      "features": {
+        "transactionCount": 30,
+        "totalAmount": 5432700,
+        "averageAmount": 181090,
+        "failedTransactions": 1,
+        "failureRate": 0.03333333333333333,
+        "transactionsPerMinute": 6,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.2
+      }
+    },
+    {
+      "scenarioId": "normal-567",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 4,
+      "features": {
+        "transactionCount": 32,
+        "totalAmount": 6002700,
+        "averageAmount": 187584.375,
+        "failedTransactions": 1,
+        "failureRate": 0.03125,
+        "transactionsPerMinute": 6.4,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.1875
+      }
+    },
+    {
+      "scenarioId": "normal-597",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 16,
+      "features": {
+        "transactionCount": 34,
+        "totalAmount": 8880800,
+        "averageAmount": 261200,
+        "failedTransactions": 2,
+        "failureRate": 0.058823529411764705,
+        "transactionsPerMinute": 6.8,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.17647058823529413
+      }
+    },
+    {
+      "scenarioId": "normal-295",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 8,
+      "features": {
+        "transactionCount": 38,
+        "totalAmount": 8788900,
+        "averageAmount": 231286.84210526315,
+        "failedTransactions": 1,
+        "failureRate": 0.02631578947368421,
+        "transactionsPerMinute": 7.6,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.10526315789473684
+      }
+    },
+    {
+      "scenarioId": "normal-63",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 11,
+      "features": {
+        "transactionCount": 37,
+        "totalAmount": 7784900,
+        "averageAmount": 210402.7027027027,
+        "failedTransactions": 3,
+        "failureRate": 0.08108108108108109,
+        "transactionsPerMinute": 7.4,
+        "newCustomerTransactions": 7,
+        "newCustomerRatio": 0.1891891891891892
+      }
+    },
+    {
+      "scenarioId": "normal-204",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 3,
+      "features": {
+        "transactionCount": 30,
+        "totalAmount": 6266900,
+        "averageAmount": 208896.66666666666,
+        "failedTransactions": 2,
+        "failureRate": 0.06666666666666667,
+        "transactionsPerMinute": 6,
+        "newCustomerTransactions": 5,
+        "newCustomerRatio": 0.16666666666666666
+      }
+    },
+    {
+      "scenarioId": "normal-12",
+      "actual": "NORMAL",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "features": {
+        "transactionCount": 23,
+        "totalAmount": 6124700,
+        "averageAmount": 266291.3043478261,
+        "failedTransactions": 5,
+        "failureRate": 0.21739130434782608,
+        "transactionsPerMinute": 4.6,
+        "newCustomerTransactions": 2,
+        "newCustomerRatio": 0.08695652173913043
+      }
+    },
+    {
+      "scenarioId": "normal-383",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 18,
+      "features": {
+        "transactionCount": 40,
+        "totalAmount": 9057600,
+        "averageAmount": 226440,
+        "failedTransactions": 1,
+        "failureRate": 0.025,
+        "transactionsPerMinute": 8,
+        "newCustomerTransactions": 9,
+        "newCustomerRatio": 0.225
+      }
+    },
+    {
+      "scenarioId": "normal-2",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 19,
+      "features": {
+        "transactionCount": 32,
+        "totalAmount": 7868400,
+        "averageAmount": 245887.5,
+        "failedTransactions": 4,
+        "failureRate": 0.125,
+        "transactionsPerMinute": 6.4,
+        "newCustomerTransactions": 1,
+        "newCustomerRatio": 0.03125
+      }
+    },
+    {
+      "scenarioId": "normal-583",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 19,
+      "features": {
+        "transactionCount": 35,
+        "totalAmount": 8759800,
+        "averageAmount": 250280,
+        "failedTransactions": 4,
+        "failureRate": 0.11428571428571428,
+        "transactionsPerMinute": 7,
+        "newCustomerTransactions": 3,
+        "newCustomerRatio": 0.08571428571428572
+      }
+    },
+    {
+      "scenarioId": "normal-612",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 3,
+      "features": {
+        "transactionCount": 35,
+        "totalAmount": 7961600,
+        "averageAmount": 227474.2857142857,
+        "failedTransactions": 1,
+        "failureRate": 0.02857142857142857,
+        "transactionsPerMinute": 7,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.11428571428571428
+      }
+    },
+    {
+      "scenarioId": "normal-397",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 39,
+      "features": {
+        "transactionCount": 39,
+        "totalAmount": 8722100,
+        "averageAmount": 223643.58974358975,
+        "failedTransactions": 6,
+        "failureRate": 0.15384615384615385,
+        "transactionsPerMinute": 7.8,
+        "newCustomerTransactions": 12,
+        "newCustomerRatio": 0.3076923076923077
+      }
+    },
+    {
+      "scenarioId": "normal-120",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 2,
+      "features": {
+        "transactionCount": 36,
+        "totalAmount": 6795200,
+        "averageAmount": 188755.55555555556,
+        "failedTransactions": 1,
+        "failureRate": 0.027777777777777776,
+        "transactionsPerMinute": 7.2,
+        "newCustomerTransactions": 5,
+        "newCustomerRatio": 0.1388888888888889
+      }
+    },
+    {
+      "scenarioId": "normal-613",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 6,
+      "features": {
+        "transactionCount": 37,
+        "totalAmount": 6363400,
+        "averageAmount": 171983.7837837838,
+        "failedTransactions": 3,
+        "failureRate": 0.08108108108108109,
+        "transactionsPerMinute": 7.4,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.10810810810810811
+      }
+    },
+    {
+      "scenarioId": "normal-532",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 29,
+      "features": {
+        "transactionCount": 48,
+        "totalAmount": 9926000,
+        "averageAmount": 206791.66666666666,
+        "failedTransactions": 4,
+        "failureRate": 0.08333333333333333,
+        "transactionsPerMinute": 9.6,
+        "newCustomerTransactions": 11,
+        "newCustomerRatio": 0.22916666666666666
+      }
+    },
+    {
+      "scenarioId": "normal-125",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 22,
+      "features": {
+        "transactionCount": 45,
+        "totalAmount": 7979400,
+        "averageAmount": 177320,
+        "failedTransactions": 5,
+        "failureRate": 0.1111111111111111,
+        "transactionsPerMinute": 9,
+        "newCustomerTransactions": 2,
+        "newCustomerRatio": 0.044444444444444446
+      }
+    },
+    {
+      "scenarioId": "normal-330",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 8,
+      "features": {
+        "transactionCount": 22,
+        "totalAmount": 3422300,
+        "averageAmount": 155559.0909090909,
+        "failedTransactions": 0,
+        "failureRate": 0,
+        "transactionsPerMinute": 4.4,
+        "newCustomerTransactions": 5,
+        "newCustomerRatio": 0.22727272727272727
+      }
+    },
+    {
+      "scenarioId": "normal-498",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 7,
+      "features": {
+        "transactionCount": 38,
+        "totalAmount": 8239200,
+        "averageAmount": 216821.05263157896,
+        "failedTransactions": 3,
+        "failureRate": 0.07894736842105263,
+        "transactionsPerMinute": 7.6,
+        "newCustomerTransactions": 2,
+        "newCustomerRatio": 0.05263157894736842
+      }
+    },
+    {
+      "scenarioId": "normal-437",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 12,
+      "features": {
+        "transactionCount": 33,
+        "totalAmount": 8518400,
+        "averageAmount": 258133.33333333334,
+        "failedTransactions": 1,
+        "failureRate": 0.030303030303030304,
+        "transactionsPerMinute": 6.6,
+        "newCustomerTransactions": 3,
+        "newCustomerRatio": 0.09090909090909091
+      }
+    },
+    {
+      "scenarioId": "normal-53",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 15,
+      "features": {
+        "transactionCount": 46,
+        "totalAmount": 9607300,
+        "averageAmount": 208854.34782608695,
+        "failedTransactions": 0,
+        "failureRate": 0,
+        "transactionsPerMinute": 9.2,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.08695652173913043
+      }
+    },
+    {
+      "scenarioId": "normal-427",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 37,
+      "features": {
+        "transactionCount": 41,
+        "totalAmount": 10924300,
+        "averageAmount": 266446.34146341466,
+        "failedTransactions": 6,
+        "failureRate": 0.14634146341463414,
+        "transactionsPerMinute": 8.2,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.0975609756097561
+      }
+    },
+    {
+      "scenarioId": "normal-680",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 0,
+      "features": {
+        "transactionCount": 26,
+        "totalAmount": 5534100,
+        "averageAmount": 212850,
+        "failedTransactions": 1,
+        "failureRate": 0.038461538461538464,
+        "transactionsPerMinute": 5.2,
+        "newCustomerTransactions": 3,
+        "newCustomerRatio": 0.11538461538461539
+      }
+    },
+    {
+      "scenarioId": "normal-234",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 0,
+      "features": {
+        "transactionCount": 32,
+        "totalAmount": 5950900,
+        "averageAmount": 185965.625,
+        "failedTransactions": 1,
+        "failureRate": 0.03125,
+        "transactionsPerMinute": 6.4,
+        "newCustomerTransactions": 3,
+        "newCustomerRatio": 0.09375
+      }
+    },
+    {
+      "scenarioId": "normal-526",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 4,
+      "features": {
+        "transactionCount": 36,
+        "totalAmount": 7387200,
+        "averageAmount": 205200,
+        "failedTransactions": 1,
+        "failureRate": 0.027777777777777776,
+        "transactionsPerMinute": 7.2,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.16666666666666666
+      }
+    },
+    {
+      "scenarioId": "normal-168",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 24,
+      "features": {
+        "transactionCount": 44,
+        "totalAmount": 11115400,
+        "averageAmount": 252622.72727272726,
+        "failedTransactions": 1,
+        "failureRate": 0.022727272727272728,
+        "transactionsPerMinute": 8.8,
+        "newCustomerTransactions": 7,
+        "newCustomerRatio": 0.1590909090909091
+      }
+    },
+    {
+      "scenarioId": "normal-107",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 9,
+      "features": {
+        "transactionCount": 38,
+        "totalAmount": 7326300,
+        "averageAmount": 192797.36842105264,
+        "failedTransactions": 0,
+        "failureRate": 0,
+        "transactionsPerMinute": 7.6,
+        "newCustomerTransactions": 7,
+        "newCustomerRatio": 0.18421052631578946
+      }
+    },
+    {
+      "scenarioId": "normal-226",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 33,
+      "features": {
+        "transactionCount": 44,
+        "totalAmount": 12324800,
+        "averageAmount": 280109.0909090909,
+        "failedTransactions": 0,
+        "failureRate": 0,
+        "transactionsPerMinute": 8.8,
+        "newCustomerTransactions": 7,
+        "newCustomerRatio": 0.1590909090909091
+      }
+    },
+    {
+      "scenarioId": "normal-657",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 12,
+      "features": {
+        "transactionCount": 38,
+        "totalAmount": 7010900,
+        "averageAmount": 184497.36842105264,
+        "failedTransactions": 4,
+        "failureRate": 0.10526315789473684,
+        "transactionsPerMinute": 7.6,
+        "newCustomerTransactions": 3,
+        "newCustomerRatio": 0.07894736842105263
+      }
+    },
+    {
+      "scenarioId": "normal-470",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 15,
+      "features": {
+        "transactionCount": 40,
+        "totalAmount": 9720100,
+        "averageAmount": 243002.5,
+        "failedTransactions": 2,
+        "failureRate": 0.05,
+        "transactionsPerMinute": 8,
+        "newCustomerTransactions": 2,
+        "newCustomerRatio": 0.05
+      }
+    },
+    {
+      "scenarioId": "normal-166",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 7,
+      "features": {
+        "transactionCount": 40,
+        "totalAmount": 8606200,
+        "averageAmount": 215155,
+        "failedTransactions": 2,
+        "failureRate": 0.05,
+        "transactionsPerMinute": 8,
+        "newCustomerTransactions": 5,
+        "newCustomerRatio": 0.125
+      }
+    },
+    {
+      "scenarioId": "normal-55",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 8,
+      "features": {
+        "transactionCount": 23,
+        "totalAmount": 5613800,
+        "averageAmount": 244078.26086956522,
+        "failedTransactions": 1,
+        "failureRate": 0.043478260869565216,
+        "transactionsPerMinute": 4.6,
+        "newCustomerTransactions": 2,
+        "newCustomerRatio": 0.08695652173913043
+      }
+    },
+    {
+      "scenarioId": "normal-538",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 18,
+      "features": {
+        "transactionCount": 32,
+        "totalAmount": 7209800,
+        "averageAmount": 225306.25,
+        "failedTransactions": 4,
+        "failureRate": 0.125,
+        "transactionsPerMinute": 6.4,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.1875
+      }
+    },
+    {
+      "scenarioId": "normal-351",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 8,
+      "features": {
+        "transactionCount": 34,
+        "totalAmount": 6661500,
+        "averageAmount": 195926.4705882353,
+        "failedTransactions": 3,
+        "failureRate": 0.08823529411764706,
+        "transactionsPerMinute": 6.8,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.17647058823529413
+      }
+    },
+    {
+      "scenarioId": "normal-68",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 17,
+      "features": {
+        "transactionCount": 47,
+        "totalAmount": 8796300,
+        "averageAmount": 187155.31914893616,
+        "failedTransactions": 1,
+        "failureRate": 0.02127659574468085,
+        "transactionsPerMinute": 9.4,
+        "newCustomerTransactions": 7,
+        "newCustomerRatio": 0.14893617021276595
+      }
+    },
+    {
+      "scenarioId": "normal-372",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 15,
+      "features": {
+        "transactionCount": 46,
+        "totalAmount": 10083400,
+        "averageAmount": 219204.34782608695,
+        "failedTransactions": 2,
+        "failureRate": 0.043478260869565216,
+        "transactionsPerMinute": 9.2,
+        "newCustomerTransactions": 5,
+        "newCustomerRatio": 0.10869565217391304
+      }
+    },
+    {
+      "scenarioId": "normal-376",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 10,
+      "features": {
+        "transactionCount": 27,
+        "totalAmount": 5085000,
+        "averageAmount": 188333.33333333334,
+        "failedTransactions": 2,
+        "failureRate": 0.07407407407407407,
+        "transactionsPerMinute": 5.4,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.2222222222222222
+      }
+    },
+    {
+      "scenarioId": "normal-58",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 28,
+      "features": {
+        "transactionCount": 28,
+        "totalAmount": 6124600,
+        "averageAmount": 218735.7142857143,
+        "failedTransactions": 4,
+        "failureRate": 0.14285714285714285,
+        "transactionsPerMinute": 5.6,
+        "newCustomerTransactions": 8,
+        "newCustomerRatio": 0.2857142857142857
+      }
+    },
+    {
+      "scenarioId": "normal-621",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 3,
+      "features": {
+        "transactionCount": 24,
+        "totalAmount": 5491800,
+        "averageAmount": 228825,
+        "failedTransactions": 1,
+        "failureRate": 0.041666666666666664,
+        "transactionsPerMinute": 4.8,
+        "newCustomerTransactions": 0,
+        "newCustomerRatio": 0
+      }
+    },
+    {
+      "scenarioId": "normal-480",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 16,
+      "features": {
+        "transactionCount": 32,
+        "totalAmount": 7403700,
+        "averageAmount": 231365.625,
+        "failedTransactions": 4,
+        "failureRate": 0.125,
+        "transactionsPerMinute": 6.4,
+        "newCustomerTransactions": 5,
+        "newCustomerRatio": 0.15625
+      }
+    },
+    {
+      "scenarioId": "normal-235",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 9,
+      "features": {
+        "transactionCount": 34,
+        "totalAmount": 8010500,
+        "averageAmount": 235602.9411764706,
+        "failedTransactions": 2,
+        "failureRate": 0.058823529411764705,
+        "transactionsPerMinute": 6.8,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.17647058823529413
+      }
+    },
+    {
+      "scenarioId": "normal-565",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 0,
+      "features": {
+        "transactionCount": 28,
+        "totalAmount": 5397900,
+        "averageAmount": 192782.14285714287,
+        "failedTransactions": 1,
+        "failureRate": 0.03571428571428571,
+        "transactionsPerMinute": 5.6,
+        "newCustomerTransactions": 3,
+        "newCustomerRatio": 0.10714285714285714
+      }
+    },
+    {
+      "scenarioId": "normal-388",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 33,
+      "features": {
+        "transactionCount": 22,
+        "totalAmount": 5416700,
+        "averageAmount": 246213.63636363635,
+        "failedTransactions": 4,
+        "failureRate": 0.18181818181818182,
+        "transactionsPerMinute": 4.4,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.18181818181818182
+      }
+    },
+    {
+      "scenarioId": "normal-552",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 2,
+      "features": {
+        "transactionCount": 31,
+        "totalAmount": 6416100,
+        "averageAmount": 206970.96774193548,
+        "failedTransactions": 2,
+        "failureRate": 0.06451612903225806,
+        "transactionsPerMinute": 6.2,
+        "newCustomerTransactions": 5,
+        "newCustomerRatio": 0.16129032258064516
+      }
+    },
+    {
+      "scenarioId": "normal-326",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 11,
+      "features": {
+        "transactionCount": 42,
+        "totalAmount": 7902600,
+        "averageAmount": 188157.14285714287,
+        "failedTransactions": 3,
+        "failureRate": 0.07142857142857142,
+        "transactionsPerMinute": 8.4,
+        "newCustomerTransactions": 2,
+        "newCustomerRatio": 0.047619047619047616
+      }
+    },
+    {
+      "scenarioId": "normal-428",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 11,
+      "features": {
+        "transactionCount": 43,
+        "totalAmount": 8751800,
+        "averageAmount": 203530.23255813954,
+        "failedTransactions": 1,
+        "failureRate": 0.023255813953488372,
+        "transactionsPerMinute": 8.6,
+        "newCustomerTransactions": 3,
+        "newCustomerRatio": 0.06976744186046512
+      }
+    },
+    {
+      "scenarioId": "normal-662",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 16,
+      "features": {
+        "transactionCount": 47,
+        "totalAmount": 8476400,
+        "averageAmount": 180348.93617021278,
+        "failedTransactions": 1,
+        "failureRate": 0.02127659574468085,
+        "transactionsPerMinute": 9.4,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.1276595744680851
+      }
+    },
+    {
+      "scenarioId": "normal-230",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 27,
+      "features": {
+        "transactionCount": 25,
+        "totalAmount": 5830300,
+        "averageAmount": 233212,
+        "failedTransactions": 4,
+        "failureRate": 0.16,
+        "transactionsPerMinute": 5,
+        "newCustomerTransactions": 5,
+        "newCustomerRatio": 0.2
+      }
+    },
+    {
+      "scenarioId": "normal-505",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 20,
+      "features": {
+        "transactionCount": 24,
+        "totalAmount": 6533300,
+        "averageAmount": 272220.8333333333,
+        "failedTransactions": 2,
+        "failureRate": 0.08333333333333333,
+        "transactionsPerMinute": 4.8,
+        "newCustomerTransactions": 1,
+        "newCustomerRatio": 0.041666666666666664
+      }
+    },
+    {
+      "scenarioId": "normal-542",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 6,
+      "features": {
+        "transactionCount": 39,
+        "totalAmount": 7874000,
+        "averageAmount": 201897.4358974359,
+        "failedTransactions": 1,
+        "failureRate": 0.02564102564102564,
+        "transactionsPerMinute": 7.8,
+        "newCustomerTransactions": 5,
+        "newCustomerRatio": 0.1282051282051282
+      }
+    },
+    {
+      "scenarioId": "normal-244",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 4,
+      "features": {
+        "transactionCount": 24,
+        "totalAmount": 5015400,
+        "averageAmount": 208975,
+        "failedTransactions": 2,
+        "failureRate": 0.08333333333333333,
+        "transactionsPerMinute": 4.8,
+        "newCustomerTransactions": 3,
+        "newCustomerRatio": 0.125
+      }
+    },
+    {
+      "scenarioId": "normal-154",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 26,
+      "features": {
+        "transactionCount": 45,
+        "totalAmount": 8543600,
+        "averageAmount": 189857.77777777778,
+        "failedTransactions": 6,
+        "failureRate": 0.13333333333333333,
+        "transactionsPerMinute": 9,
+        "newCustomerTransactions": 3,
+        "newCustomerRatio": 0.06666666666666667
+      }
+    },
+    {
+      "scenarioId": "normal-335",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 6,
+      "features": {
+        "transactionCount": 31,
+        "totalAmount": 5750400,
+        "averageAmount": 185496.7741935484,
+        "failedTransactions": 3,
+        "failureRate": 0.0967741935483871,
+        "transactionsPerMinute": 6.2,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.12903225806451613
+      }
+    },
+    {
+      "scenarioId": "normal-453",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 1,
+      "features": {
+        "transactionCount": 35,
+        "totalAmount": 6722100,
+        "averageAmount": 192060,
+        "failedTransactions": 1,
+        "failureRate": 0.02857142857142857,
+        "transactionsPerMinute": 7,
+        "newCustomerTransactions": 2,
+        "newCustomerRatio": 0.05714285714285714
+      }
+    },
+    {
+      "scenarioId": "normal-549",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 17,
+      "features": {
+        "transactionCount": 25,
+        "totalAmount": 6431500,
+        "averageAmount": 257260,
+        "failedTransactions": 2,
+        "failureRate": 0.08,
+        "transactionsPerMinute": 5,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.16
+      }
+    },
+    {
+      "scenarioId": "normal-254",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 31,
+      "features": {
+        "transactionCount": 42,
+        "totalAmount": 9208900,
+        "averageAmount": 219259.52380952382,
+        "failedTransactions": 7,
+        "failureRate": 0.16666666666666666,
+        "transactionsPerMinute": 8.4,
+        "newCustomerTransactions": 7,
+        "newCustomerRatio": 0.16666666666666666
+      }
+    },
+    {
+      "scenarioId": "normal-74",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 11,
+      "features": {
+        "transactionCount": 31,
+        "totalAmount": 7356700,
+        "averageAmount": 237312.90322580645,
+        "failedTransactions": 2,
+        "failureRate": 0.06451612903225806,
+        "transactionsPerMinute": 6.2,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.1935483870967742
+      }
+    },
+    {
+      "scenarioId": "normal-111",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 15,
+      "features": {
+        "transactionCount": 46,
+        "totalAmount": 8312600,
+        "averageAmount": 180708.69565217392,
+        "failedTransactions": 1,
+        "failureRate": 0.021739130434782608,
+        "transactionsPerMinute": 9.2,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.13043478260869565
+      }
+    },
+    {
+      "scenarioId": "normal-503",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 21,
+      "features": {
+        "transactionCount": 48,
+        "totalAmount": 10165300,
+        "averageAmount": 211777.08333333334,
+        "failedTransactions": 4,
+        "failureRate": 0.08333333333333333,
+        "transactionsPerMinute": 9.6,
+        "newCustomerTransactions": 2,
+        "newCustomerRatio": 0.041666666666666664
+      }
+    },
+    {
+      "scenarioId": "normal-502",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 15,
+      "features": {
+        "transactionCount": 46,
+        "totalAmount": 9325300,
+        "averageAmount": 202723.91304347827,
+        "failedTransactions": 2,
+        "failureRate": 0.043478260869565216,
+        "transactionsPerMinute": 9.2,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.13043478260869565
+      }
+    },
+    {
+      "scenarioId": "normal-227",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 37,
+      "features": {
+        "transactionCount": 46,
+        "totalAmount": 11665900,
+        "averageAmount": 253606.52173913043,
+        "failedTransactions": 6,
+        "failureRate": 0.13043478260869565,
+        "transactionsPerMinute": 9.2,
+        "newCustomerTransactions": 5,
+        "newCustomerRatio": 0.10869565217391304
+      }
+    },
+    {
+      "scenarioId": "normal-222",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 29,
+      "features": {
+        "transactionCount": 37,
+        "totalAmount": 9688600,
+        "averageAmount": 261854.05405405405,
+        "failedTransactions": 4,
+        "failureRate": 0.10810810810810811,
+        "transactionsPerMinute": 7.4,
+        "newCustomerTransactions": 7,
+        "newCustomerRatio": 0.1891891891891892
+      }
+    },
+    {
+      "scenarioId": "normal-435",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 7,
+      "features": {
+        "transactionCount": 29,
+        "totalAmount": 6904800,
+        "averageAmount": 238096.55172413794,
+        "failedTransactions": 2,
+        "failureRate": 0.06896551724137931,
+        "transactionsPerMinute": 5.8,
+        "newCustomerTransactions": 3,
+        "newCustomerRatio": 0.10344827586206896
+      }
+    },
+    {
+      "scenarioId": "normal-90",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 17,
+      "features": {
+        "transactionCount": 34,
+        "totalAmount": 8658500,
+        "averageAmount": 254661.76470588235,
+        "failedTransactions": 0,
+        "failureRate": 0,
+        "transactionsPerMinute": 6.8,
+        "newCustomerTransactions": 7,
+        "newCustomerRatio": 0.20588235294117646
+      }
+    },
+    {
+      "scenarioId": "normal-473",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 18,
+      "features": {
+        "transactionCount": 46,
+        "totalAmount": 9510800,
+        "averageAmount": 206756.52173913043,
+        "failedTransactions": 3,
+        "failureRate": 0.06521739130434782,
+        "transactionsPerMinute": 9.2,
+        "newCustomerTransactions": 8,
+        "newCustomerRatio": 0.17391304347826086
+      }
+    },
+    {
+      "scenarioId": "normal-591",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 0,
+      "features": {
+        "transactionCount": 23,
+        "totalAmount": 4117700,
+        "averageAmount": 179030.4347826087,
+        "failedTransactions": 1,
+        "failureRate": 0.043478260869565216,
+        "transactionsPerMinute": 4.6,
+        "newCustomerTransactions": 0,
+        "newCustomerRatio": 0
+      }
+    },
+    {
+      "scenarioId": "normal-250",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 8,
+      "features": {
+        "transactionCount": 35,
+        "totalAmount": 8029500,
+        "averageAmount": 229414.2857142857,
+        "failedTransactions": 3,
+        "failureRate": 0.08571428571428572,
+        "transactionsPerMinute": 7,
+        "newCustomerTransactions": 2,
+        "newCustomerRatio": 0.05714285714285714
+      }
+    },
+    {
+      "scenarioId": "normal-559",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 20,
+      "features": {
+        "transactionCount": 44,
+        "totalAmount": 9987600,
+        "averageAmount": 226990.9090909091,
+        "failedTransactions": 4,
+        "failureRate": 0.09090909090909091,
+        "transactionsPerMinute": 8.8,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.13636363636363635
+      }
+    },
+    {
+      "scenarioId": "normal-334",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 15,
+      "features": {
+        "transactionCount": 30,
+        "totalAmount": 7427100,
+        "averageAmount": 247570,
+        "failedTransactions": 2,
+        "failureRate": 0.06666666666666667,
+        "transactionsPerMinute": 6,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.2
+      }
+    },
+    {
+      "scenarioId": "normal-432",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 15,
+      "features": {
+        "transactionCount": 23,
+        "totalAmount": 6143500,
+        "averageAmount": 267108.6956521739,
+        "failedTransactions": 1,
+        "failureRate": 0.043478260869565216,
+        "transactionsPerMinute": 4.6,
+        "newCustomerTransactions": 1,
+        "newCustomerRatio": 0.043478260869565216
+      }
+    },
+    {
+      "scenarioId": "normal-294",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 13,
+      "features": {
+        "transactionCount": 36,
+        "totalAmount": 8786800,
+        "averageAmount": 244077.77777777778,
+        "failedTransactions": 3,
+        "failureRate": 0.08333333333333333,
+        "transactionsPerMinute": 7.2,
+        "newCustomerTransactions": 2,
+        "newCustomerRatio": 0.05555555555555555
+      }
+    },
+    {
+      "scenarioId": "normal-132",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 7,
+      "features": {
+        "transactionCount": 31,
+        "totalAmount": 6875400,
+        "averageAmount": 221787.09677419355,
+        "failedTransactions": 3,
+        "failureRate": 0.0967741935483871,
+        "transactionsPerMinute": 6.2,
+        "newCustomerTransactions": 3,
+        "newCustomerRatio": 0.0967741935483871
+      }
+    },
+    {
+      "scenarioId": "normal-677",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 24,
+      "features": {
+        "transactionCount": 48,
+        "totalAmount": 9460000,
+        "averageAmount": 197083.33333333334,
+        "failedTransactions": 0,
+        "failureRate": 0,
+        "transactionsPerMinute": 9.6,
+        "newCustomerTransactions": 10,
+        "newCustomerRatio": 0.20833333333333334
+      }
+    },
+    {
+      "scenarioId": "normal-492",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 9,
+      "features": {
+        "transactionCount": 27,
+        "totalAmount": 5182500,
+        "averageAmount": 191944.44444444444,
+        "failedTransactions": 3,
+        "failureRate": 0.1111111111111111,
+        "transactionsPerMinute": 5.4,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.14814814814814814
+      }
+    },
+    {
+      "scenarioId": "normal-373",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 40,
+      "features": {
+        "transactionCount": 48,
+        "totalAmount": 11819700,
+        "averageAmount": 246243.75,
+        "failedTransactions": 7,
+        "failureRate": 0.14583333333333334,
+        "transactionsPerMinute": 9.6,
+        "newCustomerTransactions": 5,
+        "newCustomerRatio": 0.10416666666666667
+      }
+    },
+    {
+      "scenarioId": "normal-462",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 41,
+      "features": {
+        "transactionCount": 25,
+        "totalAmount": 4959000,
+        "averageAmount": 198360,
+        "failedTransactions": 5,
+        "failureRate": 0.2,
+        "transactionsPerMinute": 5,
+        "newCustomerTransactions": 8,
+        "newCustomerRatio": 0.32
+      }
+    },
+    {
+      "scenarioId": "normal-215",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 17,
+      "features": {
+        "transactionCount": 24,
+        "totalAmount": 5720500,
+        "averageAmount": 238354.16666666666,
+        "failedTransactions": 3,
+        "failureRate": 0.125,
+        "transactionsPerMinute": 4.8,
+        "newCustomerTransactions": 3,
+        "newCustomerRatio": 0.125
+      }
+    },
+    {
+      "scenarioId": "normal-472",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 19,
+      "features": {
+        "transactionCount": 44,
+        "totalAmount": 8103400,
+        "averageAmount": 184168.18181818182,
+        "failedTransactions": 3,
+        "failureRate": 0.06818181818181818,
+        "transactionsPerMinute": 8.8,
+        "newCustomerTransactions": 9,
+        "newCustomerRatio": 0.20454545454545456
+      }
+    },
+    {
+      "scenarioId": "normal-298",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 28,
+      "features": {
+        "transactionCount": 43,
+        "totalAmount": 8157500,
+        "averageAmount": 189709.3023255814,
+        "failedTransactions": 7,
+        "failureRate": 0.16279069767441862,
+        "transactionsPerMinute": 8.6,
+        "newCustomerTransactions": 2,
+        "newCustomerRatio": 0.046511627906976744
+      }
+    },
+    {
+      "scenarioId": "normal-501",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 21,
+      "features": {
+        "transactionCount": 44,
+        "totalAmount": 8745400,
+        "averageAmount": 198759.0909090909,
+        "failedTransactions": 5,
+        "failureRate": 0.11363636363636363,
+        "transactionsPerMinute": 8.8,
+        "newCustomerTransactions": 5,
+        "newCustomerRatio": 0.11363636363636363
+      }
+    },
+    {
+      "scenarioId": "normal-607",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 25,
+      "features": {
+        "transactionCount": 25,
+        "totalAmount": 6492800,
+        "averageAmount": 259712,
+        "failedTransactions": 2,
+        "failureRate": 0.08,
+        "transactionsPerMinute": 5,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.24
+      }
+    },
+    {
+      "scenarioId": "normal-105",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 17,
+      "features": {
+        "transactionCount": 35,
+        "totalAmount": 9510700,
+        "averageAmount": 271734.28571428574,
+        "failedTransactions": 0,
+        "failureRate": 0,
+        "transactionsPerMinute": 7,
+        "newCustomerTransactions": 2,
+        "newCustomerRatio": 0.05714285714285714
+      }
+    },
+    {
+      "scenarioId": "normal-408",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 7,
+      "features": {
+        "transactionCount": 32,
+        "totalAmount": 5308600,
+        "averageAmount": 165893.75,
+        "failedTransactions": 3,
+        "failureRate": 0.09375,
+        "transactionsPerMinute": 6.4,
+        "newCustomerTransactions": 5,
+        "newCustomerRatio": 0.15625
+      }
+    },
+    {
+      "scenarioId": "normal-431",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 43,
+      "features": {
+        "transactionCount": 48,
+        "totalAmount": 11686900,
+        "averageAmount": 243477.08333333334,
+        "failedTransactions": 8,
+        "failureRate": 0.16666666666666666,
+        "transactionsPerMinute": 9.6,
+        "newCustomerTransactions": 2,
+        "newCustomerRatio": 0.041666666666666664
+      }
+    },
+    {
+      "scenarioId": "normal-439",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 5,
+      "features": {
+        "transactionCount": 36,
+        "totalAmount": 7011500,
+        "averageAmount": 194763.88888888888,
+        "failedTransactions": 3,
+        "failureRate": 0.08333333333333333,
+        "transactionsPerMinute": 7.2,
+        "newCustomerTransactions": 1,
+        "newCustomerRatio": 0.027777777777777776
+      }
+    },
+    {
+      "scenarioId": "normal-360",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 0,
+      "features": {
+        "transactionCount": 24,
+        "totalAmount": 4690100,
+        "averageAmount": 195420.83333333334,
+        "failedTransactions": 0,
+        "failureRate": 0,
+        "transactionsPerMinute": 4.8,
+        "newCustomerTransactions": 2,
+        "newCustomerRatio": 0.08333333333333333
+      }
+    },
+    {
+      "scenarioId": "normal-630",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 31,
+      "features": {
+        "transactionCount": 41,
+        "totalAmount": 8952900,
+        "averageAmount": 218363.41463414635,
+        "failedTransactions": 4,
+        "failureRate": 0.0975609756097561,
+        "transactionsPerMinute": 8.2,
+        "newCustomerTransactions": 13,
+        "newCustomerRatio": 0.3170731707317073
+      }
+    },
+    {
+      "scenarioId": "normal-212",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 29,
+      "features": {
+        "transactionCount": 45,
+        "totalAmount": 11991100,
+        "averageAmount": 266468.8888888889,
+        "failedTransactions": 3,
+        "failureRate": 0.06666666666666667,
+        "transactionsPerMinute": 9,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.13333333333333333
+      }
+    },
+    {
+      "scenarioId": "normal-200",
+      "actual": "NORMAL",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "features": {
+        "transactionCount": 23,
+        "totalAmount": 4496800,
+        "averageAmount": 195513.04347826086,
+        "failedTransactions": 5,
+        "failureRate": 0.21739130434782608,
+        "transactionsPerMinute": 4.6,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.17391304347826086
+      }
+    },
+    {
+      "scenarioId": "normal-516",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 24,
+      "features": {
+        "transactionCount": 45,
+        "totalAmount": 8722400,
+        "averageAmount": 193831.11111111112,
+        "failedTransactions": 4,
+        "failureRate": 0.08888888888888889,
+        "transactionsPerMinute": 9,
+        "newCustomerTransactions": 9,
+        "newCustomerRatio": 0.2
+      }
+    },
+    {
+      "scenarioId": "normal-10",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 16,
+      "features": {
+        "transactionCount": 47,
+        "totalAmount": 9470200,
+        "averageAmount": 201493.6170212766,
+        "failedTransactions": 3,
+        "failureRate": 0.06382978723404255,
+        "transactionsPerMinute": 9.4,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.1276595744680851
+      }
+    },
+    {
+      "scenarioId": "normal-639",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 8,
+      "features": {
+        "transactionCount": 31,
+        "totalAmount": 5948200,
+        "averageAmount": 191877.4193548387,
+        "failedTransactions": 0,
+        "failureRate": 0,
+        "transactionsPerMinute": 6.2,
+        "newCustomerTransactions": 7,
+        "newCustomerRatio": 0.22580645161290322
+      }
+    },
+    {
+      "scenarioId": "normal-381",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 2,
+      "features": {
+        "transactionCount": 36,
+        "totalAmount": 7480800,
+        "averageAmount": 207800,
+        "failedTransactions": 2,
+        "failureRate": 0.05555555555555555,
+        "transactionsPerMinute": 7.2,
+        "newCustomerTransactions": 3,
+        "newCustomerRatio": 0.08333333333333333
+      }
+    },
+    {
+      "scenarioId": "normal-679",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 2,
+      "features": {
+        "transactionCount": 25,
+        "totalAmount": 5282300,
+        "averageAmount": 211292,
+        "failedTransactions": 1,
+        "failureRate": 0.04,
+        "transactionsPerMinute": 5,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.16
+      }
+    },
+    {
+      "scenarioId": "normal-309",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 6,
+      "features": {
+        "transactionCount": 37,
+        "totalAmount": 8083700,
+        "averageAmount": 218478.37837837837,
+        "failedTransactions": 3,
+        "failureRate": 0.08108108108108109,
+        "transactionsPerMinute": 7.4,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.10810810810810811
+      }
+    },
+    {
+      "scenarioId": "normal-4",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 15,
+      "features": {
+        "transactionCount": 36,
+        "totalAmount": 7570700,
+        "averageAmount": 210297.22222222222,
+        "failedTransactions": 5,
+        "failureRate": 0.1388888888888889,
+        "transactionsPerMinute": 7.2,
+        "newCustomerTransactions": 5,
+        "newCustomerRatio": 0.1388888888888889
+      }
+    },
+    {
+      "scenarioId": "normal-208",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 24,
+      "features": {
+        "transactionCount": 38,
+        "totalAmount": 7245400,
+        "averageAmount": 190668.42105263157,
+        "failedTransactions": 4,
+        "failureRate": 0.10526315789473684,
+        "transactionsPerMinute": 7.6,
+        "newCustomerTransactions": 10,
+        "newCustomerRatio": 0.2631578947368421
+      }
+    },
+    {
+      "scenarioId": "normal-572",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 20,
+      "features": {
+        "transactionCount": 41,
+        "totalAmount": 10135500,
+        "averageAmount": 247207.31707317074,
+        "failedTransactions": 0,
+        "failureRate": 0,
+        "transactionsPerMinute": 8.2,
+        "newCustomerTransactions": 7,
+        "newCustomerRatio": 0.17073170731707318
+      }
+    },
+    {
+      "scenarioId": "normal-59",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 9,
+      "features": {
+        "transactionCount": 30,
+        "totalAmount": 6490400,
+        "averageAmount": 216346.66666666666,
+        "failedTransactions": 0,
+        "failureRate": 0,
+        "transactionsPerMinute": 6,
+        "newCustomerTransactions": 7,
+        "newCustomerRatio": 0.23333333333333334
+      }
+    },
+    {
+      "scenarioId": "normal-104",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 9,
+      "features": {
+        "transactionCount": 33,
+        "totalAmount": 7749600,
+        "averageAmount": 234836.36363636365,
+        "failedTransactions": 1,
+        "failureRate": 0.030303030303030304,
+        "transactionsPerMinute": 6.6,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.18181818181818182
+      }
+    },
+    {
+      "scenarioId": "normal-455",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 28,
+      "features": {
+        "transactionCount": 39,
+        "totalAmount": 9331700,
+        "averageAmount": 239274.35897435897,
+        "failedTransactions": 6,
+        "failureRate": 0.15384615384615385,
+        "transactionsPerMinute": 7.8,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.10256410256410256
+      }
+    },
+    {
+      "scenarioId": "normal-285",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 26,
+      "features": {
+        "transactionCount": 46,
+        "totalAmount": 11571500,
+        "averageAmount": 251554.34782608695,
+        "failedTransactions": 2,
+        "failureRate": 0.043478260869565216,
+        "transactionsPerMinute": 9.2,
+        "newCustomerTransactions": 7,
+        "newCustomerRatio": 0.15217391304347827
+      }
+    },
+    {
+      "scenarioId": "normal-194",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 6,
+      "features": {
+        "transactionCount": 39,
+        "totalAmount": 7466900,
+        "averageAmount": 191458.97435897434,
+        "failedTransactions": 1,
+        "failureRate": 0.02564102564102564,
+        "transactionsPerMinute": 7.8,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.10256410256410256
+      }
+    },
+    {
+      "scenarioId": "normal-338",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 13,
+      "features": {
+        "transactionCount": 37,
+        "totalAmount": 8749400,
+        "averageAmount": 236470.27027027027,
+        "failedTransactions": 0,
+        "failureRate": 0,
+        "transactionsPerMinute": 7.4,
+        "newCustomerTransactions": 7,
+        "newCustomerRatio": 0.1891891891891892
+      }
+    },
+    {
+      "scenarioId": "normal-286",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 21,
+      "features": {
+        "transactionCount": 48,
+        "totalAmount": 9111300,
+        "averageAmount": 189818.75,
+        "failedTransactions": 4,
+        "failureRate": 0.08333333333333333,
+        "transactionsPerMinute": 9.6,
+        "newCustomerTransactions": 7,
+        "newCustomerRatio": 0.14583333333333334
+      }
+    },
+    {
+      "scenarioId": "normal-450",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 11,
+      "features": {
+        "transactionCount": 30,
+        "totalAmount": 6987400,
+        "averageAmount": 232913.33333333334,
+        "failedTransactions": 2,
+        "failureRate": 0.06666666666666667,
+        "transactionsPerMinute": 6,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.2
+      }
+    },
+    {
+      "scenarioId": "normal-675",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 22,
+      "features": {
+        "transactionCount": 44,
+        "totalAmount": 10697600,
+        "averageAmount": 243127.27272727274,
+        "failedTransactions": 1,
+        "failureRate": 0.022727272727272728,
+        "transactionsPerMinute": 8.8,
+        "newCustomerTransactions": 7,
+        "newCustomerRatio": 0.1590909090909091
+      }
+    },
+    {
+      "scenarioId": "normal-648",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 17,
+      "features": {
+        "transactionCount": 48,
+        "totalAmount": 8627900,
+        "averageAmount": 179747.91666666666,
+        "failedTransactions": 1,
+        "failureRate": 0.020833333333333332,
+        "transactionsPerMinute": 9.6,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.08333333333333333
+      }
+    },
+    {
+      "scenarioId": "normal-276",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 38,
+      "features": {
+        "transactionCount": 29,
+        "totalAmount": 8428700,
+        "averageAmount": 290644.8275862069,
+        "failedTransactions": 4,
+        "failureRate": 0.13793103448275862,
+        "transactionsPerMinute": 5.8,
+        "newCustomerTransactions": 5,
+        "newCustomerRatio": 0.1724137931034483
+      }
+    },
+    {
+      "scenarioId": "normal-655",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 13,
+      "features": {
+        "transactionCount": 34,
+        "totalAmount": 7817200,
+        "averageAmount": 229917.64705882352,
+        "failedTransactions": 1,
+        "failureRate": 0.029411764705882353,
+        "transactionsPerMinute": 6.8,
+        "newCustomerTransactions": 8,
+        "newCustomerRatio": 0.23529411764705882
+      }
+    },
+    {
+      "scenarioId": "normal-271",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 33,
+      "features": {
+        "transactionCount": 47,
+        "totalAmount": 12421600,
+        "averageAmount": 264289.3617021277,
+        "failedTransactions": 2,
+        "failureRate": 0.0425531914893617,
+        "transactionsPerMinute": 9.4,
+        "newCustomerTransactions": 8,
+        "newCustomerRatio": 0.1702127659574468
+      }
+    },
+    {
+      "scenarioId": "normal-315",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 27,
+      "features": {
+        "transactionCount": 48,
+        "totalAmount": 11283600,
+        "averageAmount": 235075,
+        "failedTransactions": 1,
+        "failureRate": 0.020833333333333332,
+        "transactionsPerMinute": 9.6,
+        "newCustomerTransactions": 9,
+        "newCustomerRatio": 0.1875
+      }
+    },
+    {
+      "scenarioId": "normal-479",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 11,
+      "features": {
+        "transactionCount": 30,
+        "totalAmount": 6665200,
+        "averageAmount": 222173.33333333334,
+        "failedTransactions": 2,
+        "failureRate": 0.06666666666666667,
+        "transactionsPerMinute": 6,
+        "newCustomerTransactions": 7,
+        "newCustomerRatio": 0.23333333333333334
+      }
+    },
+    {
+      "scenarioId": "normal-50",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 15,
+      "features": {
+        "transactionCount": 40,
+        "totalAmount": 9721700,
+        "averageAmount": 243042.5,
+        "failedTransactions": 2,
+        "failureRate": 0.05,
+        "transactionsPerMinute": 8,
+        "newCustomerTransactions": 0,
+        "newCustomerRatio": 0
+      }
+    },
+    {
+      "scenarioId": "normal-664",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 3,
+      "features": {
+        "transactionCount": 24,
+        "totalAmount": 5466700,
+        "averageAmount": 227779.16666666666,
+        "failedTransactions": 1,
+        "failureRate": 0.041666666666666664,
+        "transactionsPerMinute": 4.8,
+        "newCustomerTransactions": 0,
+        "newCustomerRatio": 0
+      }
+    },
+    {
+      "scenarioId": "normal-512",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 5,
+      "features": {
+        "transactionCount": 37,
+        "totalAmount": 7524200,
+        "averageAmount": 203356.75675675675,
+        "failedTransactions": 1,
+        "failureRate": 0.02702702702702703,
+        "transactionsPerMinute": 7.4,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.16216216216216217
+      }
+    },
+    {
+      "scenarioId": "normal-27",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 41,
+      "features": {
+        "transactionCount": 24,
+        "totalAmount": 6157900,
+        "averageAmount": 256579.16666666666,
+        "failedTransactions": 3,
+        "failureRate": 0.125,
+        "transactionsPerMinute": 4.8,
+        "newCustomerTransactions": 8,
+        "newCustomerRatio": 0.3333333333333333
+      }
+    },
+    {
+      "scenarioId": "normal-541",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 3,
+      "features": {
+        "transactionCount": 37,
+        "totalAmount": 7491300,
+        "averageAmount": 202467.56756756757,
+        "failedTransactions": 1,
+        "failureRate": 0.02702702702702703,
+        "transactionsPerMinute": 7.4,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.10810810810810811
+      }
+    },
+    {
+      "scenarioId": "normal-412",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 10,
+      "features": {
+        "transactionCount": 40,
+        "totalAmount": 8939300,
+        "averageAmount": 223482.5,
+        "failedTransactions": 2,
+        "failureRate": 0.05,
+        "transactionsPerMinute": 8,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.15
+      }
+    },
+    {
+      "scenarioId": "normal-380",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 15,
+      "features": {
+        "transactionCount": 34,
+        "totalAmount": 6545300,
+        "averageAmount": 192508.82352941178,
+        "failedTransactions": 5,
+        "failureRate": 0.14705882352941177,
+        "transactionsPerMinute": 6.8,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.11764705882352941
+      }
+    },
+    {
+      "scenarioId": "normal-344",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 42,
+      "features": {
+        "transactionCount": 48,
+        "totalAmount": 11685500,
+        "averageAmount": 243447.91666666666,
+        "failedTransactions": 7,
+        "failureRate": 0.14583333333333334,
+        "transactionsPerMinute": 9.6,
+        "newCustomerTransactions": 8,
+        "newCustomerRatio": 0.16666666666666666
+      }
+    },
+    {
+      "scenarioId": "normal-78",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 10,
+      "features": {
+        "transactionCount": 38,
+        "totalAmount": 8647000,
+        "averageAmount": 227552.63157894736,
+        "failedTransactions": 3,
+        "failureRate": 0.07894736842105263,
+        "transactionsPerMinute": 7.6,
+        "newCustomerTransactions": 5,
+        "newCustomerRatio": 0.13157894736842105
+      }
+    },
+    {
+      "scenarioId": "normal-633",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 16,
+      "features": {
+        "transactionCount": 47,
+        "totalAmount": 9011700,
+        "averageAmount": 191738.29787234042,
+        "failedTransactions": 2,
+        "failureRate": 0.0425531914893617,
+        "transactionsPerMinute": 9.4,
+        "newCustomerTransactions": 1,
+        "newCustomerRatio": 0.02127659574468085
+      }
+    },
+    {
+      "scenarioId": "normal-442",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 25,
+      "features": {
+        "transactionCount": 42,
+        "totalAmount": 11219100,
+        "averageAmount": 267121.4285714286,
+        "failedTransactions": 2,
+        "failureRate": 0.047619047619047616,
+        "transactionsPerMinute": 8.4,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.14285714285714285
+      }
+    },
+    {
+      "scenarioId": "normal-379",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 11,
+      "features": {
+        "transactionCount": 32,
+        "totalAmount": 5459100,
+        "averageAmount": 170596.875,
+        "failedTransactions": 4,
+        "failureRate": 0.125,
+        "transactionsPerMinute": 6.4,
+        "newCustomerTransactions": 2,
+        "newCustomerRatio": 0.0625
+      }
+    },
+    {
+      "scenarioId": "normal-11",
+      "actual": "NORMAL",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "features": {
+        "transactionCount": 22,
+        "totalAmount": 5368600,
+        "averageAmount": 244027.27272727274,
+        "failedTransactions": 5,
+        "failureRate": 0.22727272727272727,
+        "transactionsPerMinute": 4.4,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.2727272727272727
+      }
+    },
+    {
+      "scenarioId": "normal-14",
+      "actual": "NORMAL",
+      "predicted": "NORMAL",
+      "riskScore": 8,
+      "features": {
+        "transactionCount": 27,
+        "totalAmount": 6337500,
+        "averageAmount": 234722.22222222222,
+        "failedTransactions": 2,
+        "failureRate": 0.07407407407407407,
+        "transactionsPerMinute": 5.4,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.14814814814814814
+      }
+    },
+    {
+      "scenarioId": "suspicious-886",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 87,
+      "pattern": "VELOCITY_SPIKE",
+      "features": {
+        "transactionCount": 99,
+        "totalAmount": 31261400,
+        "averageAmount": 315771.71717171714,
+        "failedTransactions": 16,
+        "failureRate": 0.16161616161616163,
+        "transactionsPerMinute": 19.8,
+        "newCustomerTransactions": 29,
+        "newCustomerRatio": 0.29292929292929293
+      }
+    },
+    {
+      "scenarioId": "suspicious-916",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "pattern": "VELOCITY_SPIKE",
+      "features": {
+        "transactionCount": 83,
+        "totalAmount": 17972200,
+        "averageAmount": 216532.53012048194,
+        "failedTransactions": 9,
+        "failureRate": 0.10843373493975904,
+        "transactionsPerMinute": 16.6,
+        "newCustomerTransactions": 13,
+        "newCustomerRatio": 0.1566265060240964
+      }
+    },
+    {
+      "scenarioId": "suspicious-892",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "pattern": "VELOCITY_SPIKE",
+      "features": {
+        "transactionCount": 86,
+        "totalAmount": 19629800,
+        "averageAmount": 228253.48837209304,
+        "failedTransactions": 9,
+        "failureRate": 0.10465116279069768,
+        "transactionsPerMinute": 17.2,
+        "newCustomerTransactions": 10,
+        "newCustomerRatio": 0.11627906976744186
+      }
+    },
+    {
+      "scenarioId": "suspicious-917",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 71,
+      "pattern": "AMOUNT_SPIKE",
+      "features": {
+        "transactionCount": 57,
+        "totalAmount": 27978900,
+        "averageAmount": 490857.8947368421,
+        "failedTransactions": 9,
+        "failureRate": 0.15789473684210525,
+        "transactionsPerMinute": 11.4,
+        "newCustomerTransactions": 7,
+        "newCustomerRatio": 0.12280701754385964
+      }
+    },
+    {
+      "scenarioId": "suspicious-769",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 62,
+      "pattern": "NEW_CUSTOMER_SPIKE",
+      "features": {
+        "transactionCount": 48,
+        "totalAmount": 16127800,
+        "averageAmount": 335995.8333333333,
+        "failedTransactions": 2,
+        "failureRate": 0.041666666666666664,
+        "transactionsPerMinute": 9.6,
+        "newCustomerTransactions": 33,
+        "newCustomerRatio": 0.6875
+      }
+    },
+    {
+      "scenarioId": "suspicious-992",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 97,
+      "pattern": "COMBINED_SPIKE",
+      "features": {
+        "transactionCount": 94,
+        "totalAmount": 46914900,
+        "averageAmount": 499094.6808510638,
+        "failedTransactions": 18,
+        "failureRate": 0.19148936170212766,
+        "transactionsPerMinute": 18.8,
+        "newCustomerTransactions": 56,
+        "newCustomerRatio": 0.5957446808510638
+      }
+    },
+    {
+      "scenarioId": "suspicious-898",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "pattern": "VELOCITY_SPIKE",
+      "features": {
+        "transactionCount": 74,
+        "totalAmount": 17737900,
+        "averageAmount": 239701.35135135136,
+        "failedTransactions": 10,
+        "failureRate": 0.13513513513513514,
+        "transactionsPerMinute": 14.8,
+        "newCustomerTransactions": 15,
+        "newCustomerRatio": 0.20270270270270271
+      }
+    },
+    {
+      "scenarioId": "suspicious-758",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 100,
+      "pattern": "COMBINED_SPIKE",
+      "features": {
+        "transactionCount": 68,
+        "totalAmount": 36925500,
+        "averageAmount": 543022.0588235294,
+        "failedTransactions": 20,
+        "failureRate": 0.29411764705882354,
+        "transactionsPerMinute": 13.6,
+        "newCustomerTransactions": 34,
+        "newCustomerRatio": 0.5
+      }
+    },
+    {
+      "scenarioId": "suspicious-887",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 78,
+      "pattern": "AMOUNT_SPIKE",
+      "features": {
+        "transactionCount": 54,
+        "totalAmount": 34064100,
+        "averageAmount": 630816.6666666666,
+        "failedTransactions": 12,
+        "failureRate": 0.2222222222222222,
+        "transactionsPerMinute": 10.8,
+        "newCustomerTransactions": 9,
+        "newCustomerRatio": 0.16666666666666666
+      }
+    },
+    {
+      "scenarioId": "suspicious-965",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 72,
+      "pattern": "AMOUNT_SPIKE",
+      "features": {
+        "transactionCount": 70,
+        "totalAmount": 40514700,
+        "averageAmount": 578781.4285714285,
+        "failedTransactions": 4,
+        "failureRate": 0.05714285714285714,
+        "transactionsPerMinute": 14,
+        "newCustomerTransactions": 22,
+        "newCustomerRatio": 0.3142857142857143
+      }
+    },
+    {
+      "scenarioId": "suspicious-826",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 69,
+      "pattern": "VELOCITY_SPIKE",
+      "features": {
+        "transactionCount": 83,
+        "totalAmount": 23735100,
+        "averageAmount": 285965.0602409639,
+        "failedTransactions": 14,
+        "failureRate": 0.1686746987951807,
+        "transactionsPerMinute": 16.6,
+        "newCustomerTransactions": 12,
+        "newCustomerRatio": 0.14457831325301204
+      }
+    },
+    {
+      "scenarioId": "suspicious-814",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "pattern": "VELOCITY_SPIKE",
+      "features": {
+        "transactionCount": 107,
+        "totalAmount": 25408500,
+        "averageAmount": 237462.6168224299,
+        "failedTransactions": 7,
+        "failureRate": 0.06542056074766354,
+        "transactionsPerMinute": 21.4,
+        "newCustomerTransactions": 26,
+        "newCustomerRatio": 0.24299065420560748
+      }
+    },
+    {
+      "scenarioId": "suspicious-753",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 82,
+      "pattern": "SUBTLE_COMBINED",
+      "features": {
+        "transactionCount": 54,
+        "totalAmount": 16623700,
+        "averageAmount": 307846.2962962963,
+        "failedTransactions": 7,
+        "failureRate": 0.12962962962962962,
+        "transactionsPerMinute": 10.8,
+        "newCustomerTransactions": 26,
+        "newCustomerRatio": 0.48148148148148145
+      }
+    },
+    {
+      "scenarioId": "suspicious-878",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 100,
+      "pattern": "COMBINED_SPIKE",
+      "features": {
+        "transactionCount": 96,
+        "totalAmount": 50091100,
+        "averageAmount": 521782.2916666667,
+        "failedTransactions": 23,
+        "failureRate": 0.23958333333333334,
+        "transactionsPerMinute": 19.2,
+        "newCustomerTransactions": 47,
+        "newCustomerRatio": 0.4895833333333333
+      }
+    },
+    {
+      "scenarioId": "suspicious-978",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 95,
+      "pattern": "FAILURE_SPIKE",
+      "features": {
+        "transactionCount": 65,
+        "totalAmount": 20335000,
+        "averageAmount": 312846.1538461539,
+        "failedTransactions": 32,
+        "failureRate": 0.49230769230769234,
+        "transactionsPerMinute": 13,
+        "newCustomerTransactions": 19,
+        "newCustomerRatio": 0.2923076923076923
+      }
+    },
+    {
+      "scenarioId": "suspicious-707",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 63,
+      "pattern": "AMOUNT_SPIKE",
+      "features": {
+        "transactionCount": 36,
+        "totalAmount": 24690900,
+        "averageAmount": 685858.3333333334,
+        "failedTransactions": 6,
+        "failureRate": 0.16666666666666666,
+        "transactionsPerMinute": 7.2,
+        "newCustomerTransactions": 12,
+        "newCustomerRatio": 0.3333333333333333
+      }
+    },
+    {
+      "scenarioId": "suspicious-768",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 67,
+      "pattern": "FAILURE_SPIKE",
+      "features": {
+        "transactionCount": 45,
+        "totalAmount": 13965700,
+        "averageAmount": 310348.8888888889,
+        "failedTransactions": 14,
+        "failureRate": 0.3111111111111111,
+        "transactionsPerMinute": 9,
+        "newCustomerTransactions": 8,
+        "newCustomerRatio": 0.17777777777777778
+      }
+    },
+    {
+      "scenarioId": "suspicious-904",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 61,
+      "pattern": "VELOCITY_SPIKE",
+      "features": {
+        "transactionCount": 108,
+        "totalAmount": 32590600,
+        "averageAmount": 301764.81481481483,
+        "failedTransactions": 10,
+        "failureRate": 0.09259259259259259,
+        "transactionsPerMinute": 21.6,
+        "newCustomerTransactions": 16,
+        "newCustomerRatio": 0.14814814814814814
+      }
+    },
+    {
+      "scenarioId": "suspicious-946",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "pattern": "VELOCITY_SPIKE",
+      "features": {
+        "transactionCount": 68,
+        "totalAmount": 16525700,
+        "averageAmount": 243025,
+        "failedTransactions": 6,
+        "failureRate": 0.08823529411764706,
+        "transactionsPerMinute": 13.6,
+        "newCustomerTransactions": 18,
+        "newCustomerRatio": 0.2647058823529412
+      }
+    },
+    {
+      "scenarioId": "suspicious-893",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 80,
+      "pattern": "AMOUNT_SPIKE",
+      "features": {
+        "transactionCount": 71,
+        "totalAmount": 34078500,
+        "averageAmount": 479978.8732394366,
+        "failedTransactions": 13,
+        "failureRate": 0.18309859154929578,
+        "transactionsPerMinute": 14.2,
+        "newCustomerTransactions": 13,
+        "newCustomerRatio": 0.18309859154929578
+      }
+    },
+    {
+      "scenarioId": "suspicious-863",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 72,
+      "pattern": "AMOUNT_SPIKE",
+      "features": {
+        "transactionCount": 68,
+        "totalAmount": 40588300,
+        "averageAmount": 596886.7647058824,
+        "failedTransactions": 10,
+        "failureRate": 0.14705882352941177,
+        "transactionsPerMinute": 13.6,
+        "newCustomerTransactions": 11,
+        "newCustomerRatio": 0.16176470588235295
+      }
+    },
+    {
+      "scenarioId": "suspicious-977",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 71,
+      "pattern": "AMOUNT_SPIKE",
+      "features": {
+        "transactionCount": 62,
+        "totalAmount": 33529700,
+        "averageAmount": 540801.6129032258,
+        "failedTransactions": 6,
+        "failureRate": 0.0967741935483871,
+        "transactionsPerMinute": 12.4,
+        "newCustomerTransactions": 15,
+        "newCustomerRatio": 0.24193548387096775
+      }
+    },
+    {
+      "scenarioId": "suspicious-923",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 77,
+      "pattern": "AMOUNT_SPIKE",
+      "features": {
+        "transactionCount": 74,
+        "totalAmount": 41802300,
+        "averageAmount": 564895.9459459459,
+        "failedTransactions": 14,
+        "failureRate": 0.1891891891891892,
+        "transactionsPerMinute": 14.8,
+        "newCustomerTransactions": 9,
+        "newCustomerRatio": 0.12162162162162163
+      }
+    },
+    {
+      "scenarioId": "suspicious-810",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "pattern": "FAILURE_SPIKE",
+      "features": {
+        "transactionCount": 41,
+        "totalAmount": 9668000,
+        "averageAmount": 235804.8780487805,
+        "failedTransactions": 12,
+        "failureRate": 0.2926829268292683,
+        "transactionsPerMinute": 8.2,
+        "newCustomerTransactions": 9,
+        "newCustomerRatio": 0.21951219512195122
+      }
+    },
+    {
+      "scenarioId": "suspicious-715",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 67,
+      "pattern": "NEW_CUSTOMER_SPIKE",
+      "features": {
+        "transactionCount": 59,
+        "totalAmount": 16105500,
+        "averageAmount": 272974.57627118647,
+        "failedTransactions": 4,
+        "failureRate": 0.06779661016949153,
+        "transactionsPerMinute": 11.8,
+        "newCustomerTransactions": 41,
+        "newCustomerRatio": 0.6949152542372882
+      }
+    },
+    {
+      "scenarioId": "suspicious-889",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 90,
+      "pattern": "NEW_CUSTOMER_SPIKE",
+      "features": {
+        "transactionCount": 59,
+        "totalAmount": 16406900,
+        "averageAmount": 278083.0508474576,
+        "failedTransactions": 11,
+        "failureRate": 0.1864406779661017,
+        "transactionsPerMinute": 11.8,
+        "newCustomerTransactions": 34,
+        "newCustomerRatio": 0.576271186440678
+      }
+    },
+    {
+      "scenarioId": "suspicious-796",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "pattern": "VELOCITY_SPIKE",
+      "features": {
+        "transactionCount": 98,
+        "totalAmount": 25563400,
+        "averageAmount": 260851.02040816325,
+        "failedTransactions": 12,
+        "failureRate": 0.12244897959183673,
+        "transactionsPerMinute": 19.6,
+        "newCustomerTransactions": 18,
+        "newCustomerRatio": 0.1836734693877551
+      }
+    },
+    {
+      "scenarioId": "suspicious-874",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 67,
+      "pattern": "VELOCITY_SPIKE",
+      "features": {
+        "transactionCount": 77,
+        "totalAmount": 21652300,
+        "averageAmount": 281198.7012987013,
+        "failedTransactions": 7,
+        "failureRate": 0.09090909090909091,
+        "transactionsPerMinute": 15.4,
+        "newCustomerTransactions": 21,
+        "newCustomerRatio": 0.2727272727272727
+      }
+    },
+    {
+      "scenarioId": "suspicious-774",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 88,
+      "pattern": "FAILURE_SPIKE",
+      "features": {
+        "transactionCount": 62,
+        "totalAmount": 19984800,
+        "averageAmount": 322335.48387096776,
+        "failedTransactions": 20,
+        "failureRate": 0.3225806451612903,
+        "transactionsPerMinute": 12.4,
+        "newCustomerTransactions": 14,
+        "newCustomerRatio": 0.22580645161290322
+      }
+    },
+    {
+      "scenarioId": "suspicious-984",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "pattern": "FAILURE_SPIKE",
+      "features": {
+        "transactionCount": 41,
+        "totalAmount": 13674800,
+        "averageAmount": 333531.7073170732,
+        "failedTransactions": 15,
+        "failureRate": 0.36585365853658536,
+        "transactionsPerMinute": 8.2,
+        "newCustomerTransactions": 4,
+        "newCustomerRatio": 0.0975609756097561
+      }
+    },
+    {
+      "scenarioId": "suspicious-824",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 100,
+      "pattern": "COMBINED_SPIKE",
+      "features": {
+        "transactionCount": 71,
+        "totalAmount": 38391300,
+        "averageAmount": 540722.5352112676,
+        "failedTransactions": 24,
+        "failureRate": 0.3380281690140845,
+        "transactionsPerMinute": 14.2,
+        "newCustomerTransactions": 43,
+        "newCustomerRatio": 0.6056338028169014
+      }
+    },
+    {
+      "scenarioId": "suspicious-802",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 73,
+      "pattern": "VELOCITY_SPIKE",
+      "features": {
+        "transactionCount": 86,
+        "totalAmount": 27322300,
+        "averageAmount": 317701.16279069765,
+        "failedTransactions": 11,
+        "failureRate": 0.12790697674418605,
+        "transactionsPerMinute": 17.2,
+        "newCustomerTransactions": 18,
+        "newCustomerRatio": 0.20930232558139536
+      }
+    },
+    {
+      "scenarioId": "suspicious-794",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 93,
+      "pattern": "COMBINED_SPIKE",
+      "features": {
+        "transactionCount": 84,
+        "totalAmount": 38608200,
+        "averageAmount": 459621.4285714286,
+        "failedTransactions": 14,
+        "failureRate": 0.16666666666666666,
+        "transactionsPerMinute": 16.8,
+        "newCustomerTransactions": 52,
+        "newCustomerRatio": 0.6190476190476191
+      }
+    },
+    {
+      "scenarioId": "suspicious-780",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 63,
+      "pattern": "FAILURE_SPIKE",
+      "features": {
+        "transactionCount": 38,
+        "totalAmount": 10005700,
+        "averageAmount": 263307.8947368421,
+        "failedTransactions": 14,
+        "failureRate": 0.3684210526315789,
+        "transactionsPerMinute": 7.6,
+        "newCustomerTransactions": 13,
+        "newCustomerRatio": 0.34210526315789475
+      }
+    },
+    {
+      "scenarioId": "suspicious-925",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 61,
+      "pattern": "NEW_CUSTOMER_SPIKE",
+      "features": {
+        "transactionCount": 38,
+        "totalAmount": 12518500,
+        "averageAmount": 329434.2105263158,
+        "failedTransactions": 5,
+        "failureRate": 0.13157894736842105,
+        "transactionsPerMinute": 7.6,
+        "newCustomerTransactions": 24,
+        "newCustomerRatio": 0.631578947368421
+      }
+    },
+    {
+      "scenarioId": "suspicious-739",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 67,
+      "pattern": "NEW_CUSTOMER_SPIKE",
+      "features": {
+        "transactionCount": 45,
+        "totalAmount": 14039800,
+        "averageAmount": 311995.55555555556,
+        "failedTransactions": 5,
+        "failureRate": 0.1111111111111111,
+        "transactionsPerMinute": 9,
+        "newCustomerTransactions": 34,
+        "newCustomerRatio": 0.7555555555555555
+      }
+    },
+    {
+      "scenarioId": "suspicious-866",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 96,
+      "pattern": "COMBINED_SPIKE",
+      "features": {
+        "transactionCount": 77,
+        "totalAmount": 39288900,
+        "averageAmount": 510245.45454545453,
+        "failedTransactions": 14,
+        "failureRate": 0.18181818181818182,
+        "transactionsPerMinute": 15.4,
+        "newCustomerTransactions": 57,
+        "newCustomerRatio": 0.7402597402597403
+      }
+    },
+    {
+      "scenarioId": "suspicious-838",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "pattern": "VELOCITY_SPIKE",
+      "features": {
+        "transactionCount": 104,
+        "totalAmount": 22085500,
+        "averageAmount": 212360.57692307694,
+        "failedTransactions": 9,
+        "failureRate": 0.08653846153846154,
+        "transactionsPerMinute": 20.8,
+        "newCustomerTransactions": 11,
+        "newCustomerRatio": 0.10576923076923077
+      }
+    },
+    {
+      "scenarioId": "suspicious-976",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "pattern": "VELOCITY_SPIKE",
+      "features": {
+        "transactionCount": 99,
+        "totalAmount": 25264000,
+        "averageAmount": 255191.91919191918,
+        "failedTransactions": 15,
+        "failureRate": 0.15151515151515152,
+        "transactionsPerMinute": 19.8,
+        "newCustomerTransactions": 13,
+        "newCustomerRatio": 0.13131313131313133
+      }
+    },
+    {
+      "scenarioId": "suspicious-817",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 88,
+      "pattern": "NEW_CUSTOMER_SPIKE",
+      "features": {
+        "transactionCount": 61,
+        "totalAmount": 17315800,
+        "averageAmount": 283865.5737704918,
+        "failedTransactions": 10,
+        "failureRate": 0.16393442622950818,
+        "transactionsPerMinute": 12.2,
+        "newCustomerTransactions": 40,
+        "newCustomerRatio": 0.6557377049180327
+      }
+    },
+    {
+      "scenarioId": "suspicious-991",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 83,
+      "pattern": "NEW_CUSTOMER_SPIKE",
+      "features": {
+        "transactionCount": 61,
+        "totalAmount": 15813800,
+        "averageAmount": 259242.62295081967,
+        "failedTransactions": 11,
+        "failureRate": 0.18032786885245902,
+        "transactionsPerMinute": 12.2,
+        "newCustomerTransactions": 40,
+        "newCustomerRatio": 0.6557377049180327
+      }
+    },
+    {
+      "scenarioId": "suspicious-775",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "pattern": "NEW_CUSTOMER_SPIKE",
+      "features": {
+        "transactionCount": 65,
+        "totalAmount": 14702600,
+        "averageAmount": 226193.84615384616,
+        "failedTransactions": 4,
+        "failureRate": 0.06153846153846154,
+        "transactionsPerMinute": 13,
+        "newCustomerTransactions": 34,
+        "newCustomerRatio": 0.5230769230769231
+      }
+    },
+    {
+      "scenarioId": "suspicious-773",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 73,
+      "pattern": "AMOUNT_SPIKE",
+      "features": {
+        "transactionCount": 59,
+        "totalAmount": 30428200,
+        "averageAmount": 515732.2033898305,
+        "failedTransactions": 6,
+        "failureRate": 0.1016949152542373,
+        "transactionsPerMinute": 11.8,
+        "newCustomerTransactions": 15,
+        "newCustomerRatio": 0.2542372881355932
+      }
+    },
+    {
+      "scenarioId": "suspicious-798",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 72,
+      "pattern": "FAILURE_SPIKE",
+      "features": {
+        "transactionCount": 48,
+        "totalAmount": 15316900,
+        "averageAmount": 319102.0833333333,
+        "failedTransactions": 21,
+        "failureRate": 0.4375,
+        "transactionsPerMinute": 9.6,
+        "newCustomerTransactions": 9,
+        "newCustomerRatio": 0.1875
+      }
+    },
+    {
+      "scenarioId": "suspicious-905",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "pattern": "AMOUNT_SPIKE",
+      "features": {
+        "transactionCount": 64,
+        "totalAmount": 33493600,
+        "averageAmount": 523337.5,
+        "failedTransactions": 3,
+        "failureRate": 0.046875,
+        "transactionsPerMinute": 12.8,
+        "newCustomerTransactions": 6,
+        "newCustomerRatio": 0.09375
+      }
+    },
+    {
+      "scenarioId": "suspicious-730",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 67,
+      "pattern": "VELOCITY_SPIKE",
+      "features": {
+        "transactionCount": 95,
+        "totalAmount": 31487600,
+        "averageAmount": 331448.4210526316,
+        "failedTransactions": 7,
+        "failureRate": 0.07368421052631578,
+        "transactionsPerMinute": 19,
+        "newCustomerTransactions": 23,
+        "newCustomerRatio": 0.24210526315789474
+      }
+    },
+    {
+      "scenarioId": "suspicious-924",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "pattern": "FAILURE_SPIKE",
+      "features": {
+        "transactionCount": 35,
+        "totalAmount": 10858900,
+        "averageAmount": 310254.28571428574,
+        "failedTransactions": 16,
+        "failureRate": 0.45714285714285713,
+        "transactionsPerMinute": 7,
+        "newCustomerTransactions": 5,
+        "newCustomerRatio": 0.14285714285714285
+      }
+    },
+    {
+      "scenarioId": "suspicious-908",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 100,
+      "pattern": "COMBINED_SPIKE",
+      "features": {
+        "transactionCount": 82,
+        "totalAmount": 37237700,
+        "averageAmount": 454118.2926829268,
+        "failedTransactions": 21,
+        "failureRate": 0.25609756097560976,
+        "transactionsPerMinute": 16.4,
+        "newCustomerTransactions": 36,
+        "newCustomerRatio": 0.43902439024390244
+      }
+    },
+    {
+      "scenarioId": "suspicious-883",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "pattern": "NEW_CUSTOMER_SPIKE",
+      "features": {
+        "transactionCount": 42,
+        "totalAmount": 11545500,
+        "averageAmount": 274892.85714285716,
+        "failedTransactions": 3,
+        "failureRate": 0.07142857142857142,
+        "transactionsPerMinute": 8.4,
+        "newCustomerTransactions": 25,
+        "newCustomerRatio": 0.5952380952380952
+      }
+    },
+    {
+      "scenarioId": "suspicious-766",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 70,
+      "pattern": "VELOCITY_SPIKE",
+      "features": {
+        "transactionCount": 67,
+        "totalAmount": 17858900,
+        "averageAmount": 266550.74626865675,
+        "failedTransactions": 14,
+        "failureRate": 0.208955223880597,
+        "transactionsPerMinute": 13.4,
+        "newCustomerTransactions": 8,
+        "newCustomerRatio": 0.11940298507462686
+      }
+    },
+    {
+      "scenarioId": "suspicious-921",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 67,
+      "pattern": "SUBTLE_COMBINED",
+      "features": {
+        "transactionCount": 45,
+        "totalAmount": 12681500,
+        "averageAmount": 281811.1111111111,
+        "failedTransactions": 7,
+        "failureRate": 0.15555555555555556,
+        "transactionsPerMinute": 9,
+        "newCustomerTransactions": 15,
+        "newCustomerRatio": 0.3333333333333333
+      }
+    },
+    {
+      "scenarioId": "suspicious-752",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 100,
+      "pattern": "COMBINED_SPIKE",
+      "features": {
+        "transactionCount": 79,
+        "totalAmount": 39086800,
+        "averageAmount": 494769.62025316455,
+        "failedTransactions": 27,
+        "failureRate": 0.34177215189873417,
+        "transactionsPerMinute": 15.8,
+        "newCustomerTransactions": 40,
+        "newCustomerRatio": 0.5063291139240507
+      }
+    },
+    {
+      "scenarioId": "suspicious-777",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 77,
+      "pattern": "SUBTLE_COMBINED",
+      "features": {
+        "transactionCount": 53,
+        "totalAmount": 14160400,
+        "averageAmount": 267177.358490566,
+        "failedTransactions": 9,
+        "failureRate": 0.16981132075471697,
+        "transactionsPerMinute": 10.6,
+        "newCustomerTransactions": 20,
+        "newCustomerRatio": 0.37735849056603776
+      }
+    },
+    {
+      "scenarioId": "suspicious-831",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 71,
+      "pattern": "SUBTLE_COMBINED",
+      "features": {
+        "transactionCount": 45,
+        "totalAmount": 16509800,
+        "averageAmount": 366884.44444444444,
+        "failedTransactions": 8,
+        "failureRate": 0.17777777777777778,
+        "transactionsPerMinute": 9,
+        "newCustomerTransactions": 12,
+        "newCustomerRatio": 0.26666666666666666
+      }
+    },
+    {
+      "scenarioId": "suspicious-996",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 70,
+      "pattern": "FAILURE_SPIKE",
+      "features": {
+        "transactionCount": 75,
+        "totalAmount": 20884100,
+        "averageAmount": 278454.6666666667,
+        "failedTransactions": 14,
+        "failureRate": 0.18666666666666668,
+        "transactionsPerMinute": 15,
+        "newCustomerTransactions": 3,
+        "newCustomerRatio": 0.04
+      }
+    },
+    {
+      "scenarioId": "suspicious-930",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 74,
+      "pattern": "FAILURE_SPIKE",
+      "features": {
+        "transactionCount": 52,
+        "totalAmount": 16418400,
+        "averageAmount": 315738.46153846156,
+        "failedTransactions": 8,
+        "failureRate": 0.15384615384615385,
+        "transactionsPerMinute": 10.4,
+        "newCustomerTransactions": 13,
+        "newCustomerRatio": 0.25
+      }
+    },
+    {
+      "scenarioId": "suspicious-910",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 76,
+      "pattern": "VELOCITY_SPIKE",
+      "features": {
+        "transactionCount": 96,
+        "totalAmount": 29850300,
+        "averageAmount": 310940.625,
+        "failedTransactions": 11,
+        "failureRate": 0.11458333333333333,
+        "transactionsPerMinute": 19.2,
+        "newCustomerTransactions": 25,
+        "newCustomerRatio": 0.2604166666666667
+      }
+    },
+    {
+      "scenarioId": "suspicious-897",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 68,
+      "pattern": "SUBTLE_COMBINED",
+      "features": {
+        "transactionCount": 46,
+        "totalAmount": 16162700,
+        "averageAmount": 351363.04347826086,
+        "failedTransactions": 5,
+        "failureRate": 0.10869565217391304,
+        "transactionsPerMinute": 9.2,
+        "newCustomerTransactions": 18,
+        "newCustomerRatio": 0.391304347826087
+      }
+    },
+    {
+      "scenarioId": "suspicious-746",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 100,
+      "pattern": "COMBINED_SPIKE",
+      "features": {
+        "transactionCount": 90,
+        "totalAmount": 47472200,
+        "averageAmount": 527468.8888888889,
+        "failedTransactions": 21,
+        "failureRate": 0.23333333333333334,
+        "transactionsPerMinute": 18,
+        "newCustomerTransactions": 60,
+        "newCustomerRatio": 0.6666666666666666
+      }
+    },
+    {
+      "scenarioId": "suspicious-864",
+      "actual": "SUSPICIOUS",
+      "predicted": "SUSPICIOUS",
+      "riskScore": 60,
+      "pattern": "FAILURE_SPIKE",
+      "features": {
+        "transactionCount": 71,
+        "totalAmount": 18413700,
+        "averageAmount": 259347.88732394367,
+        "failedTransactions": 6,
+        "failureRate": 0.08450704225352113,
+        "transactionsPerMinute": 14.2,
+        "newCustomerTransactions": 18,
+        "newCustomerRatio": 0.2535211267605634
+      }
+    }
+  ]
+}
